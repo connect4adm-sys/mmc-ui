@@ -644,6 +644,34 @@
         grid-template-columns: repeat(2, 1fr);
         gap: 1.25rem 1rem;
       }
+      .showcase-footer {
+        bottom: 0.75rem;
+        left: 0.75rem;
+        right: 0.75rem;
+        gap: 0.5rem;
+      }
+      .showcase-caption {
+        font-size: 0.68rem;
+        padding: 0.34rem 0.7rem;
+        max-width: 68%;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      .showcase-caption span:last-child {
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      .showcase-pills {
+        flex-shrink: 0;
+        padding: 0.28rem 0.45rem;
+      }
+      .showcase-pill {
+        width: 11px;
+      }
+      .showcase-pill.is-active {
+        width: 20px;
+      }
     }
 
     .stat-item {
@@ -2992,9 +3020,19 @@
           if (bloom && (bloom.width !== glowSize.width || bloom.height !== glowSize.height)) dropBloom();
         };
 
+        const isCompactViewport = () =>
+          window.innerWidth <= 768 || (canvas.width / Math.max(1, canvas.height)) < 0.85;
+
+        const isCoarsePointer = () =>
+          window.matchMedia?.('(pointer: coarse)').matches ?? ('ontouchstart' in window);
+
         const radiusFor = scale => {
-          const aspect = canvas.width / canvas.height;
-          return ((0.2 * settings.size * scale) / 100) * (aspect > 1 ? aspect : 1);
+          const aspect = canvas.width / Math.max(1, canvas.height);
+          if (aspect < 1) {
+            const compactFactor = Math.max(0.24, aspect * aspect * 1.45);
+            return ((0.2 * settings.size * scale) / 100) * compactFactor;
+          }
+          return ((0.2 * settings.size * scale) / 100) * aspect;
         };
 
         const splat = (ax, ay, bx, by, vx, vy, color, radius) => {
@@ -3036,7 +3074,8 @@
 
         const flush = (pointer, dt, now) => {
           const s = settings;
-          const aspect = canvas.width / canvas.height;
+          const aspect = canvas.width / Math.max(1, canvas.height);
+          const isCompact = isCompactViewport();
           const length = Math.hypot((pointer.x - pointer.px) * aspect, pointer.y - pointer.py);
           if (length > 0.35) {
             pointer.px = pointer.x;
@@ -3047,38 +3086,47 @@
           let dy = pointer.y - pointer.py;
           if (aspect < 1) dx *= aspect;
           else dy /= aspect;
-          const radius = radiusFor(1);
+          const sizeMult = pointer.soft ? 0.85 : (isCompact ? 0.92 : 1);
+          const radius = radiusFor(sizeMult);
           const spread = 1 + length / (1.77 * Math.sqrt(radius));
-          const push = (6000 * s.force) / Math.sqrt(spread);
-          const amount = (0.18 * s.intensity * Math.min(dt * 60, 1)) / Math.sqrt(spread);
+          const forceScale = pointer.soft ? 0.56 : (isCompact ? 0.68 : 1);
+          const intensityScale = pointer.soft ? 0.85 : (isCompact ? 1.08 : 1);
+          const push = (6000 * s.force * forceScale) / Math.sqrt(spread);
+          const amount = (0.18 * s.intensity * intensityScale * Math.min(dt * 60, 1)) / Math.sqrt(spread);
           const color = inkFor(colorAt(pointer.offset, now), amount);
           splat(pointer.px, pointer.py, pointer.x, pointer.y, dx * push, dy * push, color, radius);
           pointer.px = pointer.x;
           pointer.py = pointer.y;
         };
 
-        const burst = (x, y, now) => {
+        const burst = (x, y, now, compact = false) => {
           const s = settings;
           const seed = Math.random() * Math.PI * 2;
-          const aspect = canvas.width / canvas.height;
+          const aspect = canvas.width / Math.max(1, canvas.height);
+          const isSmall = compact || isCompactViewport();
+          const velRadiusScale = isSmall ? 1.85 : 3.2;
+          const velStrength = (isSmall ? 480 : 1200) * s.force;
+          const crownRadiusScale = isSmall ? 1.05 : 1.8;
+          const amount = (isSmall ? 1.15 : 1.8) * s.intensity;
+
           let u = use('burst');
           gl.uniform1i(u.uTarget, velocity.read.attach(0));
           gl.uniform1f(u.aspectRatio, aspect);
           gl.uniform2f(u.point, x, y);
-          gl.uniform1f(u.radius, radiusFor(3.2));
-          gl.uniform1f(u.strength, 1200 * s.force);
+          gl.uniform1f(u.radius, radiusFor(velRadiusScale));
+          gl.uniform1f(u.strength, velStrength);
           gl.uniform1f(u.seed, seed);
           blit(velocity.write);
           velocity.swap();
+
           const offset = Math.random();
-          const amount = 1.8 * s.intensity;
           const first = inkFor(colorAt(offset, now), amount);
           const second = inkFor(colorAt(offset + 0.3, now), amount);
           u = use('crown');
           gl.uniform1i(u.uTarget, dye.read.attach(0));
           gl.uniform1f(u.aspectRatio, aspect);
           gl.uniform2f(u.point, x, y);
-          gl.uniform1f(u.radius, radiusFor(1.8));
+          gl.uniform1f(u.radius, radiusFor(crownRadiusScale));
           gl.uniform3f(u.colorA, first[0], first[1], first[2]);
           gl.uniform3f(u.colorB, second[0], second[1], second[2]);
           gl.uniform1f(u.seed, seed);
@@ -3205,13 +3253,20 @@
         };
 
         const pointers = new Map();
+        const touchMeta = new Map();
         const bursts = [];
         const reduced = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches ?? false;
         const introPointer = { x: 0, y: 0, px: 0, py: 0, ready: false, moved: false, offset: Math.random() };
+        const scrollPointer = { x: 0.5, y: 0.5, px: 0.5, py: 0.5, ready: false, moved: false, offset: Math.random(), soft: true };
         let introStart = options.intro && !reduced ? performance.now() + 150 : -1;
         let raf = 0;
         let last = 0;
         let lastActivity = performance.now();
+        let lastScrollY = window.scrollY;
+        let lastScrollTime = 0;
+        let lastTouchMoveTime = 0;
+        let lastTouchXRatio = 0.5;
+        let lastTouchYRatio = 0.52;
 
         const advanceIntro = now => {
           if (introStart < 0) return;
@@ -3239,6 +3294,9 @@
           if (introStart >= 0) introStart = now + 150;
           last = now;
           lastActivity = now;
+          scrollPointer.px = scrollPointer.x;
+          scrollPointer.py = scrollPointer.y;
+          scrollPointer.moved = false;
           pointers.forEach(pointer => {
             pointer.px = pointer.x;
             pointer.py = pointer.y;
@@ -3270,12 +3328,16 @@
             introPointer.moved = false;
             flush(introPointer, dt, now);
           }
+          if (scrollPointer.moved) {
+            scrollPointer.moved = false;
+            flush(scrollPointer, dt, now);
+          }
           pointers.forEach(pointer => {
             if (!pointer.moved) return;
             pointer.moved = false;
             flush(pointer, dt, now);
           });
-          bursts.splice(0).forEach(point => burst(point.x, point.y, now));
+          bursts.splice(0).forEach(point => burst(point.x, point.y, now, point.compact));
           step(dt);
           render();
           const quiet = (2.2 * s.trail + 0.4) * 1000;
@@ -3322,11 +3384,11 @@
           wake();
         };
 
-        const press = (clientX, clientY) => {
+        const press = (clientX, clientY, compact = false) => {
           if (!settings.clickSplash) return;
           const point = locate(clientX, clientY);
           if (!point) return;
-          bursts.push(point);
+          bursts.push({ x: point.x, y: point.y, compact });
           wake();
         };
 
@@ -3334,20 +3396,110 @@
           if (event.pointerType !== 'touch') track(`p${event.pointerId}`, event.clientX, event.clientY);
         };
         const onPointerDown = event => {
-          if (event.pointerType !== 'touch') press(event.clientX, event.clientY);
+          if (event.pointerType !== 'touch') press(event.clientX, event.clientY, false);
         };
         const onTouchStart = event => {
+          const now = performance.now();
+          const isMultiTouch = event.touches.length > 1;
           Array.from(event.changedTouches).forEach(touch => {
-            pointers.delete(`t${touch.identifier}`);
-            track(`t${touch.identifier}`, touch.clientX, touch.clientY);
-            press(touch.clientX, touch.clientY);
+            const id = `t${touch.identifier}`;
+            pointers.delete(id);
+            track(id, touch.clientX, touch.clientY);
+            touchMeta.set(touch.identifier, {
+              startX: touch.clientX,
+              startY: touch.clientY,
+              startTime: now,
+              startScrollY: window.scrollY,
+              moved: isMultiTouch
+            });
+            const rect = canvas.getBoundingClientRect();
+            if (rect.width && rect.height) {
+              lastTouchXRatio = clamp((touch.clientX - rect.left) / rect.width, 0.18, 0.82);
+              lastTouchYRatio = clamp(1 - (touch.clientY - rect.top) / rect.height, 0.22, 0.78);
+            }
           });
+          if (isMultiTouch) {
+            touchMeta.forEach(meta => { meta.moved = true; });
+          }
         };
         const onTouchMove = event => {
-          Array.from(event.changedTouches).forEach(touch => track(`t${touch.identifier}`, touch.clientX, touch.clientY));
+          const now = performance.now();
+          lastTouchMoveTime = now;
+          Array.from(event.changedTouches).forEach(touch => {
+            const meta = touchMeta.get(touch.identifier);
+            if (meta && !meta.moved) {
+              const dist = Math.hypot(touch.clientX - meta.startX, touch.clientY - meta.startY);
+              if (dist > 10 || Math.abs(window.scrollY - meta.startScrollY) > 6) {
+                meta.moved = true;
+              }
+            }
+            const rect = canvas.getBoundingClientRect();
+            if (rect.width && rect.height) {
+              lastTouchXRatio = clamp((touch.clientX - rect.left) / rect.width, 0.18, 0.82);
+              lastTouchYRatio = clamp(1 - (touch.clientY - rect.top) / rect.height, 0.22, 0.78);
+            }
+            track(`t${touch.identifier}`, touch.clientX, touch.clientY);
+          });
         };
         const onTouchEnd = event => {
-          Array.from(event.changedTouches).forEach(touch => pointers.delete(`t${touch.identifier}`));
+          const now = performance.now();
+          Array.from(event.changedTouches).forEach(touch => {
+            const meta = touchMeta.get(touch.identifier);
+            touchMeta.delete(touch.identifier);
+            pointers.delete(`t${touch.identifier}`);
+            if (!meta) return;
+            const dist = Math.hypot(touch.clientX - meta.startX, touch.clientY - meta.startY);
+            const scrolled = Math.abs(window.scrollY - meta.startScrollY) > 6;
+            const elapsed = now - meta.startTime;
+            // Only trigger compact splash on an intentional single-finger tap, never on scroll/drag
+            if (!meta.moved && dist <= 10 && !scrolled && elapsed < 320 && event.touches.length === 0) {
+              press(touch.clientX, touch.clientY, true);
+            }
+          });
+        };
+        const onTouchCancel = event => {
+          Array.from(event.changedTouches).forEach(touch => {
+            touchMeta.delete(touch.identifier);
+            pointers.delete(`t${touch.identifier}`);
+          });
+        };
+        const onScroll = () => {
+          const currentY = window.scrollY;
+          const deltaY = currentY - lastScrollY;
+          lastScrollY = currentY;
+          if (Math.abs(deltaY) < 1.5) return;
+          if (!isCompactViewport() && !isCoarsePointer()) return;
+          const now = performance.now();
+          // Skip when touchmove is actively driving the finger trail to avoid double-painting
+          if (now - lastTouchMoveTime < 60) return;
+
+          const vh = Math.max(window.innerHeight, 1);
+          const stepY = clamp(deltaY / vh, -0.065, 0.065);
+          const swayX = Math.sin(now * 0.0045) * 0.018;
+
+          if (!scrollPointer.ready || now - lastScrollTime > 260) {
+            scrollPointer.px = lastTouchXRatio;
+            scrollPointer.py = lastTouchYRatio;
+            scrollPointer.x = clamp(scrollPointer.px + swayX, 0.12, 0.88);
+            scrollPointer.y = clamp(scrollPointer.py + stepY, 0.14, 0.86);
+            scrollPointer.ready = true;
+          } else {
+            let nextY = scrollPointer.y + stepY;
+            // Keep scroll dust ribbon smoothly centered in the viewport during long scrolls
+            if (nextY < 0.16 || nextY > 0.84) {
+              scrollPointer.py = clamp(lastTouchYRatio, 0.28, 0.72);
+              scrollPointer.px = clamp(lastTouchXRatio + Math.sin(now * 0.003) * 0.08, 0.18, 0.82);
+              nextY = clamp(scrollPointer.py + stepY, 0.16, 0.84);
+            } else {
+              scrollPointer.px = scrollPointer.x;
+              scrollPointer.py = scrollPointer.y;
+            }
+            scrollPointer.x = clamp(scrollPointer.px + swayX, 0.12, 0.88);
+            scrollPointer.y = nextY;
+          }
+          lastScrollTime = now;
+          scrollPointer.moved = true;
+          wake();
         };
         const onLeave = () => {
           pointers.forEach(pointer => {
@@ -3371,7 +3523,8 @@
         window.addEventListener('touchstart', onTouchStart, { passive: true });
         window.addEventListener('touchmove', onTouchMove, { passive: true });
         window.addEventListener('touchend', onTouchEnd, { passive: true });
-        window.addEventListener('touchcancel', onTouchEnd, { passive: true });
+        window.addEventListener('touchcancel', onTouchCancel, { passive: true });
+        window.addEventListener('scroll', onScroll, { passive: true });
         document.documentElement.addEventListener('pointerleave', onLeave);
         canvas.addEventListener('webglcontextlost', onLost);
         canvas.addEventListener('webglcontextrestored', onRestored);
@@ -3385,7 +3538,8 @@
           window.removeEventListener('touchstart', onTouchStart);
           window.removeEventListener('touchmove', onTouchMove);
           window.removeEventListener('touchend', onTouchEnd);
-          window.removeEventListener('touchcancel', onTouchEnd);
+          window.removeEventListener('touchcancel', onTouchCancel);
+          window.removeEventListener('scroll', onScroll);
           document.documentElement.removeEventListener('pointerleave', onLeave);
           canvas.removeEventListener('webglcontextlost', onLost);
           canvas.removeEventListener('webglcontextrestored', onRestored);
@@ -3400,6 +3554,7 @@
 
       // Self initialize immediately
       function boot() {
+        const isMobile = window.innerWidth <= 768;
         window.splashCursorInstance = initSplashCursor('splashCursorCanvas', {
           colors: ['#2466AD', '#FFC51B', '#102F4B', '#3B82F6', '#F59E0B'],
           rainbow: false,
@@ -3413,7 +3568,7 @@
           momentum: 1,
           shading: 1,
           glow: 0,
-          quality: 'high',
+          quality: isMobile ? 'medium' : 'high',
           intro: true,
           contained: false,
           theme: 'dark'

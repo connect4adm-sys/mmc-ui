@@ -1,0 +1,1260 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>For Universities &amp; EdTech Partners | My Mentor Circle</title>
+  <meta name="description"
+    content="Connect your university, college, or EdTech organisation with verified K–12 schools across India through school-approved career fairs, workshops, and academic events." />
+  <link rel="canonical" href="https://www.mymentorcircle.com/universities" />
+  <link rel="icon" href="images/mmc logo.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600&display=swap"
+    rel="stylesheet" />
+
+  <style>
+    :root {
+      --royal: #2466AD;
+      --royal-dark: #1A4F8A;
+      --yellow: #FFC51B;
+      --deep: #102F4B;
+      --deep-2: #0B2239;
+      --white: #FFFFFF;
+      --light-blue: #EAF2FC;
+      --bg: #F8FAFD;
+      --ink: #0B1D2E;
+      --muted: #5A6B7C;
+      --line: rgba(16, 47, 75, 0.12);
+      --ok: #0F766E;
+      --err: #B91C1C;
+      --font-display: 'Fraunces', Georgia, serif;
+      --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --font-label: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+      --radius-sm: 8px;
+      --radius: 14px;
+      --radius-lg: 22px;
+      --radius-pill: 999px;
+      --shadow-card: 0 8px 26px -10px rgba(16, 47, 75, 0.1), 0 2px 6px -1px rgba(16, 47, 75, 0.04);
+      --shadow-hover: 0 20px 42px -14px rgba(16, 47, 75, 0.18);
+      --ease: cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+    body {
+      font-family: var(--font-sans);
+      background-color: var(--bg);
+      color: var(--ink);
+      line-height: 1.6;
+      overflow-x: hidden;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      padding-top: 72px;
+    }
+    main { flex: 1; }
+    img { max-width: 100%; height: auto; display: block; }
+    a { text-decoration: none; color: inherit; }
+    button { font: inherit; cursor: pointer; border: none; background: none; }
+
+    #scroll-progress {
+      position: fixed;
+      top: 0; left: 0; height: 3px; width: 0%;
+      background: linear-gradient(90deg, var(--royal), var(--yellow));
+      z-index: 9999; pointer-events: none;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1320px;
+      margin-inline: auto;
+      padding-inline: clamp(1rem, 3.5vw, 2.5rem);
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: var(--font-label);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--royal);
+      padding: 0.35rem 0.9rem;
+      border-radius: var(--radius-pill);
+      background: rgba(36, 102, 173, 0.08);
+      border: 1px solid rgba(36, 102, 173, 0.16);
+      width: fit-content;
+    }
+    .eyebrow::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--royal); }
+
+    .display {
+      font-family: var(--font-display);
+      font-size: clamp(2.15rem, 4.1vw, 3.5rem);
+      font-weight: 600;
+      line-height: 1.09;
+      letter-spacing: -0.025em;
+      color: var(--deep);
+    }
+
+    .h2 {
+      font-family: var(--font-display);
+      font-size: clamp(1.75rem, 3vw, 2.6rem);
+      font-weight: 600;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      color: var(--deep);
+    }
+
+    .highlight-marker {
+      font-style: italic;
+      font-weight: 400;
+      color: var(--royal);
+      position: relative;
+      display: inline-block;
+    }
+    .highlight-marker::after {
+      content: '';
+      position: absolute; left: -2%; right: -2%; bottom: 6%; height: 28%;
+      background: rgba(255, 197, 27, 0.38); z-index: -1; border-radius: 4px;
+    }
+
+    .lede { font-size: clamp(0.98rem, 1.25vw, 1.1rem); color: var(--muted); line-height: 1.65; max-width: 58ch; }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.72rem 1.4rem;
+      border-radius: var(--radius-pill);
+      font-size: 0.88rem;
+      font-weight: 600;
+      transition: all 0.28s var(--ease);
+      white-space: nowrap;
+      min-height: 44px;
+    }
+    .btn svg { width: 16px; height: 16px; transition: transform 0.28s var(--ease); }
+    .btn:hover svg { transform: translateX(3px); }
+
+    .btn--primary {
+      background: var(--royal); color: var(--white);
+      box-shadow: 0 8px 20px -4px rgba(36, 102, 173, 0.35);
+    }
+    .btn--primary:hover { background: var(--royal-dark); transform: translateY(-2px); }
+
+    .btn--yellow {
+      background: var(--yellow); color: var(--deep); font-weight: 700;
+      box-shadow: 0 10px 24px -4px rgba(255, 197, 27, 0.4);
+    }
+    .btn--yellow:hover { background: #FFD34E; transform: translateY(-2px); }
+
+    .btn--ghost {
+      background: var(--white); color: var(--deep); border: 1.5px solid var(--line);
+    }
+    .btn--ghost:hover { border-color: var(--royal); color: var(--royal); background: rgba(36, 102, 173, 0.04); }
+
+    /* ============================================================
+       UNIFIED HEADER + SMART SCROLL REVEAL
+       ============================================================ */
+    .site-header {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      background: rgba(255, 255, 255, 0.94);
+      backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--line);
+      padding-top: env(safe-area-inset-top, 0px);
+      transform: translate3d(0, 0, 0);
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.25s ease, box-shadow 0.25s ease;
+      will-change: transform;
+    }
+    .site-header.is-scrolled { background: rgba(255, 255, 255, 0.98); box-shadow: 0 4px 20px -4px rgba(16, 47, 75, 0.08); }
+    .site-header.is-hidden { transform: translate3d(0, -105%, 0); }
+    .site-header:focus-within { transform: translate3d(0, 0, 0); }
+    .header-inner { display: flex; align-items: center; justify-content: space-between; height: 72px; gap: 1.25rem; }
+    .brand { display: flex; align-items: center; flex-shrink: 0; }
+    .brand img { height: 36px; width: auto; }
+
+    .main-nav { display: flex; align-items: center; gap: 1.4rem; }
+    .main-nav a {
+      font-size: 0.86rem; font-weight: 500; color: var(--muted);
+      position: relative; padding: 0.4rem 0; transition: color 0.25s ease; white-space: nowrap;
+    }
+    .main-nav a:hover, .main-nav a[aria-current="page"] { color: var(--royal); }
+    .main-nav a[aria-current="page"] { font-weight: 600; }
+    .main-nav a::after {
+      content: ''; position: absolute; left: 0; bottom: -2px; width: 100%; height: 2.5px;
+      background: var(--yellow); border-radius: 999px; transform: scaleX(0);
+      transform-origin: left; transition: transform 0.32s var(--ease);
+    }
+    .main-nav a:hover::after, .main-nav a[aria-current="page"]::after { transform: scaleX(1); }
+
+    .header-actions { display: flex; align-items: center; gap: 0.75rem; flex-shrink: 0; }
+    .header-login {
+      font-size: 0.86rem; font-weight: 600; color: var(--deep);
+      padding: 0.45rem 0.9rem; border-radius: var(--radius-pill);
+    }
+    .header-login:hover { background: rgba(36, 102, 173, 0.08); color: var(--royal); }
+    .header-cta { padding: 0.56rem 1.15rem; font-size: 0.84rem; min-height: 40px; }
+
+    .menu-toggle {
+      display: none; flex-direction: column; justify-content: center; align-items: center;
+      width: 40px; height: 40px; gap: 5px; border-radius: var(--radius-sm);
+    }
+    .menu-toggle span { display: block; width: 22px; height: 2px; background: var(--deep); border-radius: 2px; transition: transform 0.3s ease, opacity 0.3s ease; }
+    .menu-toggle.is-open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .menu-toggle.is-open span:nth-child(2) { opacity: 0; }
+    .menu-toggle.is-open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .mobile-nav {
+      position: fixed; inset: 72px 0 0 0; background: var(--white); z-index: 999;
+      padding: 1.5rem; display: flex; flex-direction: column; gap: 0.45rem;
+      transform: translateX(100%); transition: transform 0.35s var(--ease); overflow-y: auto;
+    }
+    .mobile-nav.is-open { transform: translateX(0); }
+    .mobile-nav a { padding: 0.85rem 1rem; border-radius: var(--radius); font-size: 1rem; font-weight: 500; color: var(--deep); }
+    .mobile-nav a[aria-current="page"] { background: var(--light-blue); color: var(--royal); font-weight: 700; }
+    .mobile-actions { margin-top: 1rem; padding-top: 1.25rem; border-top: 1px solid var(--line); display: flex; flex-direction: column; gap: 0.75rem; }
+
+    @media (max-width: 1180px) { .main-nav { gap: 1rem; } .main-nav a { font-size: 0.82rem; } }
+    @media (max-width: 1040px) { .main-nav, .header-login { display: none; } .menu-toggle { display: flex; } }
+
+    /* ============================================================
+       HERO SECTION
+       ============================================================ */
+    .uni-hero {
+      padding: clamp(2.5rem, 4.5vw, 3.75rem) 0;
+      background: linear-gradient(135deg, #FFFFFF 0%, #EAF2FC 100%);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .uni-hero-grid {
+      display: grid;
+      grid-template-columns: 1.12fr 0.88fr;
+      align-items: center;
+      gap: clamp(2rem, 4vw, 3.75rem);
+    }
+
+    .uni-hero-copy .eyebrow { margin-bottom: 1rem; }
+    .uni-hero-copy .display { margin-bottom: 1rem; }
+    .uni-hero-copy .lede { margin-bottom: 1.5rem; }
+
+    .partner-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.55rem;
+      margin-bottom: 1.65rem;
+    }
+
+    .partner-chip {
+      padding: 0.38rem 0.85rem;
+      border-radius: var(--radius-pill);
+      background: var(--white);
+      border: 1px solid rgba(36, 102, 173, 0.2);
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--deep);
+    }
+
+    .uni-hero-actions { display: flex; flex-wrap: wrap; gap: 0.85rem; }
+
+    .uni-hero-collage {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+
+    .uni-photo-card {
+      position: relative;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      aspect-ratio: 16 / 9;
+      box-shadow: var(--shadow-card);
+      border: 1px solid rgba(16, 47, 75, 0.1);
+    }
+    .uni-photo-card img { width: 100%; height: 100%; object-fit: cover; }
+
+    .uni-photo-tag {
+      position: absolute; bottom: 0.85rem; left: 0.85rem;
+      background: rgba(16, 47, 75, 0.86); color: var(--white);
+      padding: 0.32rem 0.75rem; border-radius: var(--radius-pill);
+      font-family: var(--font-label); font-size: 0.72rem; font-weight: 600;
+    }
+
+    @media (max-width: 960px) { .uni-hero-grid { grid-template-columns: 1fr; } }
+
+    /* ============================================================
+       CAPABILITIES + WORKFLOW
+       ============================================================ */
+    .cap-section {
+      padding: clamp(2.75rem, 5vw, 4.25rem) 0;
+      background: var(--white);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .section-head { max-width: 720px; margin-bottom: clamp(1.75rem, 3vw, 2.5rem); }
+    .section-head .eyebrow { margin-bottom: 0.8rem; }
+    .section-head .h2 { margin-bottom: 0.7rem; }
+
+    .cap-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.25rem;
+      margin-bottom: 2.25rem;
+    }
+
+    .cap-card {
+      background: var(--bg);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      padding: 1.45rem;
+      transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease), border-color 0.3s var(--ease);
+    }
+
+    .cap-card:hover {
+      transform: translateY(-4px);
+      background: var(--white);
+      border-color: rgba(36, 102, 173, 0.3);
+      box-shadow: var(--shadow-card);
+    }
+
+    .cap-num {
+      font-family: var(--font-label); font-size: 0.75rem; font-weight: 700;
+      color: var(--royal); background: var(--light-blue);
+      padding: 0.25rem 0.6rem; border-radius: 6px; display: inline-block; margin-bottom: 0.85rem;
+    }
+
+    .cap-card h3 { font-family: var(--font-display); font-size: 1.15rem; color: var(--deep); margin-bottom: 0.45rem; }
+    .cap-card p { font-size: 0.88rem; color: var(--muted); line-height: 1.55; }
+
+    .workflow-banner {
+      background: var(--deep);
+      color: var(--white);
+      border-radius: var(--radius-lg);
+      padding: clamp(1.5rem, 3vw, 2.25rem);
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .wf-step {
+      padding: 1.15rem;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: var(--radius);
+    }
+
+    .wf-badge {
+      display: inline-block;
+      font-family: var(--font-label); font-size: 0.7rem; font-weight: 700;
+      color: var(--deep); background: var(--yellow);
+      padding: 0.2rem 0.6rem; border-radius: var(--radius-pill); margin-bottom: 0.65rem;
+      text-transform: uppercase;
+    }
+
+    .wf-step h4 { font-family: var(--font-display); font-size: 1.15rem; margin-bottom: 0.35rem; }
+    .wf-step p { font-size: 0.85rem; color: rgba(255, 255, 255, 0.78); }
+
+    .governance-note {
+      margin-top: 1.25rem;
+      padding: 1rem 1.25rem;
+      background: rgba(255, 197, 27, 0.14);
+      border: 1px solid rgba(217, 155, 0, 0.32);
+      border-radius: var(--radius);
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 0.88rem;
+      color: var(--deep);
+      font-weight: 500;
+    }
+    .governance-note svg { width: 20px; height: 20px; color: #B45309; flex-shrink: 0; }
+
+    @media (max-width: 1024px) { .cap-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 760px) {
+      .cap-grid { grid-template-columns: 1fr; }
+      .workflow-banner { grid-template-columns: 1fr; }
+    }
+
+    /* ============================================================
+       INTERACTIVE EVENT DISCOVERY BOARD
+       ============================================================ */
+    .board-section {
+      padding: clamp(2.75rem, 5vw, 4.5rem) 0;
+      background: var(--bg);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .board-filters {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      padding: 1.15rem 1.25rem;
+      margin-bottom: 1.75rem;
+      box-shadow: var(--shadow-card);
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr 0.8fr auto;
+      gap: 0.85rem;
+      align-items: end;
+    }
+
+    .field { display: flex; flex-direction: column; gap: 0.3rem; }
+    .field label {
+      font-family: var(--font-label); font-size: 0.72rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted);
+    }
+
+    .input, .select, .textarea {
+      font: inherit;
+      font-size: max(1rem, 0.92rem);
+      min-height: 48px;
+      padding: 0.65rem 0.95rem;
+      border-radius: var(--radius);
+      border: 1.5px solid rgba(16, 47, 75, 0.22);
+      background: var(--white);
+      color: var(--ink);
+      width: 100%;
+    }
+    .textarea { min-height: 110px; resize: vertical; }
+
+    .input:focus-visible, .select:focus-visible, .textarea:focus-visible {
+      outline: 3px solid rgba(36, 102, 173, 0.35);
+      border-color: var(--royal);
+    }
+
+    .input:user-invalid, .select:user-invalid, .textarea:user-invalid {
+      border-color: var(--err);
+    }
+
+    .board-count {
+      font-size: 0.84rem; color: var(--muted); padding-bottom: 0.75rem; white-space: nowrap;
+    }
+    .board-count strong { color: var(--deep); }
+
+    .events-board-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.35rem;
+    }
+
+    .board-card {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      padding: 1.45rem;
+      box-shadow: var(--shadow-card);
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+      transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease), border-color 0.3s var(--ease);
+    }
+
+    .board-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-hover); border-color: rgba(36, 102, 173, 0.3); }
+    .board-card[hidden] { display: none; }
+
+    .board-card-top {
+      display: flex; justify-content: space-between; align-items: center; gap: 0.5rem; flex-wrap: wrap;
+    }
+
+    .board-format-tag {
+      font-family: var(--font-label); font-size: 0.7rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.06em;
+      padding: 0.28rem 0.7rem; border-radius: var(--radius-pill);
+      background: var(--light-blue); color: var(--royal);
+    }
+
+    .board-slots {
+      font-size: 0.74rem; font-weight: 700; color: var(--ok);
+      background: #ECFDF5; padding: 0.24rem 0.65rem; border-radius: var(--radius-pill);
+    }
+
+    .board-card h3 { font-family: var(--font-display); font-size: 1.18rem; color: var(--deep); line-height: 1.28; }
+    .board-school { font-size: 0.84rem; font-weight: 600; color: var(--royal); }
+
+    .board-specs {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.5rem;
+      padding: 0.75rem;
+      background: var(--bg);
+      border-radius: var(--radius);
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+    .board-specs strong { display: block; color: var(--deep); font-size: 0.82rem; }
+
+    .board-card .btn { width: 100%; margin-top: auto; }
+    .board-card .btn.is-requested {
+      background: #ECFDF5; color: var(--ok); border: 1.5px solid rgba(15, 118, 110, 0.35); box-shadow: none;
+    }
+
+    @media (max-width: 1024px) {
+      .board-filters { grid-template-columns: 1fr 1fr; }
+      .events-board-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 680px) {
+      .board-filters { grid-template-columns: 1fr; }
+      .events-board-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ============================================================
+       PARTNER ONBOARDING / INQUIRY FORM
+       ============================================================ */
+    .partner-form-section {
+      padding: clamp(2.75rem, 5vw, 4.5rem) 0;
+      background: var(--white);
+    }
+
+    .partner-form-layout {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: clamp(2rem, 4vw, 3.75rem);
+      align-items: start;
+    }
+
+    .partner-checklist {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+      margin-top: 1.5rem;
+    }
+
+    .partner-checklist li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.65rem;
+      font-size: 0.92rem;
+      color: var(--deep);
+    }
+    .partner-checklist span {
+      width: 22px; height: 22px; border-radius: 50%;
+      background: var(--light-blue); color: var(--royal);
+      display: inline-flex; align-items: center; justify-content: center;
+      font-weight: 700; font-size: 0.78rem; flex-shrink: 0; margin-top: 2px;
+    }
+
+    .form-card {
+      background: var(--bg);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      padding: clamp(1.5rem, 3vw, 2.25rem);
+      box-shadow: var(--shadow-card);
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.1rem;
+      margin-bottom: 1.1rem;
+    }
+
+    .form-full { grid-column: 1 / -1; }
+
+    fieldset.radio-fieldset {
+      border: none;
+      margin-bottom: 1.15rem;
+    }
+
+    fieldset.radio-fieldset legend {
+      font-family: var(--font-label);
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      margin-bottom: 0.55rem;
+    }
+
+    .radio-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.65rem;
+    }
+
+    .radio-option {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.55rem 0.95rem;
+      background: var(--white);
+      border: 1.5px solid rgba(16, 47, 75, 0.18);
+      border-radius: var(--radius);
+      font-size: 0.86rem;
+      font-weight: 600;
+      color: var(--deep);
+      cursor: pointer;
+    }
+    .radio-option input { accent-color: var(--royal); width: 16px; height: 16px; }
+
+    .form-status {
+      margin-top: 1rem;
+      padding: 0.95rem 1.15rem;
+      border-radius: var(--radius);
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+    .form-status.is-success { background: #ECFDF5; color: var(--ok); border: 1px solid rgba(15, 118, 110, 0.25); }
+    .form-status[hidden] { display: none; }
+
+    @media (max-width: 900px) { .partner-form-layout { grid-template-columns: 1fr; } }
+    @media (max-width: 580px) { .form-grid { grid-template-columns: 1fr; } }
+
+    /* Native Request Modal */
+    dialog.req-modal {
+      margin: auto; border: none; border-radius: var(--radius-lg); padding: 0;
+      width: min(92vw, 540px); max-height: 90dvh; overflow-y: auto;
+      box-shadow: 0 30px 70px rgba(0, 0, 0, 0.35); background: var(--white);
+    }
+    dialog.req-modal::backdrop { background: rgba(11, 29, 46, 0.74); backdrop-filter: blur(6px); }
+    .modal-body { padding: 1.65rem; }
+    .modal-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; margin-bottom: 1rem; }
+    .modal-x {
+      width: 36px; height: 36px; border-radius: 50%; background: var(--bg); color: var(--deep);
+      font-size: 1.25rem; display: inline-flex; align-items: center; justify-content: center;
+    }
+    .modal-x:hover { background: var(--royal); color: var(--white); }
+
+    /* ============================================================
+       UNIFIED FOOTER
+       ============================================================ */
+    .site-footer {
+      background: var(--deep); color: var(--white);
+      padding: clamp(3rem, 5vw, 4rem) 0 max(2rem, env(safe-area-inset-bottom, 20px));
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .footer-top {
+      display: grid; grid-template-columns: minmax(0, 1.4fr) repeat(3, minmax(0, 0.7fr));
+      gap: 2.5rem; padding-bottom: 2.5rem; border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    }
+    .footer-brand-logo {
+      display: inline-flex; align-items: center; background: var(--white);
+      padding: 0.45rem 0.85rem; border-radius: 10px;
+      border: 1.5px solid rgba(255, 255, 255, 0.92);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.22); margin-bottom: 1.1rem;
+    }
+    .footer-brand img { height: 32px; width: auto; display: block; }
+    .footer-brand p { font-size: 0.82rem; line-height: 1.6; color: rgba(255, 255, 255, 0.65); max-width: 34ch; }
+    .footer-col h4 {
+      font-family: var(--font-label); font-size: 0.68rem; letter-spacing: 0.14em;
+      text-transform: uppercase; color: rgba(255, 255, 255, 0.52); margin-bottom: 1rem; font-weight: 600;
+    }
+    .footer-col a { display: block; font-size: 0.86rem; color: rgba(255, 255, 255, 0.78); margin-bottom: 0.6rem; transition: color 0.2s ease, transform 0.2s ease; }
+    .footer-col a:hover { color: var(--yellow); transform: translateX(3px); }
+    .footer-bottom {
+      padding-top: 1.75rem; display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 1rem; font-size: 0.8rem; color: rgba(255, 255, 255, 0.55);
+    }
+    .footer-socials { display: flex; gap: 0.75rem; }
+    .footer-socials a {
+      width: 36px; height: 36px; border-radius: 50%; background: rgba(255, 255, 255, 0.08);
+      color: var(--white); display: flex; align-items: center; justify-content: center;
+    }
+    .footer-socials a:hover { background: var(--yellow); color: var(--deep); }
+    .footer-socials svg { width: 16px; height: 16px; }
+    @media (max-width: 860px) { .footer-top { grid-template-columns: 1fr 1fr; } .footer-brand { grid-column: span 2; } }
+    @media (max-width: 520px) { .footer-top { grid-template-columns: 1fr; gap: 1.75rem; } .footer-brand { grid-column: span 1; } }
+  </style>
+</head>
+
+<body>
+  <div id="scroll-progress" aria-hidden="true"></div>
+
+  <!-- Unified Header -->
+  <header class="site-header" id="siteHeader">
+    <div class="container header-inner">
+      <a href="index.html" class="brand" aria-label="My Mentor Circle Home">
+        <img src="images/fullLogo.png" alt="My Mentor Circle" width="172" height="40" />
+      </a>
+
+      <nav class="main-nav" aria-label="Primary">
+        <a href="index.html">Home</a>
+        <a href="gallery.html">Events Catalogue</a>
+        <a href="student-experience.html">Student Experience</a>
+        <a href="universities.html" aria-current="page">For Universities &amp; EdTech Partners</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+
+      <div class="header-actions">
+        <a href="/login" class="header-login">Login</a>
+        <a href="/register?role=school" class="btn btn--primary header-cta">
+          Register
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round" aria-hidden="true">
+            <line x1="5" y1="12" x2="19" y2="12" />
+            <polyline points="12 5 19 12 12 19" />
+          </svg>
+        </a>
+        <button type="button" class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false"
+          aria-controls="mobileNav">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <nav class="mobile-nav" id="mobileNav" aria-label="Mobile">
+    <a href="index.html">Home</a>
+    <a href="gallery.html">Events Catalogue</a>
+    <a href="student-experience.html">Student Experience</a>
+    <a href="universities.html" aria-current="page">For Universities &amp; EdTech Partners</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <div class="mobile-actions">
+      <a href="/login" class="btn btn--ghost">Login</a>
+      <a href="/register?role=school" class="btn btn--primary">Register</a>
+    </div>
+  </nav>
+
+  <main>
+    <!-- Hero -->
+    <section class="uni-hero">
+      <div class="container">
+        <div class="uni-hero-grid">
+          <div class="uni-hero-copy">
+            <span class="eyebrow">For Universities &amp; EdTech Partners</span>
+            <h1 class="display">Take Your Institution Closer to <em class="highlight-marker">Tomorrow's Students.</em></h1>
+            <p class="lede">
+              Discover verified school-hosted career fairs, STEM workshops, and guidance seminars across India. Request
+              participation transparently and connect directly with students, counsellors, and school leadership.
+            </p>
+            <div class="partner-chips">
+              <span class="partner-chip">Universities &amp; Colleges</span>
+              <span class="partner-chip">EdTech &amp; Skill Partners</span>
+              <span class="partner-chip">Global Education &amp; Non-Profits</span>
+            </div>
+            <div class="uni-hero-actions">
+              <a href="#discover-events" class="btn btn--primary">
+                Explore Open School Events
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round" aria-hidden="true">
+                  <line x1="5" y1="12" x2="19" y2="12" />
+                  <polyline points="12 5 19 12 12 19" />
+                </svg>
+              </a>
+              <a href="#partner-register" class="btn btn--yellow">Register as Partner</a>
+            </div>
+          </div>
+
+          <div class="uni-hero-collage">
+            <div class="uni-photo-card">
+              <img src="images/in-university-campus-dusk.jpg"
+                alt="Modern Indian university campus courtyard at golden hour representing higher-education partners" />
+              <span class="uni-photo-tag">Pan-India K–12 School &amp; Counsellor Outreach</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Capabilities & 3-Step Approval Process -->
+    <section class="cap-section" aria-labelledby="cap-heading">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Why Partner via MMC</span>
+          <h2 class="h2" id="cap-heading">Meaningful Outreach Built on <em class="highlight-marker">School Trust.</em></h2>
+          <p class="lede">No cold calling or uncoordinated visits — engage schools that are actively inviting educational partners to campus.</p>
+        </div>
+
+        <div class="cap-grid">
+          <article class="cap-card">
+            <span class="cap-num">01</span>
+            <h3>Discover Verified Events</h3>
+            <p>Filter upcoming school-hosted fairs and workshops by city, grade group, student strength, and format.</p>
+          </article>
+          <article class="cap-card">
+            <span class="cap-num">02</span>
+            <h3>Showcase Programmes</h3>
+            <p>Present undergraduate degrees, scholarships, STEM labs, and career pathways directly to engaged learners.</p>
+          </article>
+          <article class="cap-card">
+            <span class="cap-num">03</span>
+            <h3>Direct Student Q&amp;A</h3>
+            <p>Participate in career booths, academic workshops, and panel discussions with real face-to-face clarity.</p>
+          </article>
+          <article class="cap-card">
+            <span class="cap-num">04</span>
+            <h3>Coordinated Logistics</h3>
+            <p>Once approved by the school, MMC supports scheduling, campus guidelines, and smooth on-ground execution.</p>
+          </article>
+        </div>
+
+        <div class="workflow-banner">
+          <div class="wf-step">
+            <span class="wf-badge">Step 01 • Discover</span>
+            <h4>Browse School Events</h4>
+            <p>Filter open events by region, grade level, and format that align with your institution's outreach goals.</p>
+          </div>
+          <div class="wf-step">
+            <span class="wf-badge">Step 02 • Request</span>
+            <h4>Submit Participation Request</h4>
+            <p>Share your institutional profile, session focus, and visiting team details for the school's review.</p>
+          </div>
+          <div class="wf-step">
+            <span class="wf-badge">Step 03 • Participate</span>
+            <h4>Join Upon School Approval</h4>
+            <p>Receive formal school confirmation, arrival guidelines, and dedicated MMC event coordination.</p>
+          </div>
+        </div>
+
+        <div class="governance-note">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+            <polyline points="9 12 11 14 15 10" />
+          </svg>
+          <span><strong>School-Led Approval Guarantee:</strong> Every partner request is reviewed directly by the host school leadership. Schools retain 100% final approval authority.</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Working Interactive School Event Discovery Board -->
+    <section class="board-section" id="discover-events" aria-labelledby="discover-heading">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Live Discovery Preview</span>
+          <h2 class="h2" id="discover-heading">Upcoming School Events <em class="highlight-marker">Open for Requests.</em></h2>
+          <p class="lede">Filter sample school-hosted events below and click <strong>Request Participation</strong> to test the partner workflow.</p>
+        </div>
+
+        <search class="board-filters">
+          <div class="field">
+            <label for="boardSearch">Search School or Topic</label>
+            <input type="search" id="boardSearch" class="input" placeholder="e.g., Career Fair, STEM, Kolkata..." autocorrect="off" spellcheck="false" />
+          </div>
+          <div class="field">
+            <label for="cityFilter">City / Region</label>
+            <select id="cityFilter" class="select">
+              <option value="all">All Regions</option>
+              <option value="Delhi NCR">Delhi NCR</option>
+              <option value="Kolkata">Kolkata</option>
+              <option value="Bengaluru">Bengaluru</option>
+              <option value="Mumbai">Mumbai</option>
+              <option value="Hyderabad">Hyderabad</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="formatFilter">Event Format</label>
+            <select id="formatFilter" class="select">
+              <option value="all">All Formats</option>
+              <option value="Career Fair">Career Fair</option>
+              <option value="STEM Workshop">STEM Workshop</option>
+              <option value="Guidance Seminar">Guidance Seminar</option>
+              <option value="Leadership & MUN">Leadership &amp; MUN</option>
+            </select>
+          </div>
+          <div class="board-count" role="status" aria-live="polite">
+            <strong id="boardCount">6</strong> open events
+          </div>
+        </search>
+
+        <div class="events-board-grid" id="boardGrid">
+          <article class="board-card" data-city="Kolkata" data-format="Career Fair" data-id="ev-kol-01">
+            <div class="board-card-top">
+              <span class="board-format-tag">Career Fair</span>
+              <span class="board-slots">4 Partner Slots Open</span>
+            </div>
+            <h3>Annual Higher-Ed &amp; Global Careers Expo</h3>
+            <div class="board-school">St. Xavier's Collegiate Academy • Kolkata</div>
+            <div class="board-specs">
+              <div>Target Grades<strong>Grades 11–12</strong></div>
+              <div>Expected Footfall<strong>600+ Students</strong></div>
+              <div>Preferred Month<strong>Next Month</strong></div>
+              <div>Approval<strong>Principal Desk</strong></div>
+            </div>
+            <button type="button" class="btn btn--primary request-trigger">Request Participation</button>
+          </article>
+
+          <article class="board-card" data-city="Delhi NCR" data-format="STEM Workshop" data-id="ev-ncr-02">
+            <div class="board-card-top">
+              <span class="board-format-tag">STEM Workshop</span>
+              <span class="board-slots">2 Partner Slots Open</span>
+            </div>
+            <h3>Hands-On Robotics, IoT &amp; AI Lab Day</h3>
+            <div class="board-school">BLS World School • Greater Noida (Delhi NCR)</div>
+            <div class="board-specs">
+              <div>Target Grades<strong>Grades 8–12</strong></div>
+              <div>Expected Footfall<strong>350+ Students</strong></div>
+              <div>Preferred Month<strong>Upcoming</strong></div>
+              <div>Approval<strong>Academic Head</strong></div>
+            </div>
+            <button type="button" class="btn btn--primary request-trigger">Request Participation</button>
+          </article>
+
+          <article class="board-card" data-city="Bengaluru" data-format="Guidance Seminar" data-id="ev-blr-03">
+            <div class="board-card-top">
+              <span class="board-format-tag">Guidance Seminar</span>
+              <span class="board-slots">3 Partner Slots Open</span>
+            </div>
+            <h3>Emerging Tech &amp; Liberal Arts Pathways Forum</h3>
+            <div class="board-school">Greenwood Heritage Public • Bengaluru</div>
+            <div class="board-specs">
+              <div>Target Grades<strong>Grades 10–12</strong></div>
+              <div>Expected Footfall<strong>480+ Students</strong></div>
+              <div>Preferred Month<strong>Next Month</strong></div>
+              <div>Approval<strong>Counsellor Office</strong></div>
+            </div>
+            <button type="button" class="btn btn--primary request-trigger">Request Participation</button>
+          </article>
+
+          <article class="board-card" data-city="Mumbai" data-format="Career Fair" data-id="ev-mum-04">
+            <div class="board-card-top">
+              <span class="board-format-tag">Career Fair</span>
+              <span class="board-slots">5 Partner Slots Open</span>
+            </div>
+            <h3>Design, Management &amp; Commerce Fair</h3>
+            <div class="board-school">Lotus Horizon Academy • Mumbai</div>
+            <div class="board-specs">
+              <div>Target Grades<strong>Grades 11–12</strong></div>
+              <div>Expected Footfall<strong>520+ Students</strong></div>
+              <div>Preferred Month<strong>Upcoming</strong></div>
+              <div>Approval<strong>Principal Desk</strong></div>
+            </div>
+            <button type="button" class="btn btn--primary request-trigger">Request Participation</button>
+          </article>
+
+          <article class="board-card" data-city="Hyderabad" data-format="Leadership & MUN" data-id="ev-hyd-05">
+            <div class="board-card-top">
+              <span class="board-format-tag">Leadership &amp; MUN</span>
+              <span class="board-slots">2 Partner Slots Open</span>
+            </div>
+            <h3>Deccan Inter-School MUN &amp; Policy Conclave</h3>
+            <div class="board-school">Deccan Crest Public School • Hyderabad</div>
+            <div class="board-specs">
+              <div>Target Grades<strong>Grades 9–12</strong></div>
+              <div>Expected Footfall<strong>400+ Delegates</strong></div>
+              <div>Preferred Month<strong>Upcoming</strong></div>
+              <div>Approval<strong>Faculty Lead</strong></div>
+            </div>
+            <button type="button" class="btn btn--primary request-trigger">Request Participation</button>
+          </article>
+
+          <article class="board-card" data-city="Delhi NCR" data-format="Guidance Seminar" data-id="ev-ncr-06">
+            <div class="board-card-top">
+              <span class="board-format-tag">Guidance Seminar</span>
+              <span class="board-slots">3 Partner Slots Open</span>
+            </div>
+            <h3>Parent-Student Higher Education Orientation</h3>
+            <div class="board-school">Indus Valley International • Gurugram (Delhi NCR)</div>
+            <div class="board-specs">
+              <div>Target Grades<strong>Grades 10–12</strong></div>
+              <div>Expected Footfall<strong>420+ Attendees</strong></div>
+              <div>Preferred Month<strong>Next Month</strong></div>
+              <div>Approval<strong>Counsellor Office</strong></div>
+            </div>
+            <button type="button" class="btn btn--primary request-trigger">Request Participation</button>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Working Partner Onboarding / Inquiry Form -->
+    <section class="partner-form-section" id="partner-register" aria-labelledby="partner-form-heading">
+      <div class="container">
+        <div class="partner-form-layout">
+          <div>
+            <span class="eyebrow">Partner Onboarding</span>
+            <h2 class="h2" id="partner-form-heading" style="margin: 0.85rem 0 0.9rem;">Register Your University or <em class="highlight-marker">EdTech Team.</em></h2>
+            <p class="lede">
+              Share your institutional profile below. Our school-partnerships team will verify your details and activate
+              access to upcoming school event calendars in your target cities.
+            </p>
+            <ul class="partner-checklist">
+              <li><span>✓</span> Direct visibility into verified K–12 school fairs and workshops</li>
+              <li><span>✓</span> Transparent request &amp; school-approval workflow</li>
+              <li><span>✓</span> Dedicated on-ground coordination for confirmed events</li>
+              <li><span>✓</span> Zero spam — built for long-term institutional trust</li>
+            </ul>
+          </div>
+
+          <div class="form-card">
+            <form id="partnerOnboardForm" action="/register?role=organization" method="POST" aria-labelledby="partner-form-heading" novalidate>
+              <fieldset class="radio-fieldset">
+                <legend>Organisation Category *</legend>
+                <div class="radio-row">
+                  <label class="radio-option"><input type="radio" name="org_type" value="University / College" checked /> University / College</label>
+                  <label class="radio-option"><input type="radio" name="org_type" value="EdTech / Skill Partner" /> EdTech / Skill Partner</label>
+                  <label class="radio-option"><input type="radio" name="org_type" value="Non-Profit / Industry" /> Non-Profit / Industry</label>
+                </div>
+              </fieldset>
+
+              <div class="form-grid">
+                <div class="field form-full">
+                  <label for="orgName">Institution / Organisation Name *</label>
+                  <input type="text" id="orgName" name="org_name" class="input" autocomplete="organization" required placeholder="e.g., Vanguard Global University" />
+                </div>
+
+                <div class="field">
+                  <label for="contactName">Your Full Name *</label>
+                  <input type="text" id="contactName" name="contact_name" class="input" autocomplete="name" required placeholder="e.g., Rohan Verma" />
+                </div>
+
+                <div class="field">
+                  <label for="contactRole">Designation *</label>
+                  <input type="text" id="contactRole" name="designation" class="input" autocomplete="organization-title" required placeholder="e.g., Head of Outreach" />
+                </div>
+
+                <div class="field">
+                  <label for="orgEmail">Official Email *</label>
+                  <input type="email" id="orgEmail" name="email" class="input" autocomplete="email" autocorrect="off" autocapitalize="none" spellcheck="false" required placeholder="outreach@university.edu.in" />
+                </div>
+
+                <div class="field">
+                  <label for="orgPhone">Phone Number *</label>
+                  <input type="tel" id="orgPhone" name="phone" class="input" autocomplete="tel" inputmode="tel" required placeholder="+91 98XXXXXXXX" />
+                </div>
+
+                <div class="field form-full">
+                  <label for="targetRegions">Preferred Cities / Focus Programmes *</label>
+                  <textarea id="targetRegions" name="details" class="textarea" required placeholder="Mention target cities (e.g., Delhi NCR, Kolkata, Bengaluru) and the sessions or programmes you'd like to showcase..."></textarea>
+                </div>
+              </div>
+
+              <button type="submit" class="btn btn--primary" id="partnerSubmitBtn" style="width: 100%;">
+                Submit Partner Application
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <line x1="5" y1="12" x2="19" y2="12" /><polyline points="12 5 19 12 12 19" />
+                </svg>
+              </button>
+
+              <div id="partnerFormStatus" class="form-status" role="status" aria-live="polite" hidden></div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Native Event Participation Request Modal -->
+  <dialog class="req-modal" id="reqModal" aria-labelledby="reqModalTitle">
+    <div class="modal-body">
+      <div class="modal-top">
+        <div>
+          <span class="eyebrow" style="margin-bottom: 0.45rem;">Participation Request</span>
+          <h3 class="h2" id="reqModalTitle" style="font-size: 1.4rem;">Request Event Slot</h3>
+          <p id="reqModalSub" style="font-size: 0.86rem; color: var(--muted); margin-top: 0.25rem;"></p>
+        </div>
+        <button type="button" class="modal-x" id="reqModalClose" aria-label="Close request modal">&times;</button>
+      </div>
+
+      <form id="eventRequestForm" method="POST" action="/partner-request" aria-labelledby="reqModalTitle" novalidate>
+        <div class="form-grid" style="grid-template-columns: 1fr;">
+          <div class="field">
+            <label for="reqInst">University / EdTech Organisation *</label>
+            <input type="text" id="reqInst" name="institution" class="input" autocomplete="organization" required placeholder="Enter your institution name" />
+          </div>
+          <div class="field">
+            <label for="reqEmail">Official Email *</label>
+            <input type="email" id="reqEmail" name="email" class="input" autocomplete="email" autocorrect="off" autocapitalize="none" spellcheck="false" required placeholder="name@institution.edu" />
+          </div>
+          <div class="field">
+            <label for="reqNote">Proposed Session / Booth Overview *</label>
+            <textarea id="reqNote" name="note" class="textarea" required placeholder="Briefly describe what your team will offer to students..."></textarea>
+          </div>
+        </div>
+        <div style="display: flex; gap: 0.75rem; justify-content: flex-end; margin-top: 1rem;">
+          <button type="button" class="btn btn--ghost" id="reqModalCancel">Cancel</button>
+          <button type="submit" class="btn btn--primary">Send Request to School</button>
+        </div>
+      </form>
+    </div>
+  </dialog>
+
+  <!-- Unified Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a href="index.html" class="footer-brand-logo" aria-label="My Mentor Circle Home">
+            <img src="images/fullLogo.png" alt="My Mentor Circle" width="172" height="40" loading="lazy" />
+          </a>
+          <p>
+            A school-first event marketplace connecting schools, universities and education partners through structured
+            educational events.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Platform</h4>
+          <a href="index.html#register">For Schools</a>
+          <a href="universities.html">For Universities &amp; EdTech Partners</a>
+          <a href="gallery.html">Events Catalogue</a>
+          <a href="student-experience.html">Student Experience</a>
+          <a href="/register?role=school">Register Your School</a>
+        </div>
+
+        <div class="footer-col">
+          <h4>Explore</h4>
+          <a href="index.html">Home</a>
+          <a href="about.html">About Us</a>
+          <a href="index.html#partners-network">Partner Network</a>
+          <a href="index.html#how-it-works">How It Works</a>
+          <a href="index.html#engagement">Real Engagement</a>
+        </div>
+
+        <div class="footer-col">
+          <h4>Contact &amp; Legal</h4>
+          <a href="contact.html">Contact Us</a>
+          <a href="/privacy">Privacy Policy</a>
+          <a href="/terms">Terms of Service</a>
+          <a href="/safety">Campus Safety Guidelines</a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; <span id="year">2026</span> My Mentor Circle. All rights reserved.</p>
+        <div class="footer-socials" aria-label="Social media links">
+          <a href="https://www.linkedin.com/company/my-mentor-circle" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+          </a>
+          <a href="https://twitter.com/mymentorcircle" target="_blank" rel="noopener noreferrer" aria-label="Twitter / X">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          </a>
+          <a href="https://www.instagram.com/mymentorcircle" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          </a>
+          <a href="https://www.youtube.com/@mymentorcircle" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const header = document.getElementById('siteHeader');
+    const scrollBar = document.getElementById('scroll-progress');
+    const menuToggle = document.getElementById('menuToggle');
+    const mobileNav = document.getElementById('mobileNav');
+    let lastScrollY = window.scrollY;
+    let scrollTicking = false;
+    function syncHeaderScroll() {
+      const y = Math.max(0, window.scrollY);
+      header.classList.toggle('is-scrolled', y > 12);
+      const isDrawerOpen = mobileNav && mobileNav.classList.contains('is-open');
+      if (y <= 72 || isDrawerOpen) {
+        header.classList.remove('is-hidden');
+      } else if (y > lastScrollY + 6) {
+        header.classList.add('is-hidden');
+      } else if (y < lastScrollY - 2) {
+        header.classList.remove('is-hidden');
+      }
+      lastScrollY = y;
+      const h = document.documentElement.scrollHeight - window.innerHeight;
+      if (h > 0 && scrollBar) scrollBar.style.width = Math.min(100, (y / h) * 100).toFixed(2) + '%';
+      scrollTicking = false;
+    }
+    window.addEventListener('scroll', () => {
+      if (!scrollTicking) {
+        scrollTicking = true;
+        requestAnimationFrame(syncHeaderScroll);
+      }
+    }, { passive: true });
+    syncHeaderScroll();
+
+    menuToggle.addEventListener('click', () => {
+      const open = mobileNav.classList.toggle('is-open');
+      menuToggle.classList.toggle('is-open', open);
+      if (open) header.classList.remove('is-hidden');
+      menuToggle.setAttribute('aria-expanded', String(open));
+    });
+    mobileNav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+      mobileNav.classList.remove('is-open');
+      menuToggle.classList.remove('is-open');
+      menuToggle.setAttribute('aria-expanded', 'false');
+    }));
+
+    // Live Event Board Filtering
+    const boardSearch = document.getElementById('boardSearch');
+    const cityFilter = document.getElementById('cityFilter');
+    const formatFilter = document.getElementById('formatFilter');
+    const boardCards = Array.from(document.querySelectorAll('.board-card'));
+    const boardCount = document.getElementById('boardCount');
+
+    function filterBoard() {
+      const q = (boardSearch.value || '').trim().toLowerCase();
+      const c = cityFilter.value;
+      const f = formatFilter.value;
+      let shown = 0;
+      boardCards.forEach(card => {
+        const ok =
+          (c === 'all' || card.getAttribute('data-city') === c) &&
+          (f === 'all' || card.getAttribute('data-format') === f) &&
+          (!q || card.textContent.toLowerCase().includes(q));
+        card.hidden = !ok;
+        if (ok) shown++;
+      });
+      boardCount.textContent = String(shown);
+    }
+
+    boardSearch.addEventListener('input', filterBoard);
+    cityFilter.addEventListener('change', filterBoard);
+    formatFilter.addEventListener('change', filterBoard);
+
+    // Participation Request Modal Workflow
+    const reqModal = document.getElementById('reqModal');
+    const reqModalTitle = document.getElementById('reqModalTitle');
+    const reqModalSub = document.getElementById('reqModalSub');
+    const eventRequestForm = document.getElementById('eventRequestForm');
+    let activeTriggerBtn = null;
+
+    document.querySelectorAll('.request-trigger').forEach(btn => {
+      btn.addEventListener('click', () => {
+        if (btn.classList.contains('is-requested')) return;
+        const card = btn.closest('.board-card');
+        activeTriggerBtn = btn;
+        reqModalTitle.textContent = card.querySelector('h3').textContent;
+        reqModalSub.textContent = card.querySelector('.board-school').textContent;
+        eventRequestForm.reset();
+        reqModal.showModal();
+      });
+    });
+
+    const closeReqModal = () => reqModal.close();
+    document.getElementById('reqModalClose').addEventListener('click', closeReqModal);
+    document.getElementById('reqModalCancel').addEventListener('click', closeReqModal);
+    reqModal.addEventListener('click', e => { if (e.target === reqModal) closeReqModal(); });
+
+    eventRequestForm.addEventListener('submit', e => {
+      e.preventDefault();
+      if (!eventRequestForm.checkValidity()) {
+        const firstInvalid = eventRequestForm.querySelector(':invalid');
+        if (firstInvalid) firstInvalid.focus();
+        eventRequestForm.reportValidity();
+        return;
+      }
+      if (activeTriggerBtn) {
+        activeTriggerBtn.textContent = '✓ Request Sent (Pending School Approval)';
+        activeTriggerBtn.classList.add('is-requested');
+      }
+      reqModal.close();
+    });
+
+    // Main Partner Onboarding Form Workflow
+    const onboardForm = document.getElementById('partnerOnboardForm');
+    const formStatus = document.getElementById('partnerFormStatus');
+    const submitBtn = document.getElementById('partnerSubmitBtn');
+
+    onboardForm.addEventListener('submit', e => {
+      e.preventDefault();
+      if (!onboardForm.checkValidity()) {
+        const firstInvalid = onboardForm.querySelector(':invalid');
+        if (firstInvalid) firstInvalid.focus();
+        onboardForm.reportValidity();
+        return;
+      }
+      const orgName = document.getElementById('orgName').value.trim();
+      submitBtn.disabled = true;
+      formStatus.textContent = `✓ Thank you! Partner onboarding inquiry for "${orgName}" has been received. Our coordination desk will reach out within 1 business day.`;
+      formStatus.className = 'form-status is-success';
+      formStatus.hidden = false;
+      onboardForm.reset();
+      setTimeout(() => { submitBtn.disabled = false; }, 1200);
+    });
+  </script>
+</body>
+
+</html>

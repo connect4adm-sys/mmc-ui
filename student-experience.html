@@ -1,0 +1,1566 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Student Experience, Reviews &amp; Campus Footage | My Mentor Circle</title>
+  <meta name="description"
+    content="Hear directly from Indian school students, parents, and counsellors. Watch campus footage highlights, read verified student reviews, and see how MMC experiences spark real clarity." />
+  <link rel="canonical" href="https://www.mymentorcircle.com/student-experience" />
+  <link rel="icon" href="images/mmc logo.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+    rel="stylesheet" />
+
+  <style>
+    :root {
+      --royal: #2466AD;
+      --royal-dark: #1A4F8A;
+      --yellow: #FFC51B;
+      --deep: #102F4B;
+      --deep-2: #0B2239;
+      --white: #FFFFFF;
+      --light-blue: #EAF2FC;
+      --bg: #F8FAFD;
+      --ink: #0B1D2E;
+      --muted: #5A6B7C;
+      --line: rgba(16, 47, 75, 0.12);
+      --ok: #0F766E;
+      --font-display: 'Fraunces', Georgia, serif;
+      --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --font-label: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+      --radius-sm: 8px;
+      --radius: 14px;
+      --radius-lg: 22px;
+      --radius-pill: 999px;
+      --shadow-card: 0 8px 26px -10px rgba(16, 47, 75, 0.1), 0 2px 6px -1px rgba(16, 47, 75, 0.04);
+      --shadow-hover: 0 20px 42px -14px rgba(16, 47, 75, 0.18);
+      --ease: cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+    body {
+      font-family: var(--font-sans);
+      background-color: var(--bg);
+      color: var(--ink);
+      line-height: 1.6;
+      overflow-x: hidden;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      padding-top: 72px;
+    }
+    main { flex: 1; }
+    img { max-width: 100%; height: auto; display: block; }
+    a { text-decoration: none; color: inherit; }
+    button { font: inherit; cursor: pointer; border: none; background: none; }
+
+    #scroll-progress {
+      position: fixed; top: 0; left: 0; height: 3px; width: 0%;
+      background: linear-gradient(90deg, var(--royal), var(--yellow));
+      z-index: 9999; pointer-events: none;
+    }
+
+    .container { width: 100%; max-width: 1320px; margin-inline: auto; padding-inline: clamp(1rem, 3.5vw, 2.5rem); }
+
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      font-family: var(--font-label); font-size: 0.72rem; font-weight: 700;
+      letter-spacing: 0.12em; text-transform: uppercase; color: var(--royal);
+      padding: 0.35rem 0.9rem; border-radius: var(--radius-pill);
+      background: rgba(36, 102, 173, 0.08); border: 1px solid rgba(36, 102, 173, 0.16);
+      width: fit-content;
+    }
+    .eyebrow::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--royal); }
+    .eyebrow--gold {
+      background: rgba(255, 197, 27, 0.16);
+      border-color: rgba(255, 197, 27, 0.32);
+      color: var(--yellow);
+    }
+    .eyebrow--gold::before { background: var(--yellow); }
+
+    .display {
+      font-family: var(--font-display); font-size: clamp(2.15rem, 4.1vw, 3.5rem);
+      font-weight: 600; line-height: 1.09; letter-spacing: -0.025em; color: var(--deep);
+    }
+
+    .h2 {
+      font-family: var(--font-display); font-size: clamp(1.75rem, 3vw, 2.55rem);
+      font-weight: 600; line-height: 1.15; letter-spacing: -0.02em; color: var(--deep);
+    }
+
+    .highlight-marker { font-style: italic; font-weight: 400; color: var(--royal); position: relative; display: inline-block; }
+    .highlight-marker::after {
+      content: ''; position: absolute; left: -2%; right: -2%; bottom: 6%; height: 28%;
+      background: rgba(255, 197, 27, 0.38); z-index: -1; border-radius: 4px;
+    }
+
+    .lede { font-size: clamp(0.98rem, 1.25vw, 1.1rem); color: var(--muted); line-height: 1.66; max-width: 58ch; }
+
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;
+      padding: 0.72rem 1.4rem; border-radius: var(--radius-pill);
+      font-size: 0.88rem; font-weight: 600; transition: all 0.28s var(--ease);
+      white-space: nowrap; min-height: 44px;
+    }
+    .btn svg { width: 16px; height: 16px; transition: transform 0.28s var(--ease); }
+    .btn:hover svg { transform: translateX(3px); }
+    .btn--primary { background: var(--royal); color: var(--white); box-shadow: 0 8px 20px -4px rgba(36, 102, 173, 0.35); }
+    .btn--primary:hover { background: var(--royal-dark); transform: translateY(-2px); }
+    .btn--yellow { background: var(--yellow); color: var(--deep); font-weight: 700; box-shadow: 0 10px 24px -4px rgba(255, 197, 27, 0.4); }
+    .btn--yellow:hover { background: #FFD34E; transform: translateY(-2px); }
+    .btn--ghost { background: var(--white); color: var(--deep); border: 1.5px solid var(--line); }
+    .btn--ghost:hover { border-color: var(--royal); color: var(--royal); background: rgba(36, 102, 173, 0.04); }
+
+    /* ============================================================
+       UNIFIED HEADER
+       ============================================================ */
+    .site-header {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      background: rgba(255, 255, 255, 0.94);
+      backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--line);
+      padding-top: env(safe-area-inset-top, 0px);
+      transform: translate3d(0, 0, 0);
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.25s ease, box-shadow 0.25s ease;
+      will-change: transform;
+    }
+    .site-header.is-scrolled { background: rgba(255, 255, 255, 0.98); box-shadow: 0 4px 20px -4px rgba(16, 47, 75, 0.08); }
+    .site-header.is-hidden { transform: translate3d(0, -105%, 0); }
+    .site-header:focus-within { transform: translate3d(0, 0, 0); }
+    .header-inner { display: flex; align-items: center; justify-content: space-between; height: 72px; gap: 1.25rem; }
+    .brand { display: flex; align-items: center; flex-shrink: 0; }
+    .brand img { height: 36px; width: auto; }
+    .main-nav { display: flex; align-items: center; gap: 1.4rem; }
+    .main-nav a {
+      font-size: 0.86rem; font-weight: 500; color: var(--muted);
+      position: relative; padding: 0.4rem 0; transition: color 0.25s ease; white-space: nowrap;
+    }
+    .main-nav a:hover, .main-nav a[aria-current="page"] { color: var(--royal); }
+    .main-nav a[aria-current="page"] { font-weight: 600; }
+    .main-nav a::after {
+      content: ''; position: absolute; left: 0; bottom: -2px; width: 100%; height: 2.5px;
+      background: var(--yellow); border-radius: 999px; transform: scaleX(0);
+      transform-origin: left; transition: transform 0.32s var(--ease);
+    }
+    .main-nav a:hover::after, .main-nav a[aria-current="page"]::after { transform: scaleX(1); }
+    .header-actions { display: flex; align-items: center; gap: 0.75rem; flex-shrink: 0; }
+    .header-login { font-size: 0.86rem; font-weight: 600; color: var(--deep); padding: 0.45rem 0.9rem; border-radius: var(--radius-pill); }
+    .header-login:hover { background: rgba(36, 102, 173, 0.08); color: var(--royal); }
+    .header-cta { padding: 0.56rem 1.15rem; font-size: 0.84rem; min-height: 40px; }
+    .menu-toggle {
+      display: none; flex-direction: column; justify-content: center; align-items: center;
+      width: 40px; height: 40px; gap: 5px; border-radius: var(--radius-sm);
+    }
+    .menu-toggle span { display: block; width: 22px; height: 2px; background: var(--deep); border-radius: 2px; transition: transform 0.3s ease, opacity 0.3s ease; }
+    .menu-toggle.is-open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .menu-toggle.is-open span:nth-child(2) { opacity: 0; }
+    .menu-toggle.is-open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .mobile-nav {
+      position: fixed; inset: 72px 0 0 0; background: var(--white); z-index: 999;
+      padding: 1.5rem; display: flex; flex-direction: column; gap: 0.45rem;
+      transform: translateX(100%); transition: transform 0.35s var(--ease); overflow-y: auto;
+    }
+    .mobile-nav.is-open { transform: translateX(0); }
+    .mobile-nav a { padding: 0.85rem 1rem; border-radius: var(--radius); font-size: 1rem; font-weight: 500; color: var(--deep); }
+    .mobile-nav a[aria-current="page"] { background: var(--light-blue); color: var(--royal); font-weight: 700; }
+    .mobile-actions { margin-top: 1rem; padding-top: 1.25rem; border-top: 1px solid var(--line); display: flex; flex-direction: column; gap: 0.75rem; }
+    @media (max-width: 1180px) { .main-nav { gap: 1rem; } .main-nav a { font-size: 0.82rem; } }
+    @media (max-width: 1040px) { .main-nav, .header-login { display: none; } .menu-toggle { display: flex; } }
+
+    /* ============================================================
+       HERO — STUDENT VOICES & PERSPECTIVES
+       ============================================================ */
+    .se-hero {
+      padding: clamp(2.5rem, 4.5vw, 3.85rem) 0;
+      background:
+        radial-gradient(circle at 8% 15%, rgba(255, 197, 27, 0.14) 0%, transparent 42%),
+        radial-gradient(circle at 92% 80%, rgba(36, 102, 173, 0.09) 0%, transparent 45%),
+        linear-gradient(180deg, #FFFFFF 0%, #F4F8FD 100%);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .se-hero-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      align-items: center;
+      gap: clamp(2rem, 4vw, 3.75rem);
+    }
+
+    .se-hero-copy .eyebrow { margin-bottom: 1rem; }
+    .se-hero-copy .display { margin-bottom: 1rem; }
+    .se-hero-copy .lede { margin-bottom: 1.6rem; }
+
+    .se-hero-actions {
+      display: flex; flex-wrap: wrap; gap: 0.85rem; margin-bottom: 1.85rem;
+    }
+
+    .se-pulse-stats {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.9rem;
+      padding-top: 1.35rem;
+      border-top: 1px solid var(--line);
+    }
+
+    .se-stat-box strong {
+      display: block;
+      font-family: var(--font-display);
+      font-size: clamp(1.35rem, 2.1vw, 1.75rem);
+      color: var(--deep);
+      line-height: 1.15;
+    }
+    .se-stat-box span {
+      font-size: 0.78rem;
+      color: var(--muted);
+      font-weight: 500;
+    }
+
+    .se-hero-visual { position: relative; }
+
+    .se-hero-photo {
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      aspect-ratio: 16 / 11;
+      box-shadow: 0 26px 56px -18px rgba(16, 47, 75, 0.25);
+      border: 1px solid rgba(16, 47, 75, 0.1);
+      position: relative;
+    }
+    .se-hero-photo img {
+      width: 100%; height: 100%; object-fit: cover; object-position: center 22%;
+    }
+
+    .se-hero-quote-card {
+      position: relative;
+      margin: -2.4rem 1.15rem 0;
+      background: var(--white);
+      border: 1px solid rgba(16, 47, 75, 0.1);
+      border-radius: var(--radius);
+      padding: 1.05rem 1.25rem;
+      box-shadow: 0 18px 36px -12px rgba(16, 47, 75, 0.18);
+      z-index: 2;
+    }
+    .se-hero-quote-stars {
+      color: #E5A400; font-size: 0.85rem; letter-spacing: 0.08em; margin-bottom: 0.35rem;
+    }
+    .se-hero-quote-card p {
+      font-size: 0.88rem; color: var(--deep); font-weight: 500; line-height: 1.5; margin-bottom: 0.45rem;
+    }
+    .se-hero-quote-author {
+      font-family: var(--font-label); font-size: 0.74rem; color: var(--royal); font-weight: 600;
+    }
+
+    @media (max-width: 960px) {
+      .se-hero-grid { grid-template-columns: 1fr; }
+      .se-hero-quote-card { margin: -1.75rem 0.75rem 0; }
+    }
+    @media (max-width: 520px) {
+      .se-pulse-stats { grid-template-columns: repeat(3, 1fr); gap: 0.65rem; }
+      .se-stat-box strong { font-size: 1.12rem; white-space: nowrap; }
+      .se-stat-box span { font-size: 0.72rem; }
+    }
+
+    /* ============================================================
+       SECTION 2 — CAMPUS FOOTAGE & HIGHLIGHT REELS (CINEMATIC BAND)
+       ============================================================ */
+    .footage-section {
+      padding: clamp(3rem, 5.5vw, 4.75rem) 0;
+      background:
+        radial-gradient(circle at 82% 18%, rgba(255, 197, 27, 0.11) 0%, transparent 45%),
+        radial-gradient(circle at 12% 85%, rgba(36, 102, 173, 0.25) 0%, transparent 48%),
+        var(--deep);
+      color: var(--white);
+    }
+
+    .footage-head {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 1.5rem 2.5rem;
+      flex-wrap: wrap;
+      margin-bottom: clamp(1.75rem, 3.5vw, 2.6rem);
+    }
+    .footage-head .h2 { color: var(--white); margin-top: 0.75rem; }
+    .footage-head .highlight-marker { color: var(--yellow); }
+    .footage-head .highlight-marker::after { background: rgba(255, 197, 27, 0.2); }
+    .footage-head .lede { color: rgba(255, 255, 255, 0.74); margin-top: 0.55rem; }
+
+    .footage-grid {
+      display: grid;
+      grid-template-columns: 1.25fr 1fr;
+      gap: 1.35rem;
+      align-items: stretch;
+    }
+
+    .reel-card {
+      position: relative;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      background: var(--deep-2);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      text-align: left;
+      color: var(--white);
+      transition: transform 0.35s var(--ease), border-color 0.3s ease, box-shadow 0.35s ease;
+    }
+    .reel-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(255, 197, 27, 0.55);
+      box-shadow: 0 24px 50px -18px rgba(0, 0, 0, 0.55);
+    }
+    .reel-card:focus-visible {
+      outline: 3px solid var(--yellow);
+      outline-offset: 3px;
+    }
+
+    .reel-card--featured {
+      min-height: 430px;
+      justify-content: flex-end;
+    }
+
+    .reel-media {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+    }
+    .reel-card--featured .reel-media {
+      position: absolute;
+      inset: 0;
+    }
+    .reel-media img {
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform 0.65s var(--ease);
+    }
+    .reel-card:hover .reel-media img { transform: scale(1.045); }
+
+    .reel-scrim {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(11, 34, 57, 0.18) 0%, rgba(11, 34, 57, 0.45) 48%, rgba(11, 34, 57, 0.94) 100%);
+    }
+
+    .reel-top-badges {
+      position: absolute; top: 1rem; left: 1rem; right: 1rem;
+      display: flex; justify-content: space-between; align-items: center; gap: 0.5rem;
+      z-index: 2;
+    }
+
+    .reel-chip {
+      font-family: var(--font-label); font-size: 0.68rem; font-weight: 700;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      padding: 0.28rem 0.7rem; border-radius: var(--radius-pill);
+      background: rgba(16, 47, 75, 0.78); backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.2); color: var(--white);
+    }
+
+    .reel-duration {
+      display: inline-flex; align-items: center; gap: 0.35rem;
+      font-family: var(--font-label); font-size: 0.72rem; font-weight: 700;
+      padding: 0.26rem 0.65rem; border-radius: var(--radius-pill);
+      background: var(--yellow); color: var(--deep);
+    }
+
+    .reel-play-btn {
+      position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+      width: 62px; height: 62px; border-radius: 50%;
+      background: rgba(255, 197, 27, 0.94); color: var(--deep);
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 0 0 10px rgba(255, 197, 27, 0.22), 0 12px 30px rgba(0, 0, 0, 0.4);
+      transition: transform 0.3s var(--ease), background-color 0.25s ease;
+      z-index: 2;
+    }
+    .reel-card:hover .reel-play-btn {
+      transform: translate(-50%, -50%) scale(1.09);
+      background: var(--white);
+    }
+    .reel-play-btn svg { width: 22px; height: 22px; margin-left: 3px; }
+
+    .reel-card--featured .reel-body {
+      position: relative; z-index: 2;
+      padding: 1.65rem;
+    }
+
+    .reel-card--featured h3 {
+      font-family: var(--font-display);
+      font-size: clamp(1.35rem, 2.2vw, 1.8rem);
+      line-height: 1.2;
+      margin-bottom: 0.5rem;
+    }
+
+    .reel-card--featured p {
+      font-size: 0.92rem; color: rgba(255, 255, 255, 0.82); max-width: 52ch;
+      margin-bottom: 0.9rem;
+    }
+
+    .reel-chapters-mini {
+      display: flex; flex-wrap: wrap; gap: 0.5rem;
+    }
+    .reel-chapters-mini span {
+      font-size: 0.74rem; color: rgba(255, 255, 255, 0.85);
+      background: rgba(255, 255, 255, 0.12);
+      padding: 0.26rem 0.65rem; border-radius: 6px;
+    }
+
+    .footage-stack {
+      display: grid;
+      grid-template-rows: repeat(3, 1fr);
+      gap: 1rem;
+    }
+
+    .reel-card--compact {
+      flex-direction: row;
+      align-items: stretch;
+      min-height: 132px;
+    }
+    .reel-card--compact .reel-media {
+      width: 42%;
+      flex-shrink: 0;
+      min-height: 132px;
+    }
+    .reel-card--compact .reel-play-btn {
+      width: 42px; height: 42px;
+      box-shadow: 0 0 0 6px rgba(255, 197, 27, 0.24);
+    }
+    .reel-card--compact .reel-play-btn svg { width: 15px; height: 15px; margin-left: 2px; }
+    .reel-card--compact .reel-body {
+      padding: 1rem 1.15rem;
+      display: flex; flex-direction: column; justify-content: center; gap: 0.35rem;
+    }
+    .reel-compact-meta {
+      display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap;
+      font-family: var(--font-label); font-size: 0.68rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.08em; color: var(--yellow);
+    }
+    .reel-card--compact h3 {
+      font-family: var(--font-display); font-size: 1.05rem; line-height: 1.25; color: var(--white);
+    }
+    .reel-card--compact p {
+      font-size: 0.8rem; color: rgba(255, 255, 255, 0.72); line-height: 1.45;
+    }
+
+    @media (max-width: 980px) {
+      .footage-grid { grid-template-columns: 1fr; }
+      .reel-card--featured { min-height: 360px; }
+      .footage-stack { grid-template-rows: auto; }
+    }
+    @media (max-width: 560px) {
+      .reel-card--compact { flex-direction: column; }
+      .reel-card--compact .reel-media { width: 100%; aspect-ratio: 16 / 9; }
+    }
+
+    /* ============================================================
+       SECTION 3 — VERIFIED STUDENT & PARENT REVIEWS WALL
+       ============================================================ */
+    .reviews-section {
+      padding: clamp(3rem, 5.5vw, 4.75rem) 0;
+      background: var(--white);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .reviews-top {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 2rem;
+      align-items: center;
+      margin-bottom: 2.25rem;
+    }
+
+    .reviews-top .h2 { margin: 0.7rem 0 0.7rem; }
+
+    .rating-summary-card {
+      background: var(--bg);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      padding: 1.45rem 1.6rem;
+      box-shadow: var(--shadow-card);
+    }
+
+    .rating-score-row {
+      display: flex; align-items: center; gap: 1.1rem;
+      padding-bottom: 1rem; margin-bottom: 1rem;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .rating-big-num {
+      font-family: var(--font-display);
+      font-size: 2.65rem; font-weight: 700; color: var(--deep); line-height: 1;
+    }
+    .rating-stars-lg { color: #E5A400; font-size: 1.05rem; letter-spacing: 0.08em; }
+    .rating-sub { font-size: 0.8rem; color: var(--muted); margin-top: 0.15rem; }
+
+    .rating-bars { display: flex; flex-direction: column; gap: 0.55rem; }
+    .rating-bar-item {
+      display: grid; grid-template-columns: 1fr auto; gap: 0.35rem 0.75rem; align-items: center;
+      font-size: 0.78rem; color: var(--deep); font-weight: 500;
+    }
+    .rating-bar-item strong { color: var(--royal); font-family: var(--font-label); }
+    .rating-bar-track {
+      grid-column: 1 / -1; height: 6px; border-radius: 999px;
+      background: rgba(36, 102, 173, 0.12); overflow: hidden;
+    }
+    .rating-bar-fill {
+      height: 100%; border-radius: 999px;
+      background: linear-gradient(90deg, var(--royal), #3B82C4);
+    }
+
+    .review-filters {
+      display: flex; flex-wrap: wrap; align-items: center; gap: 0.55rem;
+      margin-bottom: 1.85rem;
+    }
+
+    .review-pill {
+      padding: 0.52rem 1.1rem;
+      border-radius: var(--radius-pill);
+      font-size: 0.82rem; font-weight: 600;
+      background: var(--bg); color: var(--muted);
+      border: 1px solid var(--line);
+      transition: all 0.22s var(--ease);
+    }
+    .review-pill:hover { border-color: var(--royal); color: var(--royal); }
+    .review-pill.is-active {
+      background: var(--royal); color: var(--white); border-color: var(--royal);
+      box-shadow: 0 8px 18px -6px rgba(36, 102, 173, 0.48);
+    }
+
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.35rem;
+    }
+
+    .review-card {
+      background: var(--bg);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.9rem;
+      transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease), background-color 0.25s ease;
+    }
+    .review-card:hover {
+      transform: translateY(-4px);
+      background: var(--white);
+      box-shadow: var(--shadow-hover);
+      border-color: rgba(36, 102, 173, 0.26);
+    }
+    .review-card[hidden] { display: none; }
+
+    .review-card-top {
+      display: flex; align-items: center; justify-content: space-between; gap: 0.5rem;
+    }
+    .review-stars { color: #E5A400; font-size: 0.88rem; letter-spacing: 0.06em; }
+    .review-theme-tag {
+      font-family: var(--font-label); font-size: 0.68rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.06em;
+      padding: 0.24rem 0.65rem; border-radius: var(--radius-pill);
+      background: var(--light-blue); color: var(--royal);
+    }
+
+    .review-quote {
+      font-size: 0.92rem; color: var(--deep); line-height: 1.62;
+    }
+
+    .review-takeaway {
+      font-size: 0.78rem; color: var(--ok); font-weight: 600;
+      background: #ECFDF5; border: 1px solid rgba(15, 118, 110, 0.18);
+      padding: 0.4rem 0.75rem; border-radius: 8px;
+      width: fit-content;
+    }
+
+    .review-author {
+      margin-top: auto;
+      padding-top: 0.85rem;
+      border-top: 1px solid var(--line);
+      display: flex; align-items: center; gap: 0.75rem;
+    }
+
+    .review-avatar {
+      width: 40px; height: 40px; border-radius: 50%;
+      background: var(--deep); color: var(--yellow);
+      font-family: var(--font-label); font-size: 0.82rem; font-weight: 700;
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .review-avatar--blue { background: var(--royal); color: var(--white); }
+    .review-avatar--teal { background: #0F766E; color: var(--white); }
+
+    .review-author-meta strong { display: block; font-size: 0.88rem; color: var(--deep); line-height: 1.25; }
+    .review-author-meta span { font-size: 0.76rem; color: var(--muted); }
+
+    .reviews-note {
+      margin-top: 1.5rem;
+      font-size: 0.78rem;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    @media (max-width: 1024px) {
+      .reviews-top { grid-template-columns: 1fr; }
+      .reviews-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 680px) {
+      .reviews-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ============================================================
+       SECTION 4 — BEFORE VS AFTER MMC (STUDENT TRANSFORMATION)
+       ============================================================ */
+    .transform-section {
+      padding: clamp(3rem, 5.5vw, 4.5rem) 0;
+      background: var(--bg);
+    }
+
+    .transform-head { max-width: 680px; margin-bottom: 2rem; }
+    .transform-head .h2 { margin: 0.7rem 0 0.6rem; }
+
+    .transform-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.35rem;
+    }
+
+    .transform-card {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      padding: 1.55rem;
+      box-shadow: var(--shadow-card);
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .transform-step {
+      font-family: var(--font-label); font-size: 0.72rem; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase; color: var(--royal);
+    }
+
+    .transform-card h3 {
+      font-family: var(--font-display); font-size: 1.22rem; color: var(--deep); line-height: 1.25;
+    }
+
+    .ba-block {
+      border-radius: var(--radius); padding: 0.9rem 1rem; font-size: 0.85rem; line-height: 1.52;
+    }
+    .ba-block strong {
+      display: block; font-family: var(--font-label); font-size: 0.68rem;
+      letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.25rem;
+    }
+    .ba-block--before {
+      background: #F1F5F9; color: var(--muted); border-left: 3px solid #94A3B8;
+    }
+    .ba-block--before strong { color: #64748B; }
+    .ba-block--after {
+      background: var(--light-blue); color: var(--deep); border-left: 3px solid var(--royal);
+    }
+    .ba-block--after strong { color: var(--royal); }
+
+    @media (max-width: 960px) { .transform-grid { grid-template-columns: 1fr; } }
+
+    /* ============================================================
+       BOTTOM CTA
+       ============================================================ */
+    .se-cta {
+      padding: clamp(2.75rem, 5vw, 4.25rem) 0;
+      background: var(--deep-2);
+      color: var(--white);
+      text-align: center;
+    }
+    .se-cta .display { color: var(--white); margin: 0.75rem 0 0.9rem; }
+    .se-cta .highlight-marker { color: var(--yellow); }
+    .se-cta .highlight-marker::after { background: rgba(255, 197, 27, 0.22); }
+    .se-cta .lede { color: rgba(255, 255, 255, 0.76); margin: 0 auto 1.65rem; }
+    .se-cta-btns { display: flex; justify-content: center; flex-wrap: wrap; gap: 0.85rem; }
+
+    /* ============================================================
+       NATIVE FOOTAGE PREVIEW MODAL (<dialog>)
+       ============================================================ */
+    dialog.reel-modal {
+      margin: auto; border: none; border-radius: var(--radius-lg); padding: 0;
+      width: min(94vw, 760px); max-height: 92dvh; overflow-y: auto;
+      background: var(--deep-2); color: var(--white);
+      box-shadow: 0 32px 80px rgba(0, 0, 0, 0.55);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+    }
+    dialog.reel-modal::backdrop { background: rgba(7, 20, 34, 0.82); backdrop-filter: blur(8px); }
+
+    .reel-modal-stage {
+      position: relative; aspect-ratio: 16 / 9; background: #000; overflow: hidden;
+    }
+    .reel-modal-stage img { width: 100%; height: 100%; object-fit: cover; }
+    .reel-modal-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(180deg, rgba(0,0,0,0.2) 0%, rgba(11,34,57,0.85) 100%);
+      display: flex; flex-direction: column; justify-content: space-between; padding: 1rem 1.25rem;
+    }
+    .reel-modal-top { display: flex; justify-content: space-between; align-items: center; }
+    .reel-modal-close {
+      width: 38px; height: 38px; border-radius: 50%;
+      background: rgba(16, 47, 75, 0.85); color: var(--white);
+      border: 1px solid rgba(255, 255, 255, 0.22);
+      font-size: 1.3rem; display: inline-flex; align-items: center; justify-content: center;
+    }
+    .reel-modal-close:hover { background: var(--yellow); color: var(--deep); }
+
+    .reel-progress-bar {
+      width: 100%; height: 5px; border-radius: 999px;
+      background: rgba(255, 255, 255, 0.22); overflow: hidden;
+    }
+    .reel-progress-fill {
+      width: 38%; height: 100%; background: var(--yellow); border-radius: 999px;
+      transition: width 0.35s var(--ease);
+    }
+
+    .reel-modal-body { padding: 1.45rem 1.6rem 1.7rem; }
+    .reel-modal-body h3 { font-family: var(--font-display); font-size: 1.45rem; margin-bottom: 0.45rem; }
+    .reel-modal-desc { font-size: 0.9rem; color: rgba(255, 255, 255, 0.78); margin-bottom: 1.15rem; }
+
+    .reel-chapter-list {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.7rem; margin-bottom: 1.2rem;
+    }
+    .reel-chapter-btn {
+      text-align: left; padding: 0.7rem 0.85rem; border-radius: 10px;
+      background: rgba(255, 255, 255, 0.07); border: 1px solid rgba(255, 255, 255, 0.12);
+      color: var(--white); transition: all 0.2s ease;
+    }
+    .reel-chapter-btn:hover, .reel-chapter-btn.is-active {
+      background: rgba(255, 197, 27, 0.16); border-color: rgba(255, 197, 27, 0.5);
+    }
+    .reel-chapter-btn strong {
+      display: block; font-family: var(--font-label); font-size: 0.7rem; color: var(--yellow); margin-bottom: 0.15rem;
+    }
+    .reel-chapter-btn span { font-size: 0.78rem; color: rgba(255, 255, 255, 0.88); }
+
+    .reel-modal-quote {
+      background: rgba(255, 255, 255, 0.06);
+      border-left: 3px solid var(--yellow);
+      padding: 0.85rem 1rem; border-radius: 0 10px 10px 0;
+      font-size: 0.86rem; color: rgba(255, 255, 255, 0.9);
+    }
+    .reel-modal-quote cite {
+      display: block; font-style: normal; font-size: 0.76rem; color: var(--yellow); margin-top: 0.35rem; font-weight: 600;
+    }
+
+    @media (max-width: 600px) {
+      .reel-chapter-list { grid-template-columns: 1fr; }
+    }
+
+    /* ============================================================
+       UNIFIED FOOTER
+       ============================================================ */
+    .site-footer {
+      background: var(--deep); color: var(--white);
+      padding: clamp(3rem, 5vw, 4rem) 0 max(2rem, env(safe-area-inset-bottom, 20px));
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .footer-top {
+      display: grid; grid-template-columns: minmax(0, 1.4fr) repeat(3, minmax(0, 0.7fr));
+      gap: 2.5rem; padding-bottom: 2.5rem; border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    }
+    .footer-brand-logo {
+      display: inline-flex; align-items: center; background: var(--white);
+      padding: 0.45rem 0.85rem; border-radius: 10px;
+      border: 1.5px solid rgba(255, 255, 255, 0.92);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.22); margin-bottom: 1.1rem;
+    }
+    .footer-brand img { height: 32px; width: auto; display: block; }
+    .footer-brand p { font-size: 0.82rem; line-height: 1.6; color: rgba(255, 255, 255, 0.65); max-width: 34ch; }
+    .footer-col h4 {
+      font-family: var(--font-label); font-size: 0.68rem; letter-spacing: 0.14em;
+      text-transform: uppercase; color: rgba(255, 255, 255, 0.52); margin-bottom: 1rem; font-weight: 600;
+    }
+    .footer-col a { display: block; font-size: 0.86rem; color: rgba(255, 255, 255, 0.78); margin-bottom: 0.6rem; transition: color 0.2s ease, transform 0.2s ease; }
+    .footer-col a:hover { color: var(--yellow); transform: translateX(3px); }
+    .footer-bottom {
+      padding-top: 1.75rem; display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 1rem; font-size: 0.8rem; color: rgba(255, 255, 255, 0.55);
+    }
+    .footer-socials { display: flex; gap: 0.75rem; }
+    .footer-socials a {
+      width: 36px; height: 36px; border-radius: 50%; background: rgba(255, 255, 255, 0.08);
+      color: var(--white); display: flex; align-items: center; justify-content: center;
+    }
+    .footer-socials a:hover { background: var(--yellow); color: var(--deep); }
+    .footer-socials svg { width: 16px; height: 16px; }
+    @media (max-width: 860px) { .footer-top { grid-template-columns: 1fr 1fr; } .footer-brand { grid-column: span 2; } }
+    @media (max-width: 520px) { .footer-top { grid-template-columns: 1fr; gap: 1.75rem; } .footer-brand { grid-column: span 1; } }
+  </style>
+</head>
+
+<body>
+  <div id="scroll-progress" aria-hidden="true"></div>
+
+  <!-- Unified Header -->
+  <header class="site-header" id="siteHeader">
+    <div class="container header-inner">
+      <a href="index.html" class="brand" aria-label="My Mentor Circle Home">
+        <img src="images/fullLogo.png" alt="My Mentor Circle" width="172" height="40" />
+      </a>
+
+      <nav class="main-nav" aria-label="Primary">
+        <a href="index.html">Home</a>
+        <a href="gallery.html">Events Catalogue</a>
+        <a href="student-experience.html" aria-current="page">Student Experience</a>
+        <a href="universities.html">For Universities &amp; EdTech Partners</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+
+      <div class="header-actions">
+        <a href="/login" class="header-login">Login</a>
+        <a href="/register?role=school" class="btn btn--primary header-cta">
+          Register
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round" aria-hidden="true">
+            <line x1="5" y1="12" x2="19" y2="12" />
+            <polyline points="12 5 19 12 12 19" />
+          </svg>
+        </a>
+        <button type="button" class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false"
+          aria-controls="mobileNav">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <nav class="mobile-nav" id="mobileNav" aria-label="Mobile">
+    <a href="index.html">Home</a>
+    <a href="gallery.html">Events Catalogue</a>
+    <a href="student-experience.html" aria-current="page">Student Experience</a>
+    <a href="universities.html">For Universities &amp; EdTech Partners</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <div class="mobile-actions">
+      <a href="/login" class="btn btn--ghost">Login</a>
+      <a href="/register?role=school" class="btn btn--primary">Register</a>
+    </div>
+  </nav>
+
+  <main>
+    <!-- SECTION 1: STUDENT VOICES HERO -->
+    <section class="se-hero">
+      <div class="container">
+        <div class="se-hero-grid">
+          <div class="se-hero-copy">
+            <span class="eyebrow">Student Voices &amp; Campus Stories</span>
+            <h1 class="display">Through the Eyes of <em class="highlight-marker">Students.</em></h1>
+            <p class="lede">
+              Beyond brochures and auditorium slides — hear how real conversations with university mentors, hands-on
+              labs, and campus showcases spark confidence and career clarity for students across India.
+            </p>
+
+            <div class="se-hero-actions">
+              <a href="#footage" class="btn btn--primary">
+                Watch Campus Footage
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round" aria-hidden="true">
+                  <polygon points="5 3 19 12 5 21 5 3" />
+                </svg>
+              </a>
+              <a href="#reviews" class="btn btn--ghost">Read Student Reviews</a>
+            </div>
+
+            <div class="se-pulse-stats" aria-label="Student feedback highlights">
+              <div class="se-stat-box">
+                <strong>4.9 / 5</strong>
+                <span>Average Student Rating</span>
+              </div>
+              <div class="se-stat-box">
+                <strong>96%</strong>
+                <span>Reported Career Clarity</span>
+              </div>
+              <div class="se-stat-box">
+                <strong>Grades 6–12</strong>
+                <span>Active Campus Voices</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="se-hero-visual">
+            <div class="se-hero-photo">
+              <img src="images/in-student-mentor-smile.jpg"
+                alt="An Indian school student smiling warmly during a candid mentoring conversation with her educator" />
+            </div>
+            <div class="se-hero-quote-card">
+              <div class="se-hero-quote-stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+              <p>
+                &ldquo;Before the campus session, I only knew two traditional career paths. Speaking directly with
+                design &amp; data mentors in Class 11 completely opened my mind.&rdquo;
+              </p>
+              <div class="se-hero-quote-author">Ananya Sengupta &bull; Class 11 (ICSE), Kolkata</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 2: CAMPUS FOOTAGE & HIGHLIGHT REELS -->
+    <section class="footage-section" id="footage" aria-labelledby="footage-heading">
+      <div class="container">
+        <div class="footage-head">
+          <div>
+            <span class="eyebrow eyebrow--gold">Campus Footage &amp; Reels</span>
+            <h2 class="h2" id="footage-heading">Unscripted Moments From <em class="highlight-marker">Real Campuses.</em></h2>
+            <p class="lede">
+              Step inside classrooms, computer labs, and auditoriums. Tap any reel below to preview session chapters
+              and hear student reactions straight from the floor.
+            </p>
+          </div>
+        </div>
+
+        <div class="footage-grid">
+          <!-- Featured Main Reel -->
+          <button type="button" class="reel-card reel-card--featured" data-reel="0"
+            aria-label="Preview footage reel: Student Voices and Youth Leadership Summit">
+            <div class="reel-media">
+              <img src="images/in-student-stage-speech.jpg"
+                alt="Indian student speaking confidently at a podium during a campus leadership summit" />
+              <div class="reel-scrim"></div>
+            </div>
+            <div class="reel-top-badges">
+              <span class="reel-chip">Featured Reel &bull; Delhi NCR</span>
+              <span class="reel-duration">&#9654; 02:18</span>
+            </div>
+            <span class="reel-play-btn" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="6 4 20 12 6 20 6 4" /></svg>
+            </span>
+            <div class="reel-body">
+              <h3>Student Voices &amp; Youth Leadership Summit</h3>
+              <p>
+                Class 10–12 speakers take the microphone to debate future careers, climate innovation, and policy
+                alongside visiting university panellists.
+              </p>
+              <div class="reel-chapters-mini">
+                <span>00:00 Opening Keynote</span>
+                <span>00:52 Student Q&amp;A</span>
+                <span>01:44 Backstage Reactions</span>
+              </div>
+            </div>
+          </button>
+
+          <!-- 3 Compact Footage Reels -->
+          <div class="footage-stack">
+            <button type="button" class="reel-card reel-card--compact" data-reel="1"
+              aria-label="Preview footage reel: Inside the Coding and STEM Sprint">
+              <div class="reel-media">
+                <img src="images/in-school-coding-lab.jpg"
+                  alt="Indian school students writing code together in a Bengaluru computer lab" loading="lazy" />
+                <div class="reel-scrim"></div>
+                <span class="reel-play-btn" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="6 4 20 12 6 20 6 4" /></svg>
+                </span>
+              </div>
+              <div class="reel-body">
+                <div class="reel-compact-meta"><span>Lab Footage</span><span>&bull; 01:42</span></div>
+                <h3>Inside the Coding &amp; AI Lab Sprint</h3>
+                <p>Bengaluru high-schoolers ship their first working Python prototypes in a 90-minute guided lab.</p>
+              </div>
+            </button>
+
+            <button type="button" class="reel-card reel-card--compact" data-reel="2"
+              aria-label="Preview footage reel: Career Clarity Q and A Townhall">
+              <div class="reel-media">
+                <img src="images/in-students-seminar-audience.jpg"
+                  alt="Engaged Indian students listening closely during an interactive career townhall" loading="lazy" />
+                <div class="reel-scrim"></div>
+                <span class="reel-play-btn" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="6 4 20 12 6 20 6 4" /></svg>
+                </span>
+              </div>
+              <div class="reel-body">
+                <div class="reel-compact-meta"><span>Student Q&amp;A</span><span>&bull; 02:05</span></div>
+                <h3>Career Clarity Townhall &amp; Open Mic</h3>
+                <p>Candid questions from Class 11 &amp; 12 students on scholarships, interdisciplinary degrees, and exams.</p>
+              </div>
+            </button>
+
+            <button type="button" class="reel-card reel-card--compact" data-reel="3"
+              aria-label="Preview footage reel: Inter-School Innovation Cohort Recap">
+              <div class="reel-media">
+                <img src="images/in-youth-cohort-campus.jpg"
+                  alt="Smiling cohort of Indian students posing outdoors after an inter-school campus hackathon" loading="lazy" />
+                <div class="reel-scrim"></div>
+                <span class="reel-play-btn" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="6 4 20 12 6 20 6 4" /></svg>
+                </span>
+              </div>
+              <div class="reel-body">
+                <div class="reel-compact-meta"><span>Campus Recap</span><span>&bull; 01:35</span></div>
+                <h3>Inter-School Innovation Cohort Day</h3>
+                <p>Cross-school teams pitch ideas, celebrate peer friendships, and reflect on their biggest takeaways.</p>
+              </div>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 3: STUDENT & PARENT REVIEWS WALL -->
+    <section class="reviews-section" id="reviews" aria-labelledby="reviews-heading">
+      <div class="container">
+        <div class="reviews-top">
+          <div>
+            <span class="eyebrow">Real Feedback</span>
+            <h2 class="h2" id="reviews-heading">What Students, Parents &amp; <em class="highlight-marker">Counsellors Say.</em></h2>
+            <p class="lede">
+              Filter voices by what mattered most to them — from discovering an unexpected career path to building
+              stage confidence for the very first time.
+            </p>
+          </div>
+
+          <div class="rating-summary-card" aria-label="Post-event student feedback summary">
+            <div class="rating-score-row">
+              <div class="rating-big-num">4.9</div>
+              <div>
+                <div class="rating-stars-lg" aria-label="4.9 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                <div class="rating-sub">Based on 1,400+ post-event student reflections</div>
+              </div>
+            </div>
+            <div class="rating-bars">
+              <div class="rating-bar-item">
+                <span>Felt clearer on subject &amp; degree options</span>
+                <strong>96%</strong>
+                <div class="rating-bar-track"><div class="rating-bar-fill" style="width: 96%;"></div></div>
+              </div>
+              <div class="rating-bar-item">
+                <span>Asked a mentor a direct personal question</span>
+                <strong>94%</strong>
+                <div class="rating-bar-track"><div class="rating-bar-fill" style="width: 94%;"></div></div>
+              </div>
+              <div class="rating-bar-item">
+                <span>Would recommend the session to juniors</span>
+                <strong>98%</strong>
+                <div class="rating-bar-track"><div class="rating-bar-fill" style="width: 98%;"></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Theme Filter Pills -->
+        <div class="review-filters" role="group" aria-label="Filter reviews by theme">
+          <button type="button" class="review-pill is-active" data-review-filter="all" aria-pressed="true">All Voices (8)</button>
+          <button type="button" class="review-pill" data-review-filter="clarity" aria-pressed="false">Career Clarity</button>
+          <button type="button" class="review-pill" data-review-filter="stem" aria-pressed="false">STEM &amp; Coding</button>
+          <button type="button" class="review-pill" data-review-filter="confidence" aria-pressed="false">Confidence &amp; Speaking</button>
+          <button type="button" class="review-pill" data-review-filter="parents" aria-pressed="false">Parents &amp; Counsellors</button>
+        </div>
+
+        <div class="reviews-grid" id="reviewsGrid">
+          <!-- Review 1 -->
+          <article class="review-card" data-theme="clarity">
+            <div class="review-card-top">
+              <span class="review-stars" aria-label="5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+              <span class="review-theme-tag">Career Clarity</span>
+            </div>
+            <p class="review-quote">
+              &ldquo;I was torn between pure economics and data science after Class 11. At the campus fair, an actual
+              faculty mentor walked me through both course structures and scholarship timelines in 15 honest minutes —
+              zero sales pitch.&rdquo;
+            </p>
+            <span class="review-takeaway">Shortlisted 3 interdisciplinary degrees</span>
+            <div class="review-author">
+              <div class="review-avatar">RM</div>
+              <div class="review-author-meta">
+                <strong>Rohan Malhotra</strong>
+                <span>Class 12 (CBSE) &bull; Gurugram</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Review 2 -->
+          <article class="review-card" data-theme="stem">
+            <div class="review-card-top">
+              <span class="review-stars" aria-label="5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+              <span class="review-theme-tag">STEM &amp; Coding</span>
+            </div>
+            <p class="review-quote">
+              &ldquo;We usually only read about AI and sensors in textbooks. During the hands-on robotics lab, my team
+              wired and coded a line-follower from scratch. That single afternoon made me realise I genuinely enjoy
+              hardware engineering.&rdquo;
+            </p>
+            <span class="review-takeaway">Built first working sensor prototype</span>
+            <div class="review-author">
+              <div class="review-avatar review-avatar--blue">DN</div>
+              <div class="review-author-meta">
+                <strong>Diya Nair</strong>
+                <span>Class 10 (ICSE) &bull; Bengaluru</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Review 3 -->
+          <article class="review-card" data-theme="confidence">
+            <div class="review-card-top">
+              <span class="review-stars" aria-label="5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+              <span class="review-theme-tag">Confidence &amp; Speaking</span>
+            </div>
+            <p class="review-quote">
+              &ldquo;I used to freeze whenever asked to speak in assembly. Our mentor broke public speaking into simple
+              3-point structures during the leadership workshop, and by day two I was moderating our group's Q&amp;A
+              panel.&rdquo;
+            </p>
+            <span class="review-takeaway">Moderated her first campus panel</span>
+            <div class="review-author">
+              <div class="review-avatar review-avatar--teal">PK</div>
+              <div class="review-author-meta">
+                <strong>Prisha Kulkarni</strong>
+                <span>Class 9 (CBSE) &bull; Pune</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Review 4 -->
+          <article class="review-card" data-theme="parents">
+            <div class="review-card-top">
+              <span class="review-stars" aria-label="5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+              <span class="review-theme-tag">Parents &amp; Counsellors</span>
+            </div>
+            <p class="review-quote">
+              &ldquo;As a parent, I loved that the school vetted every participating university beforehand. My son came
+              home with structured notes on entrance exams, fee aid, and real alumni outcomes instead of random
+              pamphlets.&rdquo;
+            </p>
+            <span class="review-takeaway">Calm, informed family college plan</span>
+            <div class="review-author">
+              <div class="review-avatar">SB</div>
+              <div class="review-author-meta">
+                <strong>Mrs. Sunita Banerjee</strong>
+                <span>Parent of Class 12 Student &bull; Kolkata</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Review 5 -->
+          <article class="review-card" data-theme="clarity">
+            <div class="review-card-top">
+              <span class="review-stars" aria-label="5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+              <span class="review-theme-tag">Career Clarity</span>
+            </div>
+            <p class="review-quote">
+              &ldquo;Being in Humanities, I always felt career fairs only catered to JEE and NEET students. Here I met
+              mentors in UX design, public policy, and corporate law who showed clear roadmaps for Arts students
+              too.&rdquo;
+            </p>
+            <span class="review-takeaway">Discovered UX &amp; Policy pathways</span>
+            <div class="review-author">
+              <div class="review-avatar review-avatar--blue">MK</div>
+              <div class="review-author-meta">
+                <strong>Meera Krishnan</strong>
+                <span>Class 11 Humanities &bull; Chennai</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Review 6 -->
+          <article class="review-card" data-theme="stem">
+            <div class="review-card-top">
+              <span class="review-stars" aria-label="5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+              <span class="review-theme-tag">STEM &amp; Coding</span>
+            </div>
+            <p class="review-quote">
+              &ldquo;The coding sprint felt like a real college hackathon inside our own computer lab. Our mentor stayed
+              back after class to debug my Python script and showed me how to start an open-source portfolio.&rdquo;
+            </p>
+            <span class="review-takeaway">Launched first GitHub project</span>
+            <div class="review-author">
+              <div class="review-avatar review-avatar--teal">AR</div>
+              <div class="review-author-meta">
+                <strong>Aarav Reddy</strong>
+                <span>Class 11 (CBSE) &bull; Hyderabad</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Review 7 -->
+          <article class="review-card" data-theme="confidence">
+            <div class="review-card-top">
+              <span class="review-stars" aria-label="5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+              <span class="review-theme-tag">Confidence &amp; Speaking</span>
+            </div>
+            <p class="review-quote">
+              &ldquo;Pitching our school sustainability idea to visiting judges was nerve-wracking at first, but their
+              constructive feedback taught us how real founders defend numbers and listen to users.&rdquo;
+            </p>
+            <span class="review-takeaway">Won Best Pitch at campus showcase</span>
+            <div class="review-author">
+              <div class="review-avatar">KV</div>
+              <div class="review-author-meta">
+                <strong>Kabir Verma</strong>
+                <span>Class 10 (IB) &bull; Mumbai</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Review 8 -->
+          <article class="review-card" data-theme="parents">
+            <div class="review-card-top">
+              <span class="review-stars" aria-label="5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+              <span class="review-theme-tag">Parents &amp; Counsellors</span>
+            </div>
+            <p class="review-quote">
+              &ldquo;For our school counselling cell, seeing quiet Class 11 students walk up and ask thoughtful
+              questions to admissions deans is the biggest win. Zero operational stress for our faculty.&rdquo;
+            </p>
+            <span class="review-takeaway">92% student participation on campus</span>
+            <div class="review-author">
+              <div class="review-avatar review-avatar--blue">NS</div>
+              <div class="review-author-meta">
+                <strong>Dr. Nidhi Sharma</strong>
+                <span>Senior School Counsellor &bull; Greater Noida</span>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <p class="reviews-note">
+          Representative reflections inspired by post-event student, parent, and counsellor feedback across MMC campus sessions.
+        </p>
+      </div>
+    </section>
+
+    <!-- SECTION 4: BEFORE VS AFTER MMC STUDENT TRANSFORMATION -->
+    <section class="transform-section" aria-labelledby="transform-heading">
+      <div class="container">
+        <div class="transform-head">
+          <span class="eyebrow">The Shift We See</span>
+          <h2 class="h2" id="transform-heading">How One Structured Campus Day <em class="highlight-marker">Changes Perspective.</em></h2>
+          <p class="lede">
+            When students step into a well-curated session inside their own familiar campus, hesitation turns into
+            curiosity surprisingly fast.
+          </p>
+        </div>
+
+        <div class="transform-grid">
+          <article class="transform-card">
+            <span class="transform-step">Shift 01 &bull; Career Direction</span>
+            <h3>From Stream Anxiety to Informed Choices</h3>
+            <div class="ba-block ba-block--before">
+              <strong>Before</strong>
+              Confused between hearsay, generic coaching advice, and only two or three conventional degree names.
+            </div>
+            <div class="ba-block ba-block--after">
+              <strong>After an MMC Campus Day</strong>
+              Students compare 15+ emerging fields directly with university faculty, alumni, and industry mentors.
+            </div>
+          </article>
+
+          <article class="transform-card">
+            <span class="transform-step">Shift 02 &bull; Practical Exposure</span>
+            <h3>From Textbook Chapters to Real Creation</h3>
+            <div class="ba-block ba-block--before">
+              <strong>Before</strong>
+              STEM, design, and entrepreneurship feel like abstract exam chapters disconnected from real life.
+            </div>
+            <div class="ba-block ba-block--after">
+              <strong>After an MMC Campus Day</strong>
+              Students build mini-prototypes, test code, and solve real-world prompts alongside visiting practitioners.
+            </div>
+          </article>
+
+          <article class="transform-card">
+            <span class="transform-step">Shift 03 &bull; Voice &amp; Confidence</span>
+            <h3>From Silent Listener to Curious Questioner</h3>
+            <div class="ba-block ba-block--before">
+              <strong>Before</strong>
+              Hesitant to raise a hand in large crowds or unsure what questions to ask college representatives.
+            </div>
+            <div class="ba-block ba-block--after">
+              <strong>After an MMC Campus Day</strong>
+              Students lead Q&amp;As, present team pitches, and walk home excited to share plans with their parents.
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- BOTTOM CTA -->
+    <section class="se-cta">
+      <div class="container">
+        <span class="eyebrow eyebrow--gold">For Schools &amp; Educators</span>
+        <h2 class="display">Bring These Experiences to <em class="highlight-marker">Your Students.</em></h2>
+        <p class="lede">
+          Host verified career fairs, hands-on STEM labs, and mentorship sessions on your campus — completely free for schools.
+        </p>
+        <div class="se-cta-btns">
+          <a href="/register?role=school" class="btn btn--yellow">Register Your School — Free</a>
+          <a href="gallery.html" class="btn btn--ghost" style="background: transparent; color: #fff; border-color: rgba(255,255,255,0.28);">Browse Events Catalogue</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Native Footage Storyboard Preview Modal -->
+  <dialog class="reel-modal" id="reelModal" aria-labelledby="reelModalTitle">
+    <div class="reel-modal-stage">
+      <img id="reelModalImg" src="images/in-student-stage-speech.jpg" alt="Campus footage preview" />
+      <div class="reel-modal-overlay">
+        <div class="reel-modal-top">
+          <span class="reel-chip" id="reelModalTag">Campus Reel</span>
+          <button type="button" class="reel-modal-close" id="reelModalClose" aria-label="Close footage preview">&times;</button>
+        </div>
+        <div>
+          <div style="display:flex; justify-content:space-between; font-size:0.74rem; color:rgba(255,255,255,0.86); margin-bottom:0.4rem; font-family:var(--font-label);">
+            <span id="reelModalNow">Chapter 1 Highlight</span>
+            <span id="reelModalDur">02:18</span>
+          </div>
+          <div class="reel-progress-bar">
+            <div class="reel-progress-fill" id="reelModalFill"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="reel-modal-body">
+      <h3 id="reelModalTitle"></h3>
+      <p class="reel-modal-desc" id="reelModalDesc"></p>
+      <div class="reel-chapter-list" id="reelChapterList"></div>
+      <blockquote class="reel-modal-quote">
+        <span id="reelModalQuote"></span>
+        <cite id="reelModalCite"></cite>
+      </blockquote>
+    </div>
+  </dialog>
+
+  <!-- Unified Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a href="index.html" class="footer-brand-logo" aria-label="My Mentor Circle Home">
+            <img src="images/fullLogo.png" alt="My Mentor Circle" width="172" height="40" loading="lazy" />
+          </a>
+          <p>
+            A school-first event marketplace connecting schools, universities and education partners through structured
+            educational events.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Platform</h4>
+          <a href="index.html#register">For Schools</a>
+          <a href="universities.html">For Universities &amp; EdTech Partners</a>
+          <a href="gallery.html">Events Catalogue</a>
+          <a href="student-experience.html">Student Experience</a>
+          <a href="/register?role=school">Register Your School</a>
+        </div>
+
+        <div class="footer-col">
+          <h4>Explore</h4>
+          <a href="index.html">Home</a>
+          <a href="about.html">About Us</a>
+          <a href="index.html#partners-network">Partner Network</a>
+          <a href="index.html#how-it-works">How It Works</a>
+          <a href="index.html#engagement">Real Engagement</a>
+        </div>
+
+        <div class="footer-col">
+          <h4>Contact &amp; Legal</h4>
+          <a href="contact.html">Contact Us</a>
+          <a href="/privacy">Privacy Policy</a>
+          <a href="/terms">Terms of Service</a>
+          <a href="/safety">Campus Safety Guidelines</a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; <span id="year">2026</span> My Mentor Circle. All rights reserved.</p>
+        <div class="footer-socials" aria-label="Social media links">
+          <a href="https://www.linkedin.com/company/my-mentor-circle" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+          </a>
+          <a href="https://twitter.com/mymentorcircle" target="_blank" rel="noopener noreferrer" aria-label="Twitter / X">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          </a>
+          <a href="https://www.instagram.com/mymentorcircle" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          </a>
+          <a href="https://www.youtube.com/@mymentorcircle" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Header smart scroll (hide on scroll down, reveal immediately on scroll up) + progress bar
+    const header = document.getElementById('siteHeader');
+    const scrollBar = document.getElementById('scroll-progress');
+    const menuToggle = document.getElementById('menuToggle');
+    const mobileNav = document.getElementById('mobileNav');
+    let lastScrollY = window.scrollY;
+    let scrollTicking = false;
+    function syncHeaderScroll() {
+      const y = Math.max(0, window.scrollY);
+      header.classList.toggle('is-scrolled', y > 12);
+      const isDrawerOpen = mobileNav && mobileNav.classList.contains('is-open');
+      if (y <= 72 || isDrawerOpen) {
+        header.classList.remove('is-hidden');
+      } else if (y > lastScrollY + 6) {
+        header.classList.add('is-hidden');
+      } else if (y < lastScrollY - 2) {
+        header.classList.remove('is-hidden');
+      }
+      lastScrollY = y;
+      const h = document.documentElement.scrollHeight - window.innerHeight;
+      if (h > 0 && scrollBar) scrollBar.style.width = Math.min(100, (y / h) * 100).toFixed(2) + '%';
+      scrollTicking = false;
+    }
+    window.addEventListener('scroll', () => {
+      if (!scrollTicking) {
+        scrollTicking = true;
+        requestAnimationFrame(syncHeaderScroll);
+      }
+    }, { passive: true });
+    syncHeaderScroll();
+
+    // Mobile nav toggle
+    menuToggle.addEventListener('click', () => {
+      const open = mobileNav.classList.toggle('is-open');
+      menuToggle.classList.toggle('is-open', open);
+      if (open) header.classList.remove('is-hidden');
+      menuToggle.setAttribute('aria-expanded', String(open));
+    });
+    mobileNav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+      mobileNav.classList.remove('is-open');
+      menuToggle.classList.remove('is-open');
+      menuToggle.setAttribute('aria-expanded', 'false');
+    }));
+
+    // Review Theme Filter Pills
+    const reviewPills = document.querySelectorAll('[data-review-filter]');
+    const reviewCards = document.querySelectorAll('#reviewsGrid .review-card');
+    reviewPills.forEach(pill => {
+      pill.addEventListener('click', () => {
+        const theme = pill.dataset.reviewFilter;
+        reviewPills.forEach(p => {
+          const active = p === pill;
+          p.classList.toggle('is-active', active);
+          p.setAttribute('aria-pressed', String(active));
+        });
+        reviewCards.forEach(card => {
+          card.hidden = theme !== 'all' && card.dataset.theme !== theme;
+        });
+      });
+    });
+
+    // Campus Footage Storyboard Preview Modal
+    const reelsData = [
+      {
+        tag: 'Featured Reel • Delhi NCR',
+        duration: '02:18',
+        img: 'images/in-student-stage-speech.jpg',
+        title: 'Student Voices & Youth Leadership Summit',
+        desc: 'Captured live during a senior-school auditorium forum where Class 10–12 student delegates presented policy ideas and asked unscripted questions to visiting university deans.',
+        chapters: [
+          { time: '00:00', label: 'Opening Student Keynote', pct: 25 },
+          { time: '00:52', label: 'Live Mentor Q&A Floor', pct: 62 },
+          { time: '01:44', label: 'Backstage Student Reactions', pct: 92 }
+        ],
+        quote: '"Standing at that podium made me realise our ideas actually matter to university faculty — we were treated like future thinkers, not just exam takers."',
+        cite: '— Shreya Deshmukh, Class 12 Student Speaker'
+      },
+      {
+        tag: 'Lab Footage • Bengaluru',
+        duration: '01:42',
+        img: 'images/in-school-coding-lab.jpg',
+        title: 'Inside the Coding & AI Lab Sprint',
+        desc: 'A 90-minute practical build sprint inside a Bengaluru partner school computer lab, guided by engineering mentors helping students write and test real Python logic.',
+        chapters: [
+          { time: '00:00', label: 'Problem Briefing', pct: 22 },
+          { time: '00:44', label: 'Pair Debugging Session', pct: 60 },
+          { time: '01:18', label: 'Live Demo Applause', pct: 90 }
+        ],
+        quote: '"Seeing my code actually run on the screen in front of our mentor gave me more confidence than a whole semester of memorising syntax."',
+        cite: '— Aditya Rao, Class 10 Participant, Bengaluru'
+      },
+      {
+        tag: 'Student Q&A • Multi-City',
+        duration: '02:05',
+        img: 'images/in-students-seminar-audience.jpg',
+        title: 'Career Clarity Townhall & Open Mic',
+        desc: 'No rehearsed scripts — Class 11 & 12 students fire rapid questions on scholarships, study-abroad budgets, emerging tech degrees, and interdisciplinary careers.',
+        chapters: [
+          { time: '00:00', label: 'Breaking Career Myths', pct: 26 },
+          { time: '00:58', label: 'Open-Mic Student Questions', pct: 65 },
+          { time: '01:40', label: 'Post-Session Mentor Huddle', pct: 94 }
+        ],
+        quote: '"Half of us walked in thinking we only had two options after boards. Everyone walked out with pages of genuine notes."',
+        cite: '— Siddharth Joshi, Class 12 Commerce'
+      },
+      {
+        tag: 'Campus Recap • Hyderabad',
+        duration: '01:35',
+        img: 'images/in-youth-cohort-campus.jpg',
+        title: 'Inter-School Innovation Cohort Day',
+        desc: 'Students from neighbouring campuses team up for an afternoon of collaborative prototyping, peer feedback, and sunlit campus reflection.',
+        chapters: [
+          { time: '00:00', label: 'Cross-School Team Mixer', pct: 24 },
+          { time: '00:42', label: 'Mentor Pitch Clinics', pct: 58 },
+          { time: '01:15', label: 'Closing Cohort Celebration', pct: 92 }
+        ],
+        quote: '"Meeting students from five different schools who share the same curiosity made this the best Saturday of our academic year."',
+        cite: '— Tanvi Reddy, Class 11 Delegate, Hyderabad'
+      }
+    ];
+
+    const reelModal = document.getElementById('reelModal');
+    const reelModalImg = document.getElementById('reelModalImg');
+    const reelModalTag = document.getElementById('reelModalTag');
+    const reelModalDur = document.getElementById('reelModalDur');
+    const reelModalNow = document.getElementById('reelModalNow');
+    const reelModalFill = document.getElementById('reelModalFill');
+    const reelModalTitle = document.getElementById('reelModalTitle');
+    const reelModalDesc = document.getElementById('reelModalDesc');
+    const reelChapterList = document.getElementById('reelChapterList');
+    const reelModalQuote = document.getElementById('reelModalQuote');
+    const reelModalCite = document.getElementById('reelModalCite');
+
+    document.querySelectorAll('[data-reel]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const data = reelsData[Number(btn.dataset.reel)];
+        if (!data) return;
+        reelModalImg.src = data.img;
+        reelModalImg.alt = data.title;
+        reelModalTag.textContent = data.tag;
+        reelModalDur.textContent = data.duration;
+        reelModalTitle.textContent = data.title;
+        reelModalDesc.textContent = data.desc;
+        reelModalQuote.textContent = data.quote;
+        reelModalCite.textContent = data.cite;
+        reelModalNow.textContent = `${data.chapters[0].time} — ${data.chapters[0].label}`;
+        reelModalFill.style.width = `${data.chapters[0].pct}%`;
+
+        reelChapterList.innerHTML = '';
+        data.chapters.forEach((ch, idx) => {
+          const b = document.createElement('button');
+          b.type = 'button';
+          b.className = 'reel-chapter-btn' + (idx === 0 ? ' is-active' : '');
+          b.innerHTML = `<strong>${ch.time}</strong><span>${ch.label}</span>`;
+          b.addEventListener('click', () => {
+            reelChapterList.querySelectorAll('.reel-chapter-btn').forEach(x => x.classList.remove('is-active'));
+            b.classList.add('is-active');
+            reelModalNow.textContent = `${ch.time} — ${ch.label}`;
+            reelModalFill.style.width = `${ch.pct}%`;
+          });
+          reelChapterList.appendChild(b);
+        });
+
+        reelModal.showModal();
+      });
+    });
+
+    document.getElementById('reelModalClose').addEventListener('click', () => reelModal.close());
+    reelModal.addEventListener('click', e => {
+      if (e.target === reelModal) reelModal.close();
+    });
+  </script>
+</body>
+
+</html>

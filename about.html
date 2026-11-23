@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>About Us | My Mentor Circle</title>
+  <meta name="description"
+    content="Learn about My Mentor Circle — a school-first educational events platform connecting schools, universities, and education partners to expand student horizons across India." />
+  <link rel="canonical" href="https://www.mymentorcircle.com/about" />
+  <link rel="icon" href="images/mmc logo.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600&display=swap"
+    rel="stylesheet" />
+
+  <style>
+    :root {
+      --royal: #2466AD;
+      --royal-dark: #1A4F8A;
+      --yellow: #FFC51B;
+      --deep: #102F4B;
+      --deep-2: #0B2239;
+      --white: #FFFFFF;
+      --light-blue: #EAF2FC;
+      --bg: #F8FAFD;
+      --ink: #0B1D2E;
+      --muted: #5A6B7C;
+      --line: rgba(16, 47, 75, 0.12);
+      --font-display: 'Fraunces', Georgia, serif;
+      --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --font-label: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+      --radius-sm: 8px;
+      --radius: 14px;
+      --radius-lg: 22px;
+      --radius-pill: 999px;
+      --shadow-card: 0 8px 26px -10px rgba(16, 47, 75, 0.1), 0 2px 6px -1px rgba(16, 47, 75, 0.04);
+      --shadow-hover: 0 20px 42px -14px rgba(16, 47, 75, 0.18);
+      --ease: cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+    body {
+      font-family: var(--font-sans);
+      background-color: var(--bg);
+      color: var(--ink);
+      line-height: 1.6;
+      overflow-x: hidden;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      padding-top: 72px;
+    }
+    main { flex: 1; }
+    img { max-width: 100%; height: auto; display: block; }
+    a { text-decoration: none; color: inherit; }
+    button { font: inherit; cursor: pointer; border: none; background: none; }
+
+    #scroll-progress {
+      position: fixed; top: 0; left: 0; height: 3px; width: 0%;
+      background: linear-gradient(90deg, var(--royal), var(--yellow));
+      z-index: 9999; pointer-events: none;
+    }
+
+    .container { width: 100%; max-width: 1320px; margin-inline: auto; padding-inline: clamp(1rem, 3.5vw, 2.5rem); }
+
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      font-family: var(--font-label); font-size: 0.72rem; font-weight: 700;
+      letter-spacing: 0.12em; text-transform: uppercase; color: var(--royal);
+      padding: 0.35rem 0.9rem; border-radius: var(--radius-pill);
+      background: rgba(36, 102, 173, 0.08); border: 1px solid rgba(36, 102, 173, 0.16);
+      width: fit-content;
+    }
+    .eyebrow::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--royal); }
+
+    .display {
+      font-family: var(--font-display); font-size: clamp(2.15rem, 4.1vw, 3.55rem);
+      font-weight: 600; line-height: 1.09; letter-spacing: -0.025em; color: var(--deep);
+    }
+
+    .h2 {
+      font-family: var(--font-display); font-size: clamp(1.75rem, 3vw, 2.55rem);
+      font-weight: 600; line-height: 1.15; letter-spacing: -0.02em; color: var(--deep);
+    }
+
+    .highlight-marker { font-style: italic; font-weight: 400; color: var(--royal); position: relative; display: inline-block; }
+    .highlight-marker::after {
+      content: ''; position: absolute; left: -2%; right: -2%; bottom: 6%; height: 28%;
+      background: rgba(255, 197, 27, 0.38); z-index: -1; border-radius: 4px;
+    }
+
+    .lede { font-size: clamp(0.98rem, 1.25vw, 1.1rem); color: var(--muted); line-height: 1.68; max-width: 60ch; }
+
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;
+      padding: 0.72rem 1.4rem; border-radius: var(--radius-pill);
+      font-size: 0.88rem; font-weight: 600; transition: all 0.28s var(--ease);
+      white-space: nowrap; min-height: 44px;
+    }
+    .btn svg { width: 16px; height: 16px; transition: transform 0.28s var(--ease); }
+    .btn:hover svg { transform: translateX(3px); }
+    .btn--primary { background: var(--royal); color: var(--white); box-shadow: 0 8px 20px -4px rgba(36, 102, 173, 0.35); }
+    .btn--primary:hover { background: var(--royal-dark); transform: translateY(-2px); }
+    .btn--yellow { background: var(--yellow); color: var(--deep); font-weight: 700; box-shadow: 0 10px 24px -4px rgba(255, 197, 27, 0.4); }
+    .btn--yellow:hover { background: #FFD34E; transform: translateY(-2px); }
+    .btn--ghost { background: var(--white); color: var(--deep); border: 1.5px solid var(--line); }
+    .btn--ghost:hover { border-color: var(--royal); color: var(--royal); background: rgba(36, 102, 173, 0.04); }
+
+    /* Unified Header + Smart Scroll Reveal */
+    .site-header {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      background: rgba(255, 255, 255, 0.94);
+      backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--line);
+      padding-top: env(safe-area-inset-top, 0px);
+      transform: translate3d(0, 0, 0);
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.25s ease, box-shadow 0.25s ease;
+      will-change: transform;
+    }
+    .site-header.is-scrolled { background: rgba(255, 255, 255, 0.98); box-shadow: 0 4px 20px -4px rgba(16, 47, 75, 0.08); }
+    .site-header.is-hidden { transform: translate3d(0, -105%, 0); }
+    .site-header:focus-within { transform: translate3d(0, 0, 0); }
+    .header-inner { display: flex; align-items: center; justify-content: space-between; height: 72px; gap: 1.25rem; }
+    .brand { display: flex; align-items: center; flex-shrink: 0; }
+    .brand img { height: 36px; width: auto; }
+    .main-nav { display: flex; align-items: center; gap: 1.4rem; }
+    .main-nav a {
+      font-size: 0.86rem; font-weight: 500; color: var(--muted);
+      position: relative; padding: 0.4rem 0; transition: color 0.25s ease; white-space: nowrap;
+    }
+    .main-nav a:hover, .main-nav a[aria-current="page"] { color: var(--royal); }
+    .main-nav a[aria-current="page"] { font-weight: 600; }
+    .main-nav a::after {
+      content: ''; position: absolute; left: 0; bottom: -2px; width: 100%; height: 2.5px;
+      background: var(--yellow); border-radius: 999px; transform: scaleX(0);
+      transform-origin: left; transition: transform 0.32s var(--ease);
+    }
+    .main-nav a:hover::after, .main-nav a[aria-current="page"]::after { transform: scaleX(1); }
+    .header-actions { display: flex; align-items: center; gap: 0.75rem; flex-shrink: 0; }
+    .header-login { font-size: 0.86rem; font-weight: 600; color: var(--deep); padding: 0.45rem 0.9rem; border-radius: var(--radius-pill); }
+    .header-login:hover { background: rgba(36, 102, 173, 0.08); color: var(--royal); }
+    .header-cta { padding: 0.56rem 1.15rem; font-size: 0.84rem; min-height: 40px; }
+    .menu-toggle {
+      display: none; flex-direction: column; justify-content: center; align-items: center;
+      width: 40px; height: 40px; gap: 5px; border-radius: var(--radius-sm);
+    }
+    .menu-toggle span { display: block; width: 22px; height: 2px; background: var(--deep); border-radius: 2px; transition: transform 0.3s ease, opacity 0.3s ease; }
+    .menu-toggle.is-open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .menu-toggle.is-open span:nth-child(2) { opacity: 0; }
+    .menu-toggle.is-open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .mobile-nav {
+      position: fixed; inset: 72px 0 0 0; background: var(--white); z-index: 999;
+      padding: 1.5rem; display: flex; flex-direction: column; gap: 0.45rem;
+      transform: translateX(100%); transition: transform 0.35s var(--ease); overflow-y: auto;
+    }
+    .mobile-nav.is-open { transform: translateX(0); }
+    .mobile-nav a { padding: 0.85rem 1rem; border-radius: var(--radius); font-size: 1rem; font-weight: 500; color: var(--deep); }
+    .mobile-nav a[aria-current="page"] { background: var(--light-blue); color: var(--royal); font-weight: 700; }
+    .mobile-actions { margin-top: 1rem; padding-top: 1.25rem; border-top: 1px solid var(--line); display: flex; flex-direction: column; gap: 0.75rem; }
+    @media (max-width: 1180px) { .main-nav { gap: 1rem; } .main-nav a { font-size: 0.82rem; } }
+    @media (max-width: 1040px) { .main-nav, .header-login { display: none; } .menu-toggle { display: flex; } }
+
+    /* ============================================================
+       ABOUT HERO
+       ============================================================ */
+    .about-hero {
+      padding: clamp(2.5rem, 4.5vw, 3.75rem) 0;
+      background: linear-gradient(180deg, #FFFFFF 0%, #F3F7FD 100%);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .about-hero-grid {
+      display: grid;
+      grid-template-columns: 1.08fr 0.92fr;
+      align-items: center;
+      gap: clamp(2rem, 4vw, 3.75rem);
+    }
+
+    .about-hero-copy .eyebrow { margin-bottom: 1rem; }
+    .about-hero-copy .display { margin-bottom: 1rem; }
+    .about-hero-copy .lede { margin-bottom: 1.65rem; }
+
+    .about-hero-frame {
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      aspect-ratio: 16 / 11;
+      box-shadow: 0 24px 55px -18px rgba(16, 47, 75, 0.24);
+      border: 1px solid rgba(16, 47, 75, 0.1);
+      position: relative;
+    }
+    .about-hero-frame img { width: 100%; height: 100%; object-fit: cover; object-position: center 25%; }
+
+    .about-hero-badge {
+      position: absolute; bottom: 1rem; left: 1rem; right: 1rem;
+      background: rgba(16, 47, 75, 0.86); backdrop-filter: blur(10px);
+      color: var(--white); padding: 0.75rem 1rem; border-radius: var(--radius);
+      border: 1px solid rgba(255, 255, 255, 0.18); font-size: 0.82rem;
+    }
+    .about-hero-badge strong { color: var(--yellow); }
+
+    @media (max-width: 960px) { .about-hero-grid { grid-template-columns: 1fr; } }
+
+    /* ============================================================
+       MISSION, VISION & WHY WE EXIST
+       ============================================================ */
+    .story-section {
+      padding: clamp(2.75rem, 5vw, 4.25rem) 0;
+      background: var(--white);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .mv-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .mv-card {
+      border-radius: var(--radius-lg);
+      padding: clamp(1.6rem, 3vw, 2.25rem);
+      border: 1px solid var(--line);
+    }
+
+    .mv-card--mission {
+      background: var(--deep);
+      color: var(--white);
+      border-color: transparent;
+    }
+
+    .mv-card--vision {
+      background: var(--light-blue);
+      color: var(--deep);
+      border-color: rgba(36, 102, 173, 0.18);
+    }
+
+    .mv-tag {
+      font-family: var(--font-label); font-size: 0.72rem; font-weight: 700;
+      letter-spacing: 0.12em; text-transform: uppercase; display: inline-block; margin-bottom: 0.75rem;
+    }
+    .mv-card--mission .mv-tag { color: var(--yellow); }
+    .mv-card--vision .mv-tag { color: var(--royal); }
+
+    .mv-card h2 {
+      font-family: var(--font-display); font-size: clamp(1.45rem, 2.2vw, 1.9rem);
+      line-height: 1.22; margin-bottom: 0.75rem;
+    }
+
+    .mv-card p { font-size: 0.95rem; line-height: 1.65; }
+    .mv-card--mission p { color: rgba(255, 255, 255, 0.82); }
+    .mv-card--vision p { color: var(--muted); }
+
+    .principles-head { max-width: 700px; margin-bottom: 1.75rem; }
+    .principles-head .eyebrow { margin-bottom: 0.75rem; }
+    .principles-head .h2 { margin-bottom: 0.6rem; }
+
+    .principles-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.25rem;
+    }
+
+    .principle-card {
+      background: var(--bg);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease);
+    }
+    .principle-card:hover { transform: translateY(-4px); background: var(--white); box-shadow: var(--shadow-card); }
+    .principle-num {
+      font-family: var(--font-label); font-size: 0.76rem; font-weight: 700;
+      color: var(--royal); background: var(--light-blue);
+      padding: 0.25rem 0.65rem; border-radius: 6px; display: inline-block; margin-bottom: 0.85rem;
+    }
+    .principle-card h3 { font-family: var(--font-display); font-size: 1.15rem; color: var(--deep); margin-bottom: 0.45rem; }
+    .principle-card p { font-size: 0.88rem; color: var(--muted); line-height: 1.55; }
+
+    @media (max-width: 1024px) { .principles-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 720px) { .mv-grid, .principles-grid { grid-template-columns: 1fr; } }
+
+    /* ============================================================
+       ECOSYSTEM MODEL & FIELD PROOF VISUALS
+       ============================================================ */
+    .proof-section {
+      padding: clamp(2.75rem, 5vw, 4.25rem) 0;
+      background: var(--bg);
+    }
+
+    .proof-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin-top: 1.75rem;
+    }
+
+    .proof-card {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-card);
+    }
+
+    .proof-img { aspect-ratio: 16 / 9; overflow: hidden; }
+    .proof-img img { width: 100%; height: 100%; object-fit: cover; }
+
+    .proof-body { padding: 1.5rem; }
+    .proof-meta { font-family: var(--font-label); font-size: 0.74rem; font-weight: 700; color: var(--royal); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.4rem; }
+    .proof-body h3 { font-family: var(--font-display); font-size: 1.25rem; color: var(--deep); margin-bottom: 0.5rem; }
+    .proof-body p { font-size: 0.9rem; color: var(--muted); line-height: 1.6; }
+
+    @media (max-width: 760px) { .proof-grid { grid-template-columns: 1fr; } }
+
+    .about-cta {
+      padding: clamp(2.75rem, 5vw, 4.25rem) 0;
+      background: var(--deep-2);
+      color: var(--white);
+      text-align: center;
+    }
+    .about-cta .display { color: var(--white); margin: 0.8rem 0 0.9rem; }
+    .about-cta .highlight-marker { color: var(--yellow); }
+    .about-cta .highlight-marker::after { background: rgba(255, 197, 27, 0.22); }
+    .about-cta .lede { color: rgba(255, 255, 255, 0.78); margin: 0 auto 1.65rem; }
+    .about-cta-btns { display: flex; justify-content: center; flex-wrap: wrap; gap: 0.85rem; }
+
+    /* Unified Footer */
+    .site-footer {
+      background: var(--deep); color: var(--white);
+      padding: clamp(3rem, 5vw, 4rem) 0 max(2rem, env(safe-area-inset-bottom, 20px));
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .footer-top {
+      display: grid; grid-template-columns: minmax(0, 1.4fr) repeat(3, minmax(0, 0.7fr));
+      gap: 2.5rem; padding-bottom: 2.5rem; border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    }
+    .footer-brand-logo {
+      display: inline-flex; align-items: center; background: var(--white);
+      padding: 0.45rem 0.85rem; border-radius: 10px;
+      border: 1.5px solid rgba(255, 255, 255, 0.92);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.22); margin-bottom: 1.1rem;
+    }
+    .footer-brand img { height: 32px; width: auto; display: block; }
+    .footer-brand p { font-size: 0.82rem; line-height: 1.6; color: rgba(255, 255, 255, 0.65); max-width: 34ch; }
+    .footer-col h4 {
+      font-family: var(--font-label); font-size: 0.68rem; letter-spacing: 0.14em;
+      text-transform: uppercase; color: rgba(255, 255, 255, 0.52); margin-bottom: 1rem; font-weight: 600;
+    }
+    .footer-col a { display: block; font-size: 0.86rem; color: rgba(255, 255, 255, 0.78); margin-bottom: 0.6rem; transition: color 0.2s ease, transform 0.2s ease; }
+    .footer-col a:hover { color: var(--yellow); transform: translateX(3px); }
+    .footer-bottom {
+      padding-top: 1.75rem; display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 1rem; font-size: 0.8rem; color: rgba(255, 255, 255, 0.55);
+    }
+    .footer-socials { display: flex; gap: 0.75rem; }
+    .footer-socials a {
+      width: 36px; height: 36px; border-radius: 50%; background: rgba(255, 255, 255, 0.08);
+      color: var(--white); display: flex; align-items: center; justify-content: center;
+    }
+    .footer-socials a:hover { background: var(--yellow); color: var(--deep); }
+    .footer-socials svg { width: 16px; height: 16px; }
+    @media (max-width: 860px) { .footer-top { grid-template-columns: 1fr 1fr; } .footer-brand { grid-column: span 2; } }
+    @media (max-width: 520px) { .footer-top { grid-template-columns: 1fr; gap: 1.75rem; } .footer-brand { grid-column: span 1; } }
+  </style>
+</head>
+
+<body>
+  <div id="scroll-progress" aria-hidden="true"></div>
+
+  <!-- Unified Header -->
+  <header class="site-header" id="siteHeader">
+    <div class="container header-inner">
+      <a href="index.html" class="brand" aria-label="My Mentor Circle Home">
+        <img src="images/fullLogo.png" alt="My Mentor Circle" width="172" height="40" />
+      </a>
+
+      <nav class="main-nav" aria-label="Primary">
+        <a href="index.html">Home</a>
+        <a href="gallery.html">Events Catalogue</a>
+        <a href="student-experience.html">Student Experience</a>
+        <a href="universities.html">For Universities &amp; EdTech Partners</a>
+        <a href="about.html" aria-current="page">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+
+      <div class="header-actions">
+        <a href="/login" class="header-login">Login</a>
+        <a href="/register?role=school" class="btn btn--primary header-cta">
+          Register
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round" aria-hidden="true">
+            <line x1="5" y1="12" x2="19" y2="12" />
+            <polyline points="12 5 19 12 12 19" />
+          </svg>
+        </a>
+        <button type="button" class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false"
+          aria-controls="mobileNav">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <nav class="mobile-nav" id="mobileNav" aria-label="Mobile">
+    <a href="index.html">Home</a>
+    <a href="gallery.html">Events Catalogue</a>
+    <a href="student-experience.html">Student Experience</a>
+    <a href="universities.html">For Universities &amp; EdTech Partners</a>
+    <a href="about.html" aria-current="page">About</a>
+    <a href="contact.html">Contact</a>
+    <div class="mobile-actions">
+      <a href="/login" class="btn btn--ghost">Login</a>
+      <a href="/register?role=school" class="btn btn--primary">Register</a>
+    </div>
+  </nav>
+
+  <main>
+    <!-- Hero -->
+    <section class="about-hero">
+      <div class="container">
+        <div class="about-hero-grid">
+          <div class="about-hero-copy">
+            <span class="eyebrow">About My Mentor Circle</span>
+            <h1 class="display">Built Around Schools. <em class="highlight-marker">Driven by Student Futures.</em></h1>
+            <p class="lede">
+              My Mentor Circle (MMC) is a school-first educational events marketplace created to make career fairs,
+              university interactions, hands-on STEM workshops, and student development sessions effortless for schools
+              — while keeping every participation decision firmly in the school's hands.
+            </p>
+            <div style="display: flex; flex-wrap: wrap; gap: 0.85rem;">
+              <a href="gallery.html" class="btn btn--primary">Explore Events Catalogue</a>
+              <a href="contact.html" class="btn btn--ghost">Connect with Us</a>
+            </div>
+          </div>
+
+          <div class="about-hero-frame">
+            <img src="images/in-campus-lecture-session.jpg"
+              alt="Indian educator leading an interactive campus seminar for attentive students" />
+            <div class="about-hero-badge">
+              <strong>School-First Model:</strong> Schools host &amp; approve every event; MMC coordinates the ecosystem seamlessly.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Mission, Vision & Core Principles -->
+    <section class="story-section" aria-labelledby="principles-heading">
+      <div class="container">
+        <div class="mv-grid">
+          <article class="mv-card mv-card--mission">
+            <span class="mv-tag">Our Mission</span>
+            <h2>Bring Real-World Academic &amp; Career Discovery Inside Every School Campus.</h2>
+            <p>
+              Students shouldn't wait until after board exams to discover what careers, degrees, and skills exist. We
+              empower school principals and counsellors to curate high-value educational events — at zero platform cost
+              to the school.
+            </p>
+          </article>
+
+          <article class="mv-card mv-card--vision">
+            <span class="mv-tag">Our Vision</span>
+            <h2>India's Most Trusted Ecosystem Connecting Schools, Universities &amp; Mentors.</h2>
+            <p>
+              A transparent, structured bridge where K–12 schools retain complete campus governance, universities engage
+              respectfully and authentically, and millions of students graduate with wider horizons and clearer choices.
+            </p>
+          </article>
+        </div>
+
+        <div class="principles-head">
+          <span class="eyebrow">How We Operate</span>
+          <h2 class="h2" id="principles-heading">Four Principles Behind <em class="highlight-marker">Every MMC Event.</em></h2>
+        </div>
+
+        <div class="principles-grid">
+          <article class="principle-card">
+            <span class="principle-num">01</span>
+            <h3>100% Free for Schools</h3>
+            <p>Zero subscriptions, zero hidden charges. Schools create, publish, and host events on MMC completely free.</p>
+          </article>
+          <article class="principle-card">
+            <span class="principle-num">02</span>
+            <h3>School-Led Governance</h3>
+            <p>Principals and academic coordinators approve every university, mentor, and partner before anyone steps on campus.</p>
+          </article>
+          <article class="principle-card">
+            <span class="principle-num">03</span>
+            <h3>Verified Ecosystem</h3>
+            <p>We work with accredited universities, structured EdTech partners, and credible trainers aligned with student wellbeing.</p>
+          </article>
+          <article class="principle-card">
+            <span class="principle-num">04</span>
+            <h3>End-to-End Coordination</h3>
+            <p>From scheduling and partner matching to on-ground event flow, MMC reduces administrative workload for school staff.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Real-World Track Record -->
+    <section class="proof-section" aria-labelledby="proof-heading">
+      <div class="container">
+        <span class="eyebrow" style="margin-bottom: 0.75rem;">Real-World Proof</span>
+        <h2 class="h2" id="proof-heading">Grounded in <em class="highlight-marker">Real Campus Impact.</em></h2>
+
+        <div class="proof-grid">
+          <article class="proof-card">
+            <div class="proof-img">
+              <img src="images/in-robotics-mentors-team.jpg" alt="Indian students and mentors collaborating around a student-built robotics project" loading="lazy" />
+            </div>
+            <div class="proof-body">
+              <div class="proof-meta">Applied Learning &bull; STEM &amp; Mentorship</div>
+              <h3>Hands-On Innovation Beyond Textbooks</h3>
+              <p>We connect schools with domain practitioners, university robotics clubs, and EdTech trainers so students experience real engineering, design, and problem-solving inside their own campus.</p>
+            </div>
+          </article>
+
+          <article class="proof-card">
+            <div class="proof-img">
+              <img src="images/in-university-green-campus.jpg" alt="Lush academic block at a leading Indian university campus" loading="lazy" />
+            </div>
+            <div class="proof-body">
+              <div class="proof-meta">Higher Education Bridge &bull; Pan-India</div>
+              <h3>Connecting K–12 Schools With Leading Campuses</h3>
+              <p>From multi-school career discovery series to faculty guest lectures, MMC builds transparent, principal-approved bridges between Indian high schools and accredited universities.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="about-cta">
+      <div class="container">
+        <span class="eyebrow" style="background: rgba(255,197,27,0.16); border-color: rgba(255,197,27,0.3); color: var(--yellow);">Partner With MMC</span>
+        <h2 class="display">Let's Build Bigger Horizons <em class="highlight-marker">Together.</em></h2>
+        <p class="lede">Whether you lead a K–12 school or represent a university or EdTech organisation, we'd love to collaborate.</p>
+        <div class="about-cta-btns">
+          <a href="/register?role=school" class="btn btn--yellow">Register Your School — Free</a>
+          <a href="universities.html" class="btn btn--ghost" style="background: transparent; color: #fff; border-color: rgba(255,255,255,0.28);">For Universities &amp; Partners</a>
+          <a href="contact.html" class="btn btn--primary">Contact Us</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Unified Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a href="index.html" class="footer-brand-logo" aria-label="My Mentor Circle Home">
+            <img src="images/fullLogo.png" alt="My Mentor Circle" width="172" height="40" loading="lazy" />
+          </a>
+          <p>
+            A school-first event marketplace connecting schools, universities and education partners through structured
+            educational events.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Platform</h4>
+          <a href="index.html#register">For Schools</a>
+          <a href="universities.html">For Universities &amp; EdTech Partners</a>
+          <a href="gallery.html">Events Catalogue</a>
+          <a href="student-experience.html">Student Experience</a>
+          <a href="/register?role=school">Register Your School</a>
+        </div>
+
+        <div class="footer-col">
+          <h4>Explore</h4>
+          <a href="index.html">Home</a>
+          <a href="about.html">About Us</a>
+          <a href="index.html#partners-network">Partner Network</a>
+          <a href="index.html#how-it-works">How It Works</a>
+          <a href="index.html#engagement">Real Engagement</a>
+        </div>
+
+        <div class="footer-col">
+          <h4>Contact &amp; Legal</h4>
+          <a href="contact.html">Contact Us</a>
+          <a href="/privacy">Privacy Policy</a>
+          <a href="/terms">Terms of Service</a>
+          <a href="/safety">Campus Safety Guidelines</a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; <span id="year">2026</span> My Mentor Circle. All rights reserved.</p>
+        <div class="footer-socials" aria-label="Social media links">
+          <a href="https://www.linkedin.com/company/my-mentor-circle" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+          </a>
+          <a href="https://twitter.com/mymentorcircle" target="_blank" rel="noopener noreferrer" aria-label="Twitter / X">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          </a>
+          <a href="https://www.instagram.com/mymentorcircle" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          </a>
+          <a href="https://www.youtube.com/@mymentorcircle" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const header = document.getElementById('siteHeader');
+    const scrollBar = document.getElementById('scroll-progress');
+    const menuToggle = document.getElementById('menuToggle');
+    const mobileNav = document.getElementById('mobileNav');
+    let lastScrollY = window.scrollY;
+    let scrollTicking = false;
+    function syncHeaderScroll() {
+      const y = Math.max(0, window.scrollY);
+      header.classList.toggle('is-scrolled', y > 12);
+      const isDrawerOpen = mobileNav && mobileNav.classList.contains('is-open');
+      if (y <= 72 || isDrawerOpen) {
+        header.classList.remove('is-hidden');
+      } else if (y > lastScrollY + 6) {
+        header.classList.add('is-hidden');
+      } else if (y < lastScrollY - 2) {
+        header.classList.remove('is-hidden');
+      }
+      lastScrollY = y;
+      const h = document.documentElement.scrollHeight - window.innerHeight;
+      if (h > 0 && scrollBar) scrollBar.style.width = Math.min(100, (y / h) * 100).toFixed(2) + '%';
+      scrollTicking = false;
+    }
+    window.addEventListener('scroll', () => {
+      if (!scrollTicking) {
+        scrollTicking = true;
+        requestAnimationFrame(syncHeaderScroll);
+      }
+    }, { passive: true });
+    syncHeaderScroll();
+
+    menuToggle.addEventListener('click', () => {
+      const open = mobileNav.classList.toggle('is-open');
+      menuToggle.classList.toggle('is-open', open);
+      if (open) header.classList.remove('is-hidden');
+      menuToggle.setAttribute('aria-expanded', String(open));
+    });
+    mobileNav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+      mobileNav.classList.remove('is-open');
+      menuToggle.classList.remove('is-open');
+      menuToggle.setAttribute('aria-expanded', 'false');
+    }));
+  </script>
+</body>
+
+</html>

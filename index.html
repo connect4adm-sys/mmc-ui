@@ -731,6 +731,7 @@
     }
 
     @media (max-width: 1040px) {
+
       .main-nav,
       .header-login {
         display: none;
@@ -988,6 +989,12 @@
       animation-delay: -4s;
     }
 
+    .hero-float--d {
+      bottom: 6%;
+      left: 30%;
+      animation-delay: -3s;
+    }
+
     @keyframes float {
 
       0%,
@@ -1068,6 +1075,11 @@
       .hero-float--c {
         top: 44%;
         left: 14%;
+      }
+
+      .hero-float--d {
+        bottom: 4%;
+        left: 3%;
       }
     }
 
@@ -3249,26 +3261,54 @@
       }
     }
 
-    /* 24. Marquee Page Border / Running Ticker */
+    /* 24. Interactive School Event Categories Marquee Strip + Hover Flyout */
+    .marquee-wrap {
+      position: relative;
+      z-index: 60;
+      overflow: visible;
+    }
+
     .marquee-ticker {
       background: var(--deep);
       color: var(--white);
       overflow: hidden;
-      padding: 0.9rem 0;
-      border-top: 1px solid rgba(255, 212, 63, 0.22);
-      border-bottom: 1px solid rgba(255, 212, 63, 0.22);
+      padding: 0.72rem 0;
+      border-top: 1px solid rgba(255, 197, 27, 0.24);
+      border-bottom: 1px solid rgba(255, 197, 27, 0.24);
       position: relative;
-      z-index: 5;
+      z-index: 2;
+      -webkit-mask-image: linear-gradient(to right, transparent 0%, #000 3%, #000 97%, transparent 100%);
+      mask-image: linear-gradient(to right, transparent 0%, #000 3%, #000 97%, transparent 100%);
     }
 
     .marquee-track {
       display: flex;
+      align-items: center;
       width: max-content;
-      animation: marqueeScroll 32s linear infinite;
+      animation: marqueeScroll 96s linear infinite;
+      will-change: transform;
     }
 
-    .marquee-ticker:hover .marquee-track {
+    .marquee-wrap:hover .marquee-track,
+    .marquee-wrap.is-open .marquee-track,
+    .marquee-wrap:focus-within .marquee-track {
       animation-play-state: paused;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .marquee-ticker {
+        overflow-x: auto;
+        -webkit-mask-image: none;
+        mask-image: none;
+      }
+
+      .marquee-track {
+        animation: none;
+      }
+
+      .marquee-content[aria-hidden="true"] {
+        display: none;
+      }
     }
 
     @keyframes marqueeScroll {
@@ -3283,31 +3323,311 @@
 
     .marquee-content {
       display: flex;
-      gap: 3rem;
-      padding-right: 3rem;
-      font-family: var(--font-label);
-      font-size: 0.72rem;
-      font-weight: 500;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: rgba(255, 255, 255, 0.88);
+      align-items: center;
+      gap: 1.15rem;
+      padding-right: 1.15rem;
       white-space: nowrap;
+      flex-shrink: 0;
     }
 
-    .marquee-content span {
+    .marquee-cat-btn {
       display: inline-flex;
       align-items: center;
-      gap: 0.5rem;
-      transition: color 0.25s ease, transform 0.25s ease;
+      gap: 0.45rem;
+      padding: 0.42rem 0.92rem;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      color: var(--white);
+      font-family: var(--font-sans);
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+      cursor: pointer;
+      transition: background-color 0.22s var(--ease), color 0.22s var(--ease), border-color 0.22s var(--ease), transform 0.22s var(--ease), box-shadow 0.22s var(--ease);
     }
 
-    .marquee-content span strong {
-      color: var(--yellow);
+    .marquee-cat-btn svg {
+      width: 13px;
+      height: 13px;
+      opacity: 0.72;
+      transition: transform 0.25s var(--ease), opacity 0.2s ease;
+      flex-shrink: 0;
     }
 
-    .marquee-content span:hover {
+    .marquee-cat-btn:hover,
+    .marquee-cat-btn:focus-visible,
+    .marquee-cat-btn.is-active {
+      background: var(--yellow);
+      border-color: var(--yellow);
+      color: var(--deep);
+      box-shadow: 0 6px 18px -4px rgba(255, 197, 27, 0.55);
+      transform: translateY(-1px);
+      outline: none;
+    }
+
+    .marquee-cat-btn:hover svg,
+    .marquee-cat-btn.is-active svg {
+      opacity: 1;
+      transform: rotate(180deg);
+    }
+
+    .marquee-free-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      font-family: var(--font-label);
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.78);
+      padding-inline: 0.25rem;
+      user-select: none;
+    }
+
+    .marquee-free-tag strong {
       color: var(--yellow);
-      transform: scale(1.05);
+      font-weight: 700;
+    }
+
+    /* Floating Category Events Flyout Panel */
+    .marquee-flyout {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      padding: 0.6rem clamp(0.85rem, 3.5vw, 2.5rem) 0;
+      z-index: 65;
+      pointer-events: none;
+      opacity: 0;
+      visibility: hidden;
+      transform: translate3d(0, -10px, 0);
+      transition: opacity 0.24s var(--ease), transform 0.28s var(--ease), visibility 0.24s ease;
+    }
+
+    .marquee-wrap.is-open .marquee-flyout {
+      pointer-events: auto;
+      opacity: 1;
+      visibility: visible;
+      transform: translate3d(0, 0, 0);
+    }
+
+    .marquee-flyout-card {
+      width: 100%;
+      max-width: 1240px;
+      margin-inline: auto;
+      background: var(--white);
+      border: 1px solid rgba(16, 47, 75, 0.14);
+      border-radius: 20px;
+      box-shadow: 0 28px 64px -18px rgba(11, 29, 46, 0.28), 0 4px 14px -2px rgba(16, 47, 75, 0.08);
+      overflow: hidden;
+    }
+
+    .marquee-flyout-accent {
+      height: 3.5px;
+      background: linear-gradient(90deg, var(--royal), var(--yellow));
+    }
+
+    .marquee-flyout-head {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 1.15rem 1.5rem 0.95rem;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .marquee-flyout-meta {
+      display: flex;
+      align-items: center;
+      gap: 0.55rem;
+      flex-wrap: wrap;
+      margin-bottom: 0.4rem;
+    }
+
+    .marquee-flyout-idx {
+      font-family: var(--font-label);
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--royal);
+      background: var(--light-blue);
+      padding: 0.22rem 0.62rem;
+      border-radius: 999px;
+    }
+
+    .marquee-flyout-free {
+      font-family: var(--font-label);
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--deep);
+      background: rgba(255, 197, 27, 0.28);
+      padding: 0.22rem 0.68rem;
+      border-radius: 999px;
+    }
+
+    .marquee-flyout-count {
+      font-family: var(--font-label);
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: var(--muted);
+    }
+
+    .marquee-flyout-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.2rem, 1.9vw, 1.55rem);
+      font-weight: 600;
+      color: var(--deep);
+      line-height: 1.2;
+      margin: 0;
+    }
+
+    .marquee-flyout-close {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: #F3F7FD;
+      color: var(--deep);
+      font-size: 1.2rem;
+      line-height: 1;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: background-color 0.2s ease, color 0.2s ease;
+    }
+
+    .marquee-flyout-close:hover {
+      background: var(--royal);
+      color: var(--white);
+    }
+
+    .marquee-flyout-list {
+      list-style: none;
+      margin: 0;
+      padding: 1.1rem 1.5rem 1.25rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(235px, 1fr));
+      gap: 0.6rem;
+      max-height: min(48vh, 330px);
+      overflow-y: auto;
+    }
+
+    .marquee-event-item {
+      display: flex;
+      align-items: center;
+      gap: 0.55rem;
+      padding: 0.56rem 0.85rem;
+      background: #F8FAFD;
+      border: 1px solid rgba(16, 47, 75, 0.08);
+      border-radius: 10px;
+      font-size: 0.83rem;
+      font-weight: 500;
+      color: var(--deep);
+      line-height: 1.35;
+      transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+    }
+
+    .marquee-event-item::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--royal);
+      flex-shrink: 0;
+    }
+
+    .marquee-event-item:hover {
+      background: var(--light-blue);
+      border-color: rgba(36, 102, 173, 0.25);
+      color: var(--royal);
+      transform: translateX(2px);
+    }
+
+    .marquee-flyout-foot {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.85rem 1.25rem;
+      flex-wrap: wrap;
+      padding: 0.85rem 1.5rem;
+      background: #F4F8FD;
+      border-top: 1px solid var(--line);
+    }
+
+    .marquee-flyout-foot p {
+      margin: 0;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .marquee-flyout-foot strong {
+      color: var(--deep);
+    }
+
+    .marquee-flyout-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      flex-wrap: wrap;
+    }
+
+    .marquee-flyout-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.48rem 1rem;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      transition: transform 0.2s ease, background-color 0.2s ease;
+    }
+
+    .marquee-flyout-cta--primary {
+      background: var(--royal);
+      color: var(--white);
+    }
+
+    .marquee-flyout-cta--primary:hover {
+      background: var(--royal-dark);
+      transform: translateY(-1px);
+    }
+
+    .marquee-flyout-cta--ghost {
+      background: var(--white);
+      color: var(--deep);
+      border: 1px solid var(--line);
+    }
+
+    .marquee-flyout-cta--ghost:hover {
+      border-color: var(--royal);
+      color: var(--royal);
+    }
+
+    @media (max-width: 640px) {
+      .marquee-cat-btn {
+        font-size: 0.73rem;
+        padding: 0.36rem 0.76rem;
+      }
+
+      .marquee-free-tag {
+        font-size: 0.62rem;
+      }
+
+      .marquee-flyout-head,
+      .marquee-flyout-list,
+      .marquee-flyout-foot {
+        padding-inline: 1rem;
+      }
+
+      .marquee-flyout-list {
+        grid-template-columns: 1fr;
+        max-height: 44vh;
+      }
     }
 
     /* 42. Highlight Text on Scroll */
@@ -4368,7 +4688,7 @@
         <a href="index.html" aria-current="page">Home</a>
         <a href="gallery.html">Events Catalogue</a>
         <a href="student-experience.html">Student Experience</a>
-        <a href="universities.html">For Universities &amp; EdTech Partners</a>
+        <a href="universities.html">For Universities &amp; Ed-Tech Partners</a>
         <a href="about.html">About</a>
         <a href="contact.html">Contact</a>
       </nav>
@@ -4396,7 +4716,7 @@
     <a href="index.html" aria-current="page">Home</a>
     <a href="gallery.html">Events Catalogue</a>
     <a href="student-experience.html">Student Experience</a>
-    <a href="universities.html">For Universities &amp; EdTech Partners</a>
+    <a href="universities.html">For Universities &amp; Ed-Tech Partners</a>
     <a href="about.html">About</a>
     <a href="contact.html">Contact</a>
     <div class="mobile-actions">
@@ -4415,9 +4735,9 @@
       <div class="container">
         <div class="hero-grid">
           <div class="hero-copy">
-            <span class="eyebrow anim d1">Built for Schools &amp; Partners (Universities & EdTech Partners)</span>
+            <span class="eyebrow anim d1">Built for Schools, Universities &amp; Educational Institutions</span>
             <h1 class="display anim d2" id="hero-title">
-              More Opportunities.<br /><em class="highlight-marker">Bigger Horizons.</em>
+              We sponsor Educational<br /><em class="highlight-marker">Events.</em>
             </h1>
             <p class="lede anim d3">
               Give your students more opportunities to explore careers, meet experts and experience learning beyond the
@@ -4454,17 +4774,18 @@
               <span>
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                   stroke-linejoin="round" aria-hidden="true">
-                  <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
-                  <polyline points="22 4 12 14.01 9 11.01" />
+                  <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
                 </svg>
-                School-Led Decisions
+                Tailor-Made Educational Events
+              </span>
+
               </span>
             </div>
           </div>
 
           <div class="hero-collage anim-scale d3" aria-hidden="true">
             <div class="hero-frame hero-frame--tertiary" data-parallax="0.06">
-              <img src="images/Indian school students collaborative learning teacher.png"
+              <img src="images/Indian school career guidance seminar.png"
                 alt="Indian school students collaborating with teacher" loading="eager" width="1936" height="1288" />
             </div>
             <div class="hero-frame hero-frame--main" data-parallax="0.12">
@@ -4473,8 +4794,8 @@
                 height="493" />
             </div>
             <div class="hero-frame hero-frame--secondary" data-parallax="0.08">
-              <img src="images/Indian school students classroom seminar participation.png"
-                alt="Indian school student participating actively in classroom seminar" loading="eager" width="634"
+              <img src="images/school-event-hero-home.png"
+                alt="Indian school students participating in an annual school event" loading="eager" width="634"
                 height="360" />
             </div>
 
@@ -4494,7 +4815,7 @@
                 <path d="M12 20h9" />
                 <path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z" />
               </svg>
-              Hands-On Workshops
+              Hands on experience
             </div>
             <div class="hero-float hero-float--c">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -4503,6 +4824,14 @@
                 <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88" />
               </svg>
               Olympiads &amp; MUNs
+            </div>
+            <div class="hero-float hero-float--d">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round" aria-hidden="true">
+                <polygon
+                  points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+              </svg>
+              Annual Events
             </div>
 
             <span class="hero-annotation hero-annotation--left">School-owned events</span>
@@ -4513,24 +4842,45 @@
     </section>
 
     <!-- ============================================================
-         RUNNING MARQUEE TICKER (CLEAN & SCHOOL-FOCUSED)
+         INTERACTIVE EVENT CATEGORIES MARQUEE STRIP + HOVER FLYOUT
          ============================================================ -->
-    <div class="marquee-ticker" aria-hidden="true">
-      <div class="marquee-track">
-        <div class="marquee-content">
-          <span>★ <strong>100% Free</strong> for Schools</span>
-          <span>★ School-Led Decisions</span>
-          <span>★ Real-World Student Exposure</span>
-          <span>★ Full Coordination Support</span>
-        </div>
-        <div class="marquee-content" aria-hidden="true">
-          <span>★ <strong>100% Free</strong> for Schools</span>
-          <span>★ School-Led Decisions</span>
-          <span>★ Real-World Student Exposure</span>
-          <span>★ Full Coordination Support</span>
+    <div class="marquee-wrap" id="eventMarqueeWrap" role="region" aria-label="School Event Categories">
+      <div class="marquee-ticker">
+        <div class="marquee-track" id="eventMarqueeTrack">
+          <div class="marquee-content" id="eventMarqueePrimary"></div>
+          <div class="marquee-content" id="eventMarqueeClone" aria-hidden="true"></div>
         </div>
       </div>
-    </div>
+
+      <!-- Hover / Tap Category Events Flyout Panel -->
+      <div class="marquee-flyout" id="eventMarqueeFlyout" role="region" aria-live="polite"
+        aria-labelledby="marqueeFlyoutTitle">
+        <div class="marquee-flyout-card">
+          <div class="marquee-flyout-accent" aria-hidden="true"></div>
+          <div class="marquee-flyout-head">
+            <div>
+              <div class="marquee-flyout-meta">
+                <span class="marquee-flyout-idx" id="marqueeFlyoutIdx">Category 01 / 13</span>
+                <span class="marquee-flyout-free">&#9733; 100% Free for Schools</span>
+                <span class="marquee-flyout-count" id="marqueeFlyoutCount"></span>
+              </div>
+              <h3 class="marquee-flyout-title" id="marqueeFlyoutTitle">School Event Categories</h3>
+            </div>
+            <button type="button" class="marquee-flyout-close" id="marqueeFlyoutClose"
+              aria-label="Close event list">&times;</button>
+          </div>
+
+          <ul class="marquee-flyout-list" id="marqueeFlyoutList"></ul>
+
+          <div class="marquee-flyout-foot">
+            <p><strong>Zero platform cost:</strong> Schools choose the format &amp; date; MMC coordinates verified partners.</p>
+            <div class="marquee-flyout-actions">
+              <a href="gallery.html" class="marquee-flyout-cta marquee-flyout-cta--ghost">Events Catalogue</a>
+              <a href="/register?role=school" class="marquee-flyout-cta marquee-flyout-cta--primary">Host This Event — Free &rarr;</a>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
     <!-- ============================================================
@@ -5104,7 +5454,7 @@
                 alt="3D illustration of university campus on an island" class="eco-island-img" loading="lazy"
                 width="600" height="600" />
             </div>
-            <div class="eco-node-pill">Universities &amp; EdTech Partners</div>
+            <div class="eco-node-pill">Universities &amp; Ed-Tech Partners</div>
             <div class="eco-node-sub">Discover school events and request participation.</div>
           </div>
         </div>
@@ -5131,8 +5481,8 @@
         <div class="network-header">
           <div class="network-head-copy">
             <span class="eyebrow anim d1">Connected Network</span>
-            <h2 class="h2 anim d2" id="partners-network-title">Partner Schools &amp; <em
-                class="highlight-marker">Connected Universities.</em></h2>
+            <h2 class="h2 anim d2" id="partners-network-title">Partner &amp; <em class="highlight-marker">Connected
+                Universities.</em></h2>
             <p class="lede anim d3">
               A growing community of forward-thinking K–12 schools, accredited universities, and education partners
               collaborating to expand student horizons across India.
@@ -5378,7 +5728,7 @@
             <div class="network-row-label">
               <span class="network-row-badge">
                 <span class="network-row-dot" aria-hidden="true"></span>
-                Connected Universities &amp; Edtech Partners
+                Connected Universities &amp; Ed-Tech Partners
               </span>
               <span class="network-row-meta">Universities • Global Campuses • Skill Partners</span>
             </div>
@@ -5588,7 +5938,7 @@
           </div>
 
           <div class="universities-copy">
-            <span class="eyebrow anim d1">For Universities &amp; EdTech Partners</span>
+            <span class="eyebrow anim d1">For Universities &amp; Ed-Tech Partners</span>
             <h2 class="h2 anim d2" id="universities-title">Take Your Institution Closer to <em
                 class="highlight-marker">Tomorrow's Students.</em></h2>
             <p class="lede anim d3">
@@ -5714,7 +6064,7 @@
 
           <div class="final-block final-block--university anim d3">
             <div>
-              <span class="final-label">FOR UNIVERSITIES &amp; EdTech Partners</span>
+              <span class="final-label">FOR UNIVERSITIES &amp; Ed-Tech Partners</span>
               <h3>Connect with school events.</h3>
               <p>Discover upcoming school-hosted fairs and request to participate.</p>
             </div>
@@ -5754,7 +6104,7 @@
         <div class="footer-col">
           <h4>Platform</h4>
           <a href="index.html#register">For Schools</a>
-          <a href="universities.html">For Universities &amp; EdTech Partners</a>
+          <a href="universities.html">For Universities &amp; Ed-Tech Partners</a>
           <a href="gallery.html">Events Catalogue</a>
           <a href="student-experience.html">Student Experience</a>
           <a href="/register?role=school">Register Your School</a>
@@ -6116,6 +6466,320 @@
             : '<rect x="6" y="4" width="4" height="16" rx="1" /><rect x="14" y="4" width="4" height="16" rx="1" />';
         });
       }
+    })();
+
+    // ============================================================
+    // 14 — INTERACTIVE EVENT CATEGORIES MARQUEE + HOVER FLYOUT
+    // ============================================================
+    (function () {
+      const wrap = document.getElementById('eventMarqueeWrap');
+      const primaryTrack = document.getElementById('eventMarqueePrimary');
+      const cloneTrack = document.getElementById('eventMarqueeClone');
+      const flyout = document.getElementById('eventMarqueeFlyout');
+      const idxEl = document.getElementById('marqueeFlyoutIdx');
+      const countEl = document.getElementById('marqueeFlyoutCount');
+      const titleEl = document.getElementById('marqueeFlyoutTitle');
+      const listEl = document.getElementById('marqueeFlyoutList');
+      const closeBtn = document.getElementById('marqueeFlyoutClose');
+      if (!wrap || !primaryTrack || !cloneTrack || !flyout) return;
+
+      const CATEGORIES = [
+        {
+          title: 'Annual Functions & School Celebrations',
+          items: [
+            'Annual Day / Annual Function',
+            'Graduation Ceremony',
+            'Kindergarten Graduation',
+            'Class 10 Farewell',
+            'Class 12 Farewell',
+            'Alumni Meet',
+            "Teachers' Day Celebration",
+            "Children's Day Celebration",
+            'Independence Day Celebration',
+            'Republic Day Celebration',
+            'National Education Day'
+          ]
+        },
+        {
+          title: 'Academic Workshops & Learning Programmes',
+          items: [
+            'Public Speaking Workshop',
+            'Communication Skills Workshop',
+            'Critical Thinking Workshop',
+            'Problem-Solving Workshop',
+            'Exam Preparation Workshop',
+            'Memory and Learning Techniques Workshop',
+            'Financial Literacy Workshop',
+            'Entrepreneurship Workshop',
+            'Design Thinking Workshop',
+            'Innovation Workshop',
+            'Digital Literacy Workshop',
+            'Artificial Intelligence Awareness Workshop',
+            'Coding Workshop',
+            'Robotics Workshop',
+            'Cyber Safety Workshop',
+            'Media Literacy Workshop',
+            'Photography Workshop',
+            'Graphic Design Workshop',
+            'Animation Workshop'
+          ]
+        },
+        {
+          title: 'Career Guidance & Student Development Events',
+          items: [
+            'Career Exploration Workshop',
+            'Career Options After Class 10',
+            'Career Options After Class 12',
+            'Stream Selection Workshop',
+            'Emerging Careers Seminar',
+            'Future Skills Workshop',
+            'Professional Skills Session',
+            'Entrepreneurship Talk',
+            'Leadership Development Workshop',
+            'Personality Development Workshop',
+            'Interview Skills Workshop',
+            'Resume Building Workshop',
+            'Goal Setting Workshop',
+            'Time Management Workshop',
+            'Decision-Making Workshop'
+          ]
+        },
+        {
+          title: 'Science, Technology & Innovation Events',
+          items: [
+            'Coding Competition',
+            'Hackathon for School Students',
+            'App Development Challenge',
+            'AI Innovation Challenge',
+            'Science Model Competition',
+            'Working Model Exhibition',
+            'Mathematics Olympiad',
+            'Science Olympiad',
+            'Astronomy Workshop',
+            'Space Science Exhibition',
+            'Robotics Exhibition',
+            'Robotics Competition',
+            'Innovation Fair',
+            'Young Innovators Challenge'
+          ]
+        },
+        {
+          title: 'Arts, Culture & Creative Events',
+          items: [
+            'Photography Competition',
+            'Theatre Workshop'
+          ]
+        },
+        {
+          title: 'Entrepreneurship & Business Events',
+          items: [
+            'Young Entrepreneur Competition',
+            'Business Plan Competition',
+            'Case Study Competition',
+            'Young Business Leaders Summit',
+            'Social Entrepreneurship Challenge',
+            'Business Idea Competition',
+            'Student Startup Exhibition'
+          ]
+        },
+        {
+          title: 'Academic Competitions & Intellectual Events',
+          items: [
+            'Academic Olympiads',
+            'Mock Parliament',
+            'Spelling Bee',
+            'Current Affairs Quiz',
+            'Debate Competition',
+            'Parliamentary Debate',
+            'Quiz Competition'
+          ]
+        },
+        {
+          title: 'Health, Safety & Wellbeing Events',
+          items: [
+            'Anti-Bullying Awareness',
+            'POSH Awareness Workshop',
+            'Personal Safety Workshop',
+            'Adolescent Health Awareness',
+            'Stress Management Workshop',
+            'Health Awareness Camp',
+            'General Health Check-up Camp'
+          ]
+        },
+        {
+          title: 'Parent Engagement & Community Events',
+          items: [
+            'Parenting Workshop',
+            'Digital Parenting Workshop',
+            'Parent Orientation'
+          ]
+        },
+        {
+          title: 'Teacher Development & School Leadership Events',
+          items: [
+            'Educator Networking Meet',
+            'Leadership Development for Teachers',
+            "Principal's Meet",
+            'School Leadership Summit',
+            'Academic Coordinator Meet',
+            'Education Conference',
+            'Teaching Methodology Workshop',
+            'Digital Teaching Tools Workshop',
+            'AI for Educators Workshop',
+            'Classroom Management Workshop',
+            'Best Teacher Recognition Event'
+          ]
+        },
+        {
+          title: 'Social Awareness & Citizenship Events',
+          items: [
+            'Legal Awareness Workshop',
+            'Digital Citizenship Workshop',
+            'Road Safety Campaign',
+            'Anti-Drug Awareness',
+            'Anti-Bullying Campaign'
+          ]
+        },
+        {
+          title: 'Educational Visits & Experiential Learning',
+          items: [
+            'University Campus Visit',
+            'Industrial Visit',
+            'Factory Visit'
+          ]
+        },
+        {
+          title: 'Fairs & Exhibitions',
+          items: [
+            'Career Fair',
+            'Book Fair'
+          ]
+        }
+      ];
+
+      const chevronSvg = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>';
+
+      function buildTrack(container, isClone) {
+        const frag = document.createDocumentFragment();
+        CATEGORIES.forEach((cat, idx) => {
+          const btn = document.createElement('button');
+          btn.type = 'button';
+          btn.className = 'marquee-cat-btn';
+          btn.dataset.catIdx = String(idx);
+          btn.setAttribute('aria-expanded', 'false');
+          if (isClone) btn.tabIndex = -1;
+          btn.innerHTML = `<span>${cat.title}</span>${chevronSvg}`;
+          frag.appendChild(btn);
+
+          const freeTag = document.createElement('span');
+          freeTag.className = 'marquee-free-tag';
+          freeTag.setAttribute('aria-hidden', 'true');
+          freeTag.innerHTML = '&#9733; <strong>100% Free for Schools</strong>';
+          frag.appendChild(freeTag);
+        });
+        container.appendChild(frag);
+      }
+
+      buildTrack(primaryTrack, false);
+      buildTrack(cloneTrack, true);
+
+      let activeIdx = -1;
+      let closeTimer = null;
+
+      function cancelClose() {
+        if (closeTimer) {
+          clearTimeout(closeTimer);
+          closeTimer = null;
+        }
+      }
+
+      function scheduleClose() {
+        cancelClose();
+        closeTimer = setTimeout(() => closeFlyout(), 160);
+      }
+
+      function setButtonStates(idx) {
+        wrap.querySelectorAll('.marquee-cat-btn').forEach(b => {
+          const isMatch = Number(b.dataset.catIdx) === idx;
+          b.classList.toggle('is-active', isMatch);
+          b.setAttribute('aria-expanded', String(isMatch));
+        });
+      }
+
+      function openFlyout(idx) {
+        cancelClose();
+        const cat = CATEGORIES[idx];
+        if (!cat) return;
+        activeIdx = idx;
+        idxEl.textContent = `Category ${String(idx + 1).padStart(2, '0')} / ${CATEGORIES.length}`;
+        countEl.textContent = `${cat.items.length} ${cat.items.length === 1 ? 'Event' : 'Events'}`;
+        titleEl.textContent = cat.title;
+
+        listEl.innerHTML = '';
+        const frag = document.createDocumentFragment();
+        cat.items.forEach(item => {
+          const li = document.createElement('li');
+          li.className = 'marquee-event-item';
+          li.textContent = item;
+          frag.appendChild(li);
+        });
+        listEl.appendChild(frag);
+
+        setButtonStates(idx);
+        wrap.classList.add('is-open');
+      }
+
+      function closeFlyout() {
+        cancelClose();
+        activeIdx = -1;
+        setButtonStates(-1);
+        wrap.classList.remove('is-open');
+      }
+
+      // Hover & focus on any heading pill in either seamless track
+      wrap.addEventListener('pointerover', e => {
+        if (e.pointerType === 'touch') return;
+        const btn = e.target.closest('.marquee-cat-btn');
+        if (btn) {
+          openFlyout(Number(btn.dataset.catIdx));
+        } else if (e.target.closest('.marquee-flyout')) {
+          cancelClose();
+        }
+      });
+
+      wrap.addEventListener('focusin', e => {
+        const btn = e.target.closest('.marquee-cat-btn');
+        if (btn) openFlyout(Number(btn.dataset.catIdx));
+      });
+
+      // Click / Tap support for touch devices & intentional clicks
+      wrap.addEventListener('click', e => {
+        const btn = e.target.closest('.marquee-cat-btn');
+        if (!btn) return;
+        const idx = Number(btn.dataset.catIdx);
+        if (wrap.classList.contains('is-open') && activeIdx === idx && e.pointerType === 'touch') {
+          closeFlyout();
+        } else {
+          openFlyout(idx);
+        }
+      });
+
+      wrap.addEventListener('mouseleave', scheduleClose);
+      wrap.addEventListener('mouseenter', cancelClose);
+
+      closeBtn.addEventListener('click', closeFlyout);
+
+      document.addEventListener('click', e => {
+        if (wrap.classList.contains('is-open') && !wrap.contains(e.target)) {
+          closeFlyout();
+        }
+      });
+
+      document.addEventListener('keydown', e => {
+        if (e.key === 'Escape' && wrap.classList.contains('is-open')) {
+          closeFlyout();
+        }
+      });
     })();
 
   </script>

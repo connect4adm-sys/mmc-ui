@@ -41,8 +41,20 @@
       --ease: cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
     body {
       font-family: var(--font-sans);
       background-color: var(--bg);
@@ -54,112 +66,371 @@
       flex-direction: column;
       padding-top: 72px;
     }
-    main { flex: 1; }
-    img { max-width: 100%; height: auto; display: block; }
-    a { text-decoration: none; color: inherit; }
-    button { font: inherit; cursor: pointer; border: none; background: none; }
+
+    main {
+      flex: 1;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    button {
+      font: inherit;
+      cursor: pointer;
+      border: none;
+      background: none;
+    }
 
     #scroll-progress {
-      position: fixed; top: 0; left: 0; height: 3px; width: 0%;
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 3px;
+      width: 0%;
       background: linear-gradient(90deg, var(--royal), var(--yellow));
-      z-index: 9999; pointer-events: none;
+      z-index: 9999;
+      pointer-events: none;
     }
 
-    .container { width: 100%; max-width: 1320px; margin-inline: auto; padding-inline: clamp(1rem, 3.5vw, 2.5rem); }
+    .container {
+      width: 100%;
+      max-width: 1320px;
+      margin-inline: auto;
+      padding-inline: clamp(1rem, 3.5vw, 2.5rem);
+    }
 
     .eyebrow {
-      display: inline-flex; align-items: center; gap: 0.5rem;
-      font-family: var(--font-label); font-size: 0.72rem; font-weight: 700;
-      letter-spacing: 0.12em; text-transform: uppercase; color: var(--royal);
-      padding: 0.35rem 0.9rem; border-radius: var(--radius-pill);
-      background: rgba(36, 102, 173, 0.08); border: 1px solid rgba(36, 102, 173, 0.16);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: var(--font-label);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--royal);
+      padding: 0.35rem 0.9rem;
+      border-radius: var(--radius-pill);
+      background: rgba(36, 102, 173, 0.08);
+      border: 1px solid rgba(36, 102, 173, 0.16);
       width: fit-content;
     }
-    .eyebrow::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--royal); }
+
+    .eyebrow::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--royal);
+    }
 
     .display {
-      font-family: var(--font-display); font-size: clamp(2.1rem, 4vw, 3.4rem);
-      font-weight: 600; line-height: 1.09; letter-spacing: -0.025em; color: var(--deep);
+      font-family: var(--font-display);
+      font-size: clamp(2.1rem, 4vw, 3.4rem);
+      font-weight: 600;
+      line-height: 1.09;
+      letter-spacing: -0.025em;
+      color: var(--deep);
     }
 
     .h2 {
-      font-family: var(--font-display); font-size: clamp(1.7rem, 2.8vw, 2.4rem);
-      font-weight: 600; line-height: 1.15; letter-spacing: -0.02em; color: var(--deep);
+      font-family: var(--font-display);
+      font-size: clamp(1.7rem, 2.8vw, 2.4rem);
+      font-weight: 600;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      color: var(--deep);
     }
 
-    .highlight-marker { font-style: italic; font-weight: 400; color: var(--royal); position: relative; display: inline-block; }
+    .highlight-marker {
+      font-style: italic;
+      font-weight: 400;
+      color: var(--royal);
+      position: relative;
+      display: inline-block;
+    }
+
     .highlight-marker::after {
-      content: ''; position: absolute; left: -2%; right: -2%; bottom: 6%; height: 28%;
-      background: rgba(255, 197, 27, 0.38); z-index: -1; border-radius: 4px;
+      content: '';
+      position: absolute;
+      left: -2%;
+      right: -2%;
+      bottom: 6%;
+      height: 28%;
+      background: rgba(255, 197, 27, 0.38);
+      z-index: -1;
+      border-radius: 4px;
     }
 
-    .lede { font-size: clamp(0.98rem, 1.25vw, 1.1rem); color: var(--muted); line-height: 1.65; max-width: 58ch; }
+    .lede {
+      font-size: clamp(0.98rem, 1.25vw, 1.1rem);
+      color: var(--muted);
+      line-height: 1.65;
+      max-width: 58ch;
+    }
 
     .btn {
-      display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;
-      padding: 0.72rem 1.4rem; border-radius: var(--radius-pill);
-      font-size: 0.88rem; font-weight: 600; transition: all 0.28s var(--ease);
-      white-space: nowrap; min-height: 44px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.72rem 1.4rem;
+      border-radius: var(--radius-pill);
+      font-size: 0.88rem;
+      font-weight: 600;
+      transition: all 0.28s var(--ease);
+      white-space: nowrap;
+      min-height: 44px;
     }
-    .btn svg { width: 16px; height: 16px; transition: transform 0.28s var(--ease); }
-    .btn:hover svg { transform: translateX(3px); }
-    .btn--primary { background: var(--royal); color: var(--white); box-shadow: 0 8px 20px -4px rgba(36, 102, 173, 0.35); }
-    .btn--primary:hover { background: var(--royal-dark); transform: translateY(-2px); }
-    .btn--ghost { background: var(--white); color: var(--deep); border: 1.5px solid var(--line); }
+
+    .btn svg {
+      width: 16px;
+      height: 16px;
+      transition: transform 0.28s var(--ease);
+    }
+
+    .btn:hover svg {
+      transform: translateX(3px);
+    }
+
+    .btn--primary {
+      background: var(--royal);
+      color: var(--white);
+      box-shadow: 0 8px 20px -4px rgba(36, 102, 173, 0.35);
+    }
+
+    .btn--primary:hover {
+      background: var(--royal-dark);
+      transform: translateY(-2px);
+    }
+
+    .btn--ghost {
+      background: var(--white);
+      color: var(--deep);
+      border: 1.5px solid var(--line);
+    }
 
     /* Unified Header + Smart Scroll Reveal */
     .site-header {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
       background: rgba(255, 255, 255, 0.94);
-      backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
       border-bottom: 1px solid var(--line);
       padding-top: env(safe-area-inset-top, 0px);
       transform: translate3d(0, 0, 0);
       transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.25s ease, box-shadow 0.25s ease;
       will-change: transform;
     }
-    .site-header.is-scrolled { background: rgba(255, 255, 255, 0.98); box-shadow: 0 4px 20px -4px rgba(16, 47, 75, 0.08); }
-    .site-header.is-hidden { transform: translate3d(0, -105%, 0); }
-    .site-header:focus-within { transform: translate3d(0, 0, 0); }
-    .header-inner { display: flex; align-items: center; justify-content: space-between; height: 72px; gap: 1.25rem; }
-    .brand { display: flex; align-items: center; flex-shrink: 0; }
-    .brand img { height: 36px; width: auto; }
-    .main-nav { display: flex; align-items: center; gap: 1.4rem; }
+
+    .site-header.is-scrolled {
+      background: rgba(255, 255, 255, 0.98);
+      box-shadow: 0 4px 20px -4px rgba(16, 47, 75, 0.08);
+    }
+
+    .site-header.is-hidden {
+      transform: translate3d(0, -105%, 0);
+    }
+
+    .site-header:focus-within {
+      transform: translate3d(0, 0, 0);
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 72px;
+      gap: 1.25rem;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      flex-shrink: 0;
+    }
+
+    .brand img {
+      height: 36px;
+      width: auto;
+    }
+
+    .main-nav {
+      display: flex;
+      align-items: center;
+      gap: 1.4rem;
+    }
+
     .main-nav a {
-      font-size: 0.86rem; font-weight: 500; color: var(--muted);
-      position: relative; padding: 0.4rem 0; transition: color 0.25s ease; white-space: nowrap;
+      font-size: 0.86rem;
+      font-weight: 500;
+      color: var(--muted);
+      position: relative;
+      padding: 0.4rem 0;
+      transition: color 0.25s ease;
+      white-space: nowrap;
     }
-    .main-nav a:hover, .main-nav a[aria-current="page"] { color: var(--royal); }
-    .main-nav a[aria-current="page"] { font-weight: 600; }
+
+    .main-nav a:hover,
+    .main-nav a[aria-current="page"] {
+      color: var(--royal);
+    }
+
+    .main-nav a[aria-current="page"] {
+      font-weight: 600;
+    }
+
     .main-nav a::after {
-      content: ''; position: absolute; left: 0; bottom: -2px; width: 100%; height: 2.5px;
-      background: var(--yellow); border-radius: 999px; transform: scaleX(0);
-      transform-origin: left; transition: transform 0.32s var(--ease);
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -2px;
+      width: 100%;
+      height: 2.5px;
+      background: var(--yellow);
+      border-radius: 999px;
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.32s var(--ease);
     }
-    .main-nav a:hover::after, .main-nav a[aria-current="page"]::after { transform: scaleX(1); }
-    .header-actions { display: flex; align-items: center; gap: 0.75rem; flex-shrink: 0; }
-    .header-login { font-size: 0.86rem; font-weight: 600; color: var(--deep); padding: 0.45rem 0.9rem; border-radius: var(--radius-pill); }
-    .header-login:hover { background: rgba(36, 102, 173, 0.08); color: var(--royal); }
-    .header-cta { padding: 0.56rem 1.15rem; font-size: 0.84rem; min-height: 40px; }
+
+    .main-nav a:hover::after,
+    .main-nav a[aria-current="page"]::after {
+      transform: scaleX(1);
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      flex-shrink: 0;
+    }
+
+    .header-login {
+      font-size: 0.86rem;
+      font-weight: 600;
+      color: var(--deep);
+      padding: 0.45rem 0.9rem;
+      border-radius: var(--radius-pill);
+    }
+
+    .header-login:hover {
+      background: rgba(36, 102, 173, 0.08);
+      color: var(--royal);
+    }
+
+    .header-cta {
+      padding: 0.56rem 1.15rem;
+      font-size: 0.84rem;
+      min-height: 40px;
+    }
+
     .menu-toggle {
-      display: none; flex-direction: column; justify-content: center; align-items: center;
-      width: 40px; height: 40px; gap: 5px; border-radius: var(--radius-sm);
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 40px;
+      height: 40px;
+      gap: 5px;
+      border-radius: var(--radius-sm);
     }
-    .menu-toggle span { display: block; width: 22px; height: 2px; background: var(--deep); border-radius: 2px; transition: transform 0.3s ease, opacity 0.3s ease; }
-    .menu-toggle.is-open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-    .menu-toggle.is-open span:nth-child(2) { opacity: 0; }
-    .menu-toggle.is-open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .menu-toggle span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--deep);
+      border-radius: 2px;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+
+    .menu-toggle.is-open span:nth-child(1) {
+      transform: translateY(7px) rotate(45deg);
+    }
+
+    .menu-toggle.is-open span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .menu-toggle.is-open span:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
+    }
+
     .mobile-nav {
-      position: fixed; inset: 72px 0 0 0; background: var(--white); z-index: 999;
-      padding: 1.5rem; display: flex; flex-direction: column; gap: 0.45rem;
-      transform: translateX(100%); transition: transform 0.35s var(--ease); overflow-y: auto;
+      position: fixed;
+      inset: 72px 0 0 0;
+      background: var(--white);
+      z-index: 999;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+      transform: translateX(100%);
+      transition: transform 0.35s var(--ease);
+      overflow-y: auto;
     }
-    .mobile-nav.is-open { transform: translateX(0); }
-    .mobile-nav a { padding: 0.85rem 1rem; border-radius: var(--radius); font-size: 1rem; font-weight: 500; color: var(--deep); }
-    .mobile-nav a[aria-current="page"] { background: var(--light-blue); color: var(--royal); font-weight: 700; }
-    .mobile-actions { margin-top: 1rem; padding-top: 1.25rem; border-top: 1px solid var(--line); display: flex; flex-direction: column; gap: 0.75rem; }
-    @media (max-width: 1180px) { .main-nav { gap: 1rem; } .main-nav a { font-size: 0.82rem; } }
-    @media (max-width: 1040px) { .main-nav, .header-login { display: none; } .menu-toggle { display: flex; } }
+
+    .mobile-nav.is-open {
+      transform: translateX(0);
+    }
+
+    .mobile-nav a {
+      padding: 0.85rem 1rem;
+      border-radius: var(--radius);
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--deep);
+    }
+
+    .mobile-nav a[aria-current="page"] {
+      background: var(--light-blue);
+      color: var(--royal);
+      font-weight: 700;
+    }
+
+    .mobile-actions {
+      margin-top: 1rem;
+      padding-top: 1.25rem;
+      border-top: 1px solid var(--line);
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    @media (max-width: 1180px) {
+      .main-nav {
+        gap: 1rem;
+      }
+
+      .main-nav a {
+        font-size: 0.82rem;
+      }
+    }
+
+    @media (max-width: 1040px) {
+
+      .main-nav,
+      .header-login {
+        display: none;
+      }
+
+      .menu-toggle {
+        display: flex;
+      }
+    }
 
     /* ============================================================
        CONTACT HERO & MAIN GRID
@@ -169,8 +440,14 @@
       background: linear-gradient(180deg, #FFFFFF 0%, #F4F8FE 100%);
       border-bottom: 1px solid var(--line);
     }
-    .contact-hero .eyebrow { margin-bottom: 0.9rem; }
-    .contact-hero .display { margin-bottom: 0.85rem; }
+
+    .contact-hero .eyebrow {
+      margin-bottom: 0.9rem;
+    }
+
+    .contact-hero .display {
+      margin-bottom: 0.85rem;
+    }
 
     .contact-main {
       padding: clamp(2.5rem, 4.5vw, 4rem) 0;
@@ -201,16 +478,44 @@
     }
 
     .info-icon {
-      width: 44px; height: 44px; border-radius: 12px;
-      background: var(--light-blue); color: var(--royal);
-      display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0;
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: var(--light-blue);
+      color: var(--royal);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
     }
-    .info-icon svg { width: 20px; height: 20px; }
 
-    .info-card h3 { font-family: var(--font-display); font-size: 1.08rem; color: var(--deep); margin-bottom: 0.25rem; }
-    .info-card p, .info-card a { font-size: 0.88rem; color: var(--muted); line-height: 1.5; }
-    .info-card a { color: var(--royal); font-weight: 600; }
-    .info-card a:hover { text-decoration: underline; }
+    .info-icon svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    .info-card h3 {
+      font-family: var(--font-display);
+      font-size: 1.08rem;
+      color: var(--deep);
+      margin-bottom: 0.25rem;
+    }
+
+    .info-card p,
+    .info-card a {
+      font-size: 0.88rem;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    .info-card a {
+      color: var(--royal);
+      font-weight: 600;
+    }
+
+    .info-card a:hover {
+      text-decoration: underline;
+    }
 
     .contact-form-card {
       background: var(--white);
@@ -220,20 +525,46 @@
       box-shadow: var(--shadow-card);
     }
 
-    fieldset.role-fieldset { border: none; margin-bottom: 1.25rem; }
-    fieldset.role-fieldset legend {
-      font-family: var(--font-label); font-size: 0.72rem; font-weight: 700;
-      text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); margin-bottom: 0.55rem;
+    fieldset.role-fieldset {
+      border: none;
+      margin-bottom: 1.25rem;
     }
 
-    .role-radios { display: flex; flex-wrap: wrap; gap: 0.6rem; }
-    .role-option {
-      display: inline-flex; align-items: center; gap: 0.45rem;
-      padding: 0.55rem 0.95rem; background: var(--bg);
-      border: 1.5px solid rgba(16, 47, 75, 0.16); border-radius: var(--radius);
-      font-size: 0.85rem; font-weight: 600; color: var(--deep); cursor: pointer;
+    fieldset.role-fieldset legend {
+      font-family: var(--font-label);
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      margin-bottom: 0.55rem;
     }
-    .role-option input { accent-color: var(--royal); width: 16px; height: 16px; }
+
+    .role-radios {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+    }
+
+    .role-option {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.55rem 0.95rem;
+      background: var(--bg);
+      border: 1.5px solid rgba(16, 47, 75, 0.16);
+      border-radius: var(--radius);
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--deep);
+      cursor: pointer;
+    }
+
+    .role-option input {
+      accent-color: var(--royal);
+      width: 16px;
+      height: 16px;
+    }
 
     .form-grid {
       display: grid;
@@ -241,14 +572,28 @@
       gap: 1.1rem;
       margin-bottom: 1.15rem;
     }
-    .form-full { grid-column: 1 / -1; }
-    .field { display: flex; flex-direction: column; gap: 0.3rem; }
-    .field label {
-      font-family: var(--font-label); font-size: 0.72rem; font-weight: 700;
-      text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted);
+
+    .form-full {
+      grid-column: 1 / -1;
     }
 
-    .input, .textarea {
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+    }
+
+    .field label {
+      font-family: var(--font-label);
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+    }
+
+    .input,
+    .textarea {
       font: inherit;
       font-size: max(1rem, 0.92rem);
       min-height: 48px;
@@ -259,19 +604,53 @@
       color: var(--ink);
       width: 100%;
     }
-    .textarea { min-height: 120px; resize: vertical; }
-    .input:focus-visible, .textarea:focus-visible { outline: 3px solid rgba(36, 102, 173, 0.35); border-color: var(--royal); background: var(--white); }
-    .input:user-invalid, .textarea:user-invalid { border-color: var(--err); }
+
+    .textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    .input:focus-visible,
+    .textarea:focus-visible {
+      outline: 3px solid rgba(36, 102, 173, 0.35);
+      border-color: var(--royal);
+      background: var(--white);
+    }
+
+    .input:user-invalid,
+    .textarea:user-invalid {
+      border-color: var(--err);
+    }
 
     .form-status {
-      margin-top: 1rem; padding: 0.95rem 1.15rem; border-radius: var(--radius);
-      font-size: 0.9rem; font-weight: 600;
+      margin-top: 1rem;
+      padding: 0.95rem 1.15rem;
+      border-radius: var(--radius);
+      font-size: 0.9rem;
+      font-weight: 600;
     }
-    .form-status.is-success { background: #ECFDF5; color: var(--ok); border: 1px solid rgba(15, 118, 110, 0.25); }
-    .form-status[hidden] { display: none; }
 
-    @media (max-width: 920px) { .contact-grid { grid-template-columns: 1fr; } }
-    @media (max-width: 580px) { .form-grid { grid-template-columns: 1fr; } }
+    .form-status.is-success {
+      background: #ECFDF5;
+      color: var(--ok);
+      border: 1px solid rgba(15, 118, 110, 0.25);
+    }
+
+    .form-status[hidden] {
+      display: none;
+    }
+
+    @media (max-width: 920px) {
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 580px) {
+      .form-grid {
+        grid-template-columns: 1fr;
+      }
+    }
 
     /* ============================================================
        ACCESSIBLE NATIVE ACCORDION FAQ (details / summary)
@@ -315,7 +694,9 @@
       cursor: pointer;
     }
 
-    .faq-list summary::-webkit-details-marker { display: none; }
+    .faq-list summary::-webkit-details-marker {
+      display: none;
+    }
 
     .faq-list summary::before {
       content: '';
@@ -328,10 +709,15 @@
       rotate: -90deg;
     }
 
-    .faq-list details[open] > summary::before { rotate: 0deg; }
+    .faq-list details[open]>summary::before {
+      rotate: 0deg;
+    }
 
     @media (prefers-reduced-motion: no-preference) {
-      .faq-list summary::before { transition: rotate 0.22s ease; }
+      .faq-list summary::before {
+        transition: rotate 0.22s ease;
+      }
+
       .faq-list details::details-content {
         transition: block-size, content-visibility, display;
         transition-duration: 0.28s;
@@ -346,7 +732,9 @@
       contain: layout;
     }
 
-    .faq-list details:not([open])::details-content { block-size: 0; }
+    .faq-list details:not([open])::details-content {
+      block-size: 0;
+    }
 
     .faq-answer {
       padding: 0 1.35rem 1.2rem 3rem;
@@ -357,41 +745,124 @@
 
     /* Unified Footer */
     .site-footer {
-      background: var(--deep); color: var(--white);
+      background: var(--deep);
+      color: var(--white);
       padding: clamp(3rem, 5vw, 4rem) 0 max(2rem, env(safe-area-inset-bottom, 20px));
       border-top: 1px solid rgba(255, 255, 255, 0.08);
     }
+
     .footer-top {
-      display: grid; grid-template-columns: minmax(0, 1.4fr) repeat(3, minmax(0, 0.7fr));
-      gap: 2.5rem; padding-bottom: 2.5rem; border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) repeat(3, minmax(0, 0.7fr));
+      gap: 2.5rem;
+      padding-bottom: 2.5rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.12);
     }
+
     .footer-brand-logo {
-      display: inline-flex; align-items: center; background: var(--white);
-      padding: 0.45rem 0.85rem; border-radius: 10px;
+      display: inline-flex;
+      align-items: center;
+      background: var(--white);
+      padding: 0.45rem 0.85rem;
+      border-radius: 10px;
       border: 1.5px solid rgba(255, 255, 255, 0.92);
-      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.22); margin-bottom: 1.1rem;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.22);
+      margin-bottom: 1.1rem;
     }
-    .footer-brand img { height: 32px; width: auto; display: block; }
-    .footer-brand p { font-size: 0.82rem; line-height: 1.6; color: rgba(255, 255, 255, 0.65); max-width: 34ch; }
+
+    .footer-brand img {
+      height: 32px;
+      width: auto;
+      display: block;
+    }
+
+    .footer-brand p {
+      font-size: 0.82rem;
+      line-height: 1.6;
+      color: rgba(255, 255, 255, 0.65);
+      max-width: 34ch;
+    }
+
     .footer-col h4 {
-      font-family: var(--font-label); font-size: 0.68rem; letter-spacing: 0.14em;
-      text-transform: uppercase; color: rgba(255, 255, 255, 0.52); margin-bottom: 1rem; font-weight: 600;
+      font-family: var(--font-label);
+      font-size: 0.68rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.52);
+      margin-bottom: 1rem;
+      font-weight: 600;
     }
-    .footer-col a { display: block; font-size: 0.86rem; color: rgba(255, 255, 255, 0.78); margin-bottom: 0.6rem; transition: color 0.2s ease, transform 0.2s ease; }
-    .footer-col a:hover { color: var(--yellow); transform: translateX(3px); }
+
+    .footer-col a {
+      display: block;
+      font-size: 0.86rem;
+      color: rgba(255, 255, 255, 0.78);
+      margin-bottom: 0.6rem;
+      transition: color 0.2s ease, transform 0.2s ease;
+    }
+
+    .footer-col a:hover {
+      color: var(--yellow);
+      transform: translateX(3px);
+    }
+
     .footer-bottom {
-      padding-top: 1.75rem; display: flex; align-items: center; justify-content: space-between;
-      flex-wrap: wrap; gap: 1rem; font-size: 0.8rem; color: rgba(255, 255, 255, 0.55);
+      padding-top: 1.75rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+      font-size: 0.8rem;
+      color: rgba(255, 255, 255, 0.55);
     }
-    .footer-socials { display: flex; gap: 0.75rem; }
+
+    .footer-socials {
+      display: flex;
+      gap: 0.75rem;
+    }
+
     .footer-socials a {
-      width: 36px; height: 36px; border-radius: 50%; background: rgba(255, 255, 255, 0.08);
-      color: var(--white); display: flex; align-items: center; justify-content: center;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.08);
+      color: var(--white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
-    .footer-socials a:hover { background: var(--yellow); color: var(--deep); }
-    .footer-socials svg { width: 16px; height: 16px; }
-    @media (max-width: 860px) { .footer-top { grid-template-columns: 1fr 1fr; } .footer-brand { grid-column: span 2; } }
-    @media (max-width: 520px) { .footer-top { grid-template-columns: 1fr; gap: 1.75rem; } .footer-brand { grid-column: span 1; } }
+
+    .footer-socials a:hover {
+      background: var(--yellow);
+      color: var(--deep);
+    }
+
+    .footer-socials svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    @media (max-width: 860px) {
+      .footer-top {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .footer-brand {
+        grid-column: span 2;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .footer-top {
+        grid-template-columns: 1fr;
+        gap: 1.75rem;
+      }
+
+      .footer-brand {
+        grid-column: span 1;
+      }
+    }
   </style>
 </head>
 
@@ -465,7 +936,8 @@
           <div class="info-cards">
             <div class="info-card">
               <div class="info-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round">
                   <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
                   <polyline points="22,6 12,13 2,6" />
                 </svg>
@@ -473,39 +945,43 @@
               <div>
                 <h3>Email Our Coordination Desk</h3>
                 <p>For school event hosting, university onboarding, or schedule queries:</p>
-                <a href="mailto:hello@mymentorcircle.com">hello@mymentorcircle.com</a>
+                <a href="mailto:support@mymentorcircle.com">support@mymentorcircle.com</a>
               </div>
             </div>
 
             <div class="info-card">
               <div class="info-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round">
                   <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
                   <circle cx="12" cy="10" r="3" />
                 </svg>
               </div>
               <div>
                 <h3>Active Regional Coordination</h3>
-                <p>Delhi NCR (Greater Noida &amp; Gurugram), Kolkata, Bengaluru, Mumbai, Hyderabad, and Pune.</p>
+                <p>Pan India.</p>
               </div>
             </div>
 
             <div class="info-card">
               <div class="info-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round">
                   <circle cx="12" cy="12" r="10" />
                   <polyline points="12 6 12 12 16 14" />
                 </svg>
               </div>
               <div>
                 <h3>Response &amp; Support Hours</h3>
-                <p>Monday to Saturday, 9:30 AM – 6:30 PM IST. School inquiries receive priority callback within 24 hours.</p>
+                <p>Monday to Saturday, 9:30 AM – 6:30 PM IST. School inquiries receive priority callback within 24
+                  hours.</p>
               </div>
             </div>
 
             <div class="info-card">
               <div class="info-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round">
                   <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
                   <polyline points="9 12 11 14 15 10" />
                 </svg>
@@ -518,50 +994,62 @@
           </div>
 
           <div class="contact-form-card">
-            <h2 class="h2" id="contact-form-heading" style="font-size: 1.65rem; margin-bottom: 0.45rem;">Send Us a Message</h2>
-            <p style="font-size: 0.9rem; color: var(--muted); margin-bottom: 1.35rem;">Select your role and share how we can help.</p>
+            <h2 class="h2" id="contact-form-heading" style="font-size: 1.65rem; margin-bottom: 0.45rem;">Send Us a
+              Message</h2>
+            <p style="font-size: 0.9rem; color: var(--muted); margin-bottom: 1.35rem;">Select your role and share how we
+              can help.</p>
 
             <form id="contactForm" action="/contact" method="POST" aria-labelledby="contact-form-heading" novalidate>
               <fieldset class="role-fieldset">
                 <legend>I am reaching out as a *</legend>
                 <div class="role-radios">
-                  <label class="role-option"><input type="radio" name="sender_role" value="School Leader / Coordinator" checked /> School Leader / Coordinator</label>
-                  <label class="role-option"><input type="radio" name="sender_role" value="University / EdTech Partner" /> University / EdTech Partner</label>
-                  <label class="role-option"><input type="radio" name="sender_role" value="General Inquiry" /> General Inquiry</label>
+                  <label class="role-option"><input type="radio" name="sender_role" value="School Leader / Coordinator"
+                      checked /> School Leader / Coordinator</label>
+                  <label class="role-option"><input type="radio" name="sender_role"
+                      value="University / EdTech Partner" /> University / EdTech Partner</label>
+                  <label class="role-option"><input type="radio" name="sender_role" value="General Inquiry" /> General
+                    Inquiry</label>
                 </div>
               </fieldset>
 
               <div class="form-grid">
                 <div class="field">
                   <label for="cName">Full Name *</label>
-                  <input type="text" id="cName" name="full_name" class="input" autocomplete="name" required placeholder="e.g., Dr. Meera Kapoor" />
+                  <input type="text" id="cName" name="full_name" class="input" autocomplete="name" required
+                    placeholder="e.g., Dr. Meera Kapoor" />
                 </div>
 
                 <div class="field">
                   <label for="cOrg">School / Organisation Name *</label>
-                  <input type="text" id="cOrg" name="organization" class="input" autocomplete="organization" required placeholder="e.g., Greenwood Heritage School" />
+                  <input type="text" id="cOrg" name="organization" class="input" autocomplete="organization" required
+                    placeholder="e.g., Greenwood Heritage School" />
                 </div>
 
                 <div class="field">
                   <label for="cEmail">Email Address *</label>
-                  <input type="email" id="cEmail" name="email" class="input" autocomplete="email" autocorrect="off" autocapitalize="none" spellcheck="false" required placeholder="principal@school.edu.in" />
+                  <input type="email" id="cEmail" name="email" class="input" autocomplete="email" autocorrect="off"
+                    autocapitalize="none" spellcheck="false" required placeholder="principal@school.edu.in" />
                 </div>
 
                 <div class="field">
                   <label for="cPhone">Phone Number *</label>
-                  <input type="tel" id="cPhone" name="phone" class="input" autocomplete="tel" inputmode="tel" required placeholder="+91 98XXXXXXXX" />
+                  <input type="tel" id="cPhone" name="phone" class="input" autocomplete="tel" inputmode="tel" required
+                    placeholder="+91 98XXXXXXXX" />
                 </div>
 
                 <div class="field form-full">
                   <label for="cMessage">How can we assist you? *</label>
-                  <textarea id="cMessage" name="message" class="textarea" required placeholder="Share event dates, preferred format (career fair, STEM workshop, MUN), city, or any questions..."></textarea>
+                  <textarea id="cMessage" name="message" class="textarea" required
+                    placeholder="Share event dates, preferred format (career fair, STEM workshop, MUN), city, or any questions..."></textarea>
                 </div>
               </div>
 
               <button type="submit" class="btn btn--primary" id="contactSubmitBtn" style="width: 100%;">
                 Send Message
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <line x1="5" y1="12" x2="19" y2="12" /><polyline points="12 5 19 12 12 19" />
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round" aria-hidden="true">
+                  <line x1="5" y1="12" x2="19" y2="12" />
+                  <polyline points="12 5 19 12 12 19" />
                 </svg>
               </button>
 
@@ -606,7 +1094,9 @@
           <details>
             <summary>How can a university or EdTech organisation apply to participate?</summary>
             <div class="faq-answer">
-              Visit the <a href="universities.html" style="color: var(--royal); font-weight: 600; text-decoration: underline;">For Universities &amp; EdTech Partners</a> page to browse open school events or submit your institutional onboarding profile directly.
+              Visit the <a href="universities.html"
+                style="color: var(--royal); font-weight: 600; text-decoration: underline;">For Universities &amp; EdTech
+                Partners</a> page to browse open school events or submit your institutional onboarding profile directly.
             </div>
           </details>
         </div>
@@ -658,17 +1148,33 @@
       <div class="footer-bottom">
         <p>&copy; <span id="year">2026</span> My Mentor Circle. All rights reserved.</p>
         <div class="footer-socials" aria-label="Social media links">
-          <a href="https://www.linkedin.com/company/my-mentor-circle" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+          <a href="https://www.linkedin.com/company/my-mentor-circle" target="_blank" rel="noopener noreferrer"
+            aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path
+                d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+            </svg>
           </a>
-          <a href="https://twitter.com/mymentorcircle" target="_blank" rel="noopener noreferrer" aria-label="Twitter / X">
-            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          <a href="https://twitter.com/mymentorcircle" target="_blank" rel="noopener noreferrer"
+            aria-label="Twitter / X">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path
+                d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+            </svg>
           </a>
-          <a href="https://www.instagram.com/mymentorcircle" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          <a href="https://www.instagram.com/mymentorcircle" target="_blank" rel="noopener noreferrer"
+            aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path
+                d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+            </svg>
           </a>
-          <a href="https://www.youtube.com/@mymentorcircle" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
-            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+          <a href="https://www.youtube.com/@mymentorcircle" target="_blank" rel="noopener noreferrer"
+            aria-label="YouTube">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path
+                d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+            </svg>
           </a>
         </div>
       </div>
